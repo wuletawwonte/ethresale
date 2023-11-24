@@ -1,6 +1,6 @@
-# Nuxt 3 Minimal Starter
+# Ethresale
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+> **Ethresale** is a Nuxt.js powered web application that enables individuals to effortlessly buy or sell second hand or used items. This project leveraging the Supabase backend for seamless data management.
 
 ## Setup
 
@@ -10,14 +10,8 @@ Make sure to install the dependencies:
 # npm
 npm install
 
-# pnpm
-pnpm install
-
 # yarn
 yarn install
-
-# bun
-bun install
 ```
 
 ## Development Server
@@ -28,14 +22,8 @@ Start the development server on `http://localhost:3000`:
 # npm
 npm run dev
 
-# pnpm
-pnpm run dev
-
 # yarn
 yarn dev
-
-# bun
-bun run dev
 ```
 
 ## Production
@@ -46,14 +34,8 @@ Build the application for production:
 # npm
 npm run build
 
-# pnpm
-pnpm run build
-
 # yarn
 yarn build
-
-# bun
-bun run build
 ```
 
 Locally preview production build:
@@ -62,14 +44,31 @@ Locally preview production build:
 # npm
 npm run preview
 
-# pnpm
-pnpm run preview
-
 # yarn
 yarn preview
-
-# bun
-bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+## Authors
+
+#### :bust_in_silhouette: Wuletaw Wonte 
+  - [wuletawwonte](https://github.com/wuletawwonte)
+  - [LinkedIn](https://www.linkedin.com/in/wuletaw-wonte/).  
+  - [Twitter](https://twitter.com/wuletaww) 
+
+## 🤝 Contributing
+All contributions, issues and feature requests are welcome!
+
+1. Fork it (https://github.com/wuletawwonte/ethresale.git)
+2. Create your working branch (git checkout -b [choose-a-name])
+3. Commit your changes (git commit -am 'what this commit will fix/add/improve')
+4. Push to the branch (git push origin [chosen-name])
+5. Create a new Pull Request
+
+## Show your support:
+
+Give a :star: if you liked the app
+
+# License
+This project is [MIT](https://opensource.org/license/mit/) licensed.
