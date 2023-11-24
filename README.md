@@ -71,4 +71,4 @@ All contributions, issues and feature requests are welcome!
 Give a :star: if you liked the app
 
 # License
-This project is [MIT](https://opensource.org/license/mit/) licensed.
+This project is [MIT](LICENSE.md) licensed.
