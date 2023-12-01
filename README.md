@@ -1,6 +1,6 @@
 # Ethresale
 
-> **Ethresale** is a Nuxt.js powered web application that enables individuals to effortlessly buy or sell second hand or used items. This project leveraging the Supabase backend for seamless data management.
+> **Ethresale** is a Nuxt.js powered web application that enables individuals to effortlessly buy or sell second hand or used items. This project leverages the Supabase backend for seamless data management.
 
 ## Setup
 
