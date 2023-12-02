@@ -21,9 +21,11 @@
       <nuxt-link to="/register">
         Sign in
       </nuxt-link>
-      <nuxt-link to="/login">
-        <button>Sign up for free</button>
-      </nuxt-link>
+      <div>
+        <nuxt-link to="/login">
+          <button>Sign up for free</button>
+        </nuxt-link>
+      </div>
     </div>
   </header>
 </template>
@@ -89,24 +91,28 @@
       align-items: center;
       gap: 1rem;
 
-      a {
+      > a {
         text-decoration: none;
         color: var(--text-color);
         font-size: 1rem;
+        padding: 0.3rem 0.8rem;
+        border-radius: var(--border-radius);
       }
 
-      a:hover {
-        color: var(--primary-color);
+      > a:hover {
+        color: black;
+        background-color: #eee;
       }
 
       button {
-        padding: 0.4rem 0.8rem;
-        border-radius: 5px;
+        padding: 0.3rem 0.8rem;
+        border-radius: var(--border-radius);
         border: none;
         background-color: var(--secondary-color);
         color: #fff;
         font-size: 0.9rem;
         cursor: pointer;
+        border: 1px solid var(--primary-color);
       }
 
       button:hover {
