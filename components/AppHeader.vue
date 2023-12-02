@@ -1,8 +1,8 @@
 <template>
   <header>
     <nuxt-link to="/">
-      <img src="/logo.svg" alt="Nuxt Logo" />
-      <span>ethResale</span>
+      <img src="/logo.svg" alt="Nuxt Logo">
+      <span>ethresale</span>
     </nuxt-link>
     <nav>
       <nuxt-link to="/">
@@ -25,7 +25,7 @@
     align-items: center;
     padding: 0.6rem 8rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
   header > a {
@@ -40,6 +40,13 @@
     width: 50px;
   }
 
+  img:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.5s ease-in-out;
+    transition: box-shadow 0.5s ease-in-out;
+  }
+
   nav {
     display: flex;
     gap: 1rem;
@@ -48,5 +55,9 @@
   nav a {
     text-decoration: none;
     color: #000;
+  }
+
+  nav a:hover {
+    color: var(--primary-color);
   }
 </style>

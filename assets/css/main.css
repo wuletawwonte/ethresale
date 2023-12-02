@@ -1,3 +1,7 @@
+:root {
+  --primary-color: #0098D0;
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
