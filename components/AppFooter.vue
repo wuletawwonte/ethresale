@@ -13,8 +13,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0.6rem 8rem;
-    font-size: 1.1rem;
+    padding: 1rem;
     background-color: #eee;
   }
 </style>

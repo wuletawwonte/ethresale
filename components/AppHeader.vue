@@ -18,7 +18,7 @@
   </header>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
   header {
     display: flex;
     justify-content: space-between;
@@ -26,38 +26,40 @@
     padding: 0.6rem 8rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     font-size: 1.1rem;
-  }
 
-  header > a {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    text-decoration: none;
-    color: #000;
-  }
+    > a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      color: #000;
 
-  img {
-    width: 50px;
-  }
+      img {
+        width: 50px;
+      }
 
-  img:hover {
-    transform: scale(1.08);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.5s ease-in-out;
-    transition: box-shadow 0.5s ease-in-out;
+      img:hover {
+        transform: scale(1.08);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.5s ease-in-out;
+        transition: box-shadow 0.5s ease-in-out;
+      }
+
+    }
   }
 
   nav {
     display: flex;
     gap: 1rem;
+
+    a {
+      text-decoration: none;
+      color: #000;
+    }
+
+    a:hover {
+      color: var(--primary-color);
+    }
   }
 
-  nav a {
-    text-decoration: none;
-    color: #000;
-  }
-
-  nav a:hover {
-    color: var(--primary-color);
-  }
 </style>
