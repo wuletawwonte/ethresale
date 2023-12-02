@@ -35,7 +35,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.6rem 4rem;
+    padding: 0.6rem var(--padding-x);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 
     .left {
