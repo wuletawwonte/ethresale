@@ -8,18 +8,21 @@
       <nav>
         <nuxt-link to="/">
           Home
-        </nuxt-link> |
+        </nuxt-link>
         <nuxt-link to="/about">
           About
-        </nuxt-link> |
+        </nuxt-link>
         <nuxt-link to="/contact">
           Contact
         </nuxt-link>
       </nav>
     </div>
     <div class="right">
+      <nuxt-link to="/register">
+        Sign in
+      </nuxt-link>
       <nuxt-link to="/login">
-        Login
+        <button>Sign up for free</button>
       </nuxt-link>
     </div>
   </header>
@@ -62,7 +65,7 @@
       nav {
         display: flex;
         align-items: center;
-        gap: 1rem;
+        gap: 0.5rem;
 
         a {
           text-decoration: none;
@@ -70,14 +73,45 @@
           font-size: 1rem;
           padding: 0.5rem 1rem;
           border-radius: 5px;
+          color: var(--text-color);
         }
 
         a:hover {
-          color: var(--primary-color);
+          color: black;
           background-color: #eee;
         }
       }
 
+    }
+
+    .right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      a {
+        text-decoration: none;
+        color: var(--text-color);
+        font-size: 1rem;
+      }
+
+      a:hover {
+        color: var(--primary-color);
+      }
+
+      button {
+        padding: 0.4rem 0.8rem;
+        border-radius: 5px;
+        border: none;
+        background-color: var(--secondary-color);
+        color: #fff;
+        font-size: 0.9rem;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: black;
+      }
     }
   }
 
