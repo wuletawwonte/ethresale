@@ -5,7 +5,7 @@
       <form action="">
         <input type="text" placeholder="Name" >
         <input type="email" placeholder="Email" >
-        <textarea name="message" id="message" placeholder="Message"></textarea>
+        <textarea id="message" name="message" placeholder="Message"></textarea>
         <button>Send</button>
       </form>
     </div>
