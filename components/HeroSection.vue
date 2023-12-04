@@ -35,7 +35,6 @@
       align-items: flex-start;
       border-radius: 5px;
       padding-top: 2rem;
-      border: 1px solid #fff;
 
       h3 {
         font-size: 1rem;
@@ -46,7 +45,6 @@
 
     &__categories {
       flex-basis: 50%;
-      border: 1px solid red;
     }
   }
 </style>

@@ -53,13 +53,13 @@
 
         img {
           width: 50px;
-        }
 
-        img:hover {
-          transform: scale(1.08);
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-          transition: transform 0.5s ease-in-out;
-          transition: box-shadow 0.5s ease-in-out;
+          &:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.5s ease-in-out;
+            transition: box-shadow 0.5s ease-in-out;
+          }
         }
 
       }
@@ -97,26 +97,25 @@
         font-size: 1rem;
         padding: 0.3rem 0.8rem;
         border-radius: var(--border-radius);
-      }
 
-      > a:hover {
-        color: black;
-        background-color: #eee;
+        &:hover {
+          color: black;
+          background-color: #eee;
+        }
       }
 
       button {
         padding: 0.3rem 0.8rem;
         border-radius: var(--border-radius);
         border: none;
-        background-color: var(--secondary-color);
+        background-color: black;
         color: #fff;
         font-size: 0.9rem;
         cursor: pointer;
-        border: 1px solid var(--primary-color);
-      }
 
-      button:hover {
-        background-color: black;
+        &:hover {
+          outline: 1px solid var(--primary-color);
+        }
       }
     }
   }
