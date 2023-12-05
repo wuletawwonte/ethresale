@@ -3,6 +3,7 @@
     <div class="hero__form">
       <h3>Buy and Sell Second Hand Used Products | EthResale</h3>
       <form action="">
+        <DropDownInput />
         <input type="text" placeholder="Name" >
         <input type="email" placeholder="Email" >
         <textarea id="message" name="message" placeholder="Message"></textarea>

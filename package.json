@@ -8,8 +8,8 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint": "eslint --ext .js,.ts,.vue",
+    "lint:fix": "eslint --ext .js,.ts,.vue --fix"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
