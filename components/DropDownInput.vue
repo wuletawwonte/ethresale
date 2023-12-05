@@ -1,7 +1,7 @@
 <template>
   <div class="dropdowncontainer">
-    <input type="text" placeholder="Choose City" class="dropdowninput">
-    <div class="dropdown">
+    <input type="text" placeholder="Choose City" class="dropdowninput" @click="toggleDropDown">
+    <div v-if="active" class="dropdown">
       <ul>
         <li v-for="city in cities" :key="city.id">
           {{ city.name }}
@@ -15,6 +15,7 @@
 export default {
   data () {
     return {
+      active: true,
       cities: [
         { id: 1, name: 'Mumbai' },
         { id: 2, name: 'Delhi' },
@@ -26,6 +27,11 @@ export default {
         { id: 8, name: 'Surat' },
         { id: 9, name: 'Pune' }
       ]
+    }
+  },
+  methods: {
+    toggleDropDown () {
+      this.active = !this.active
     }
   }
 }
@@ -39,7 +45,7 @@ export default {
   > input {
     width: 100%;
     padding: 0.6rem;
-    border-radius: 5px;
+    border-radius: var(--border-radius);
     border: 1px solid #ccc;
     outline: none;
     font-size: 1rem;
@@ -53,9 +59,15 @@ export default {
     left: 0;
     width: 100%;
     background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
     z-index: 1;
+    max-height: 200px;
+    overflow-y: scroll;
+
+    &.active {
+      transform: scaleY(1);
+    }
 
     ul {
       list-style: none;
@@ -68,6 +80,7 @@ export default {
         font-weight: 500;
         color: var(--text-color);
         cursor: pointer;
+        overflow: hidden;
 
         &:hover {
           background-color: #eee;
