@@ -49,7 +49,7 @@ export default {
 .dropdowncontainer {
   position: relative;
   width: 100%;
-  min-width: 200px;
+  min-width: 120px;
 
   .dropdown {
     position: absolute;
@@ -57,7 +57,7 @@ export default {
     left: 0;
     width: 100%;
     background-color: #fff;
-    border-radius: var(--border-radius);
+    border-radius:  0 0 var(--border-radius) var(--border-radius);
     border: var(--input-border);
     box-shadow: var(--box-shadow);
     z-index: 1;

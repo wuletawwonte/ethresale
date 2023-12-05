@@ -4,7 +4,7 @@
       <h3>Buy and Sell Second Hand Used Products | EthResale</h3>
       <form action="">
         <DropDownInput />
-        <input type="text" placeholder="Name">
+        <input type="search" placeholder="Name">
         <button>Send</button>
       </form>
     </div>
@@ -37,10 +37,34 @@
 
       form {
         display: flex;
-        gap: 1rem;
+        width: 100%;
         padding: 1rem;
         background-color: var(--primary-color);
         border-radius: var(--border-radius);
+
+        div {
+          flex-basis: 20%;
+        }
+
+        input {
+          flex-basis: 70%;
+          border-top-right-radius: 0px;
+          border-bottom-right-radius: 0px;
+          margin-left: 0.6rem;
+        }
+
+        button {
+          flex-basis: 10%;
+          border-radius: 0 50px 50px 0;
+          background-color: var(--primary-color);
+          border-color: var(--primary-color);
+          color: #fff;
+
+          &:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+          }
+        }
       }
 
       h3 {
