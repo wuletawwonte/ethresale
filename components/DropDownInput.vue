@@ -15,7 +15,7 @@
 export default {
   data () {
     return {
-      active: true,
+      active: false,
       cities: [
         { id: 1, name: 'Mumbai' },
         { id: 2, name: 'Delhi' },
@@ -29,9 +29,17 @@ export default {
       ]
     }
   },
+  mounted () {
+    document.addEventListener('click', this.closeDropDown)
+  },
   methods: {
     toggleDropDown () {
       this.active = !this.active
+    },
+    closeDropDown (e) {
+      if (!this.$el.contains(e.target)) {
+        this.active = false
+      }
     }
   }
 }
@@ -41,17 +49,7 @@ export default {
 .dropdowncontainer {
   position: relative;
   width: 100%;
-
-  > input {
-    width: 100%;
-    padding: 0.6rem;
-    border-radius: var(--border-radius);
-    border: 1px solid #ccc;
-    outline: none;
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--text-color);
-  }
+  min-width: 200px;
 
   .dropdown {
     position: absolute;
@@ -60,14 +58,11 @@ export default {
     width: 100%;
     background-color: #fff;
     border-radius: var(--border-radius);
+    border: var(--input-border);
     box-shadow: var(--box-shadow);
     z-index: 1;
     max-height: 200px;
     overflow-y: scroll;
-
-    &.active {
-      transform: scaleY(1);
-    }
 
     ul {
       list-style: none;
