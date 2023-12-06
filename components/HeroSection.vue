@@ -140,7 +140,10 @@ export default {
 
       &__wrapper {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        // grid-template-columns: repeat(3, 1fr);
+        // display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+
         gap: 0.5rem;
 
         a {
@@ -154,7 +157,7 @@ export default {
           display: flex;
           align-items: center;
           gap: 0.5rem;
-          min-width: 90px;
+          min-width: 120px;
           transition: all 0.2s ease-in-out;
 
           &:hover {
