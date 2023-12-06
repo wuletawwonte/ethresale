@@ -23,13 +23,13 @@ export default {
           id: 1,
           name: 'Samsung Galaxy S21 Ultra',
           price: 'Rs 1,39,999',
-          image: 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s21-ultra-5g-1.jpg'
+          image: 'https://mediacontent3.rebuydeal.com/products/1701788312-25222640.jpg'
         },
         {
           id: 2,
           name: 'Samsung Galaxy S21',
           price: 'Rs 1,05,999',
-          image: 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s21-5g-1.jpg'
+          image: 'https://mediacontent3.rebuydeal.com/products/1700994322-31704866.jpg'
         },
         {
           id: 3,
@@ -41,25 +41,25 @@ export default {
           id: 4,
           name: 'Samsung Galaxy S20 FE',
           price: 'Rs 47,999',
-          image: 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s20-fe-5g-1.jpg'
+          image: 'https://mediacontent3.rebuydeal.com/products/1701009405-64275758.jpg'
         },
         {
           id: 5,
           name: 'Samsung Galaxy S20',
           price: 'Rs 70,499',
-          image: 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s20-5g-r1.jpg'
+          image: 'https://mediacontent3.rebuydeal.com/products/1701061054-92407660.jpg'
         },
         {
           id: 6,
           name: 'Samsung Galaxy S20+',
           price: 'Rs 77,999',
-          image: 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s20-plus-5g-r1.jpg'
+          image: 'https://mediacontent3.rebuydeal.com/products/1701592786-88731735.jpg'
         },
         {
           id: 7,
           name: 'Samsung Galaxy S20 Ultra',
           price: 'Rs 97,999',
-          image: 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s20-ultra-5g-r1.jpg'
+          image: 'https://cdn1.ecomtreasure.com/wp-content/uploads/2022/10/3563300002095-600x600.jpg'
         }
       ]
     }
@@ -70,8 +70,9 @@ export default {
 <style lang="scss" scoped>
 .items {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
   padding: 1rem var(--padding-x);
+  margin-bottom: 8rem;
 }
 </style>
