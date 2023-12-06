@@ -5,7 +5,7 @@
       <form action="">
         <DropDownInput />
         <input type="search" placeholder="Name">
-        <button>Send</button>
+        <button><Icon name="fa-solid:search" size="1.1rem" /></button>
       </form>
     </div>
     <div class="hero__categories">
@@ -47,17 +47,18 @@
         }
 
         input {
-          flex-basis: 70%;
+          flex-basis: 65%;
           border-top-right-radius: 0px;
           border-bottom-right-radius: 0px;
           margin-left: 0.6rem;
         }
 
         button {
-          flex-basis: 10%;
+          flex-basis: 15%;
           border-radius: 0 50px 50px 0;
           background-color: var(--primary-color);
-          border-color: var(--primary-color);
+          border: var(--input-border);
+          border-left: none;
           color: #fff;
 
           &:hover {
