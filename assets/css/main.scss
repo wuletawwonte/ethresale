@@ -1,0 +1,48 @@
+:root {
+  --primary-color: #0098D0;
+  --secondary-color: #0a5e7d;
+  --text-primary: #1b1b1b;
+  --text-color: #4e4e4e;
+  --text-active-color: #858585;
+  --border-radius: 5px;
+  --padding-x: 10rem;
+
+  --box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  --input-border: 1px solid #ccc;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+img, picture, svg, video {
+  display: block;
+  max-width: 100%;
+}
+
+html {
+  font-family: 'Roboto', sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+}
+
+input, textarea, button, select {
+  font: inherit;
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: var(--border-radius);
+  border: var(--input-border);
+  outline: none;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+button, a {
+  cursor: pointer;
+}
