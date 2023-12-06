@@ -1,6 +1,6 @@
 <template>
   <div class="dropdowncontainer">
-    <input type="text" placeholder="Choose City" class="dropdowninput" @click="toggleDropDown">
+    <input type="text" placeholder="City ..." :class="{ dropdownactive: active }" @click="toggleDropDown">
     <div v-if="active" class="dropdown">
       <ul>
         <li v-for="city in cities" :key="city.id">
@@ -32,6 +32,9 @@ export default {
   mounted () {
     document.addEventListener('click', this.closeDropDown)
   },
+  beforeUnmount () {
+    document.removeEventListener('click', this.closeDropDown)
+  },
   methods: {
     toggleDropDown () {
       this.active = !this.active
@@ -51,6 +54,10 @@ export default {
   width: 100%;
   min-width: 120px;
 
+  input.dropdownactive {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
   .dropdown {
     position: absolute;
     top: 100%;
