@@ -26,16 +26,23 @@ export default {
   .item {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 1rem;
     max-width: 300px;
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
-    transition: transform 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
     cursor: pointer;
 
     &:hover {
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    &:hover &__body h2 {
+      text-decoration: underline;
+    }
+
+    &:hover &__image img {
+      transform: scale(1.1);
+      transition: all 0.1s ease-in-out;
     }
 
     &__image {
@@ -47,19 +54,24 @@ export default {
         object-fit: cover;
         width: 100%;
         height: 100%;
-        border-radius: var(--border-radius);
+        border-top-right-radius: var(--border-radius);
+        border-top-left-radius: var(--border-radius);
       }
     }
 
     &__body {
-      padding: 0 1rem;
-      text-align: center;
+      padding: 1rem;
 
       h2 {
-        font-size: 1.2rem;
+        font-size: 1rem;
         font-weight: 100;
-        color: var(--primary-color);
+        color: var(--text-color);
+      }
+
+      h2:hover {
+        text-decoration: underline;
       }
     }
   }
+
 </style>
