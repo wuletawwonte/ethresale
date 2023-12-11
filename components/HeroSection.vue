@@ -61,7 +61,7 @@ export default {
       flex-basis: 50%;
       align-items: flex-start;
       border-radius: 5px;
-      padding: 2rem 1rem;
+      padding: 2rem 1rem 2rem 0;
       display: flex;
       flex-direction: column;
       gap: 1rem;
@@ -130,7 +130,7 @@ export default {
       display: flex;
       gap: 1rem;
       flex-direction: column;
-      padding: 3rem 1rem 1rem 1rem;
+      padding: 3rem 0 1rem 1rem;
 
       p {
         font-size: 1rem;
@@ -140,7 +140,8 @@ export default {
 
       &__wrapper {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+
         gap: 0.5rem;
 
         a {
@@ -154,7 +155,7 @@ export default {
           display: flex;
           align-items: center;
           gap: 0.5rem;
-          min-width: 90px;
+          min-width: 120px;
           transition: all 0.2s ease-in-out;
 
           &:hover {
