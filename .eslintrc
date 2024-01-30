@@ -1,3 +1,7 @@
 {
-  "extends": ["@nuxtjs/eslint-config"]
+  "extends": ["@nuxtjs/eslint-config-typescript"],
+  "rules": {
+    "vue/html-self-closing": "off",
+    "eslint-plugin-vue/multi-word-component-names": "off"
+  }
 }
