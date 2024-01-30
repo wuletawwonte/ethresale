@@ -2,5 +2,5 @@
 // eslint-disable-next-line no-undef
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ['nuxt-icon'],
+  modules: ['nuxt-icon', '@nuxtjs/tailwindcss'],
 });
