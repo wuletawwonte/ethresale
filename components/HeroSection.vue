@@ -4,7 +4,7 @@ import { ref } from 'vue';
 const categories = ref([
   {
     id: 1,
-    name: 'Mobile Phones',
+    name: 'Phones',
     link: 'categories/mobilephones',
     icon: 'fa-solid:mobile',
   },
@@ -16,7 +16,7 @@ const categories = ref([
     icon: 'fa-solid:motorcycle',
   },
   { id: 4, name: 'Houses', link: 'categories/houses', icon: 'fa-solid:home' },
-  { id: 5, name: 'TV-Video-Audio', link: 'categories/tv', icon: 'fa-solid:tv' },
+  { id: 5, name: 'Television', link: 'categories/tv', icon: 'fa-solid:tv' },
   {
     id: 6,
     name: 'Tablets',
@@ -46,9 +46,7 @@ const categories = ref([
 
 <template>
   <section class="bg-neutral-content px-48 flex min-h-72">
-    <div
-      class="basis-1/2 flex flex-col items-start gap-4 border-r-2 px-8 py-5 prose"
-    >
+    <div class="basis-1/2 flex flex-col items-start gap-4 px-8 py-5 prose">
       <h3 class="text-sky-700">Buy and Sell Second Hand or Used Products</h3>
       <form action="" class="flex w-full p-4 bg-sky-600 rounded-md">
         <select class="select select-bordered select-sm w-full max-w-xs mr-2">
@@ -74,15 +72,16 @@ const categories = ref([
         <span>Find and Buy All Second Hand Products for Sale</span>
       </button>
     </div>
-    <div class="basis-1/2">
-      <p>Main Second Hand Products Categories</p>
-      <div class="hero__categories__wrapper">
+    <div class="basis-1/2 flex flex-col gap-4 py-5 px-8 prose">
+      <p>Main Second Hand Product Categories</p>
+      <div class="grid grid-cols-3 gap-2">
         <NuxtLink
           v-for="category in categories"
           :key="category.id"
           :to="category.link"
+          class="btn btn-block btn-sm btn-outline flex justify-start items-center"
         >
-          <Icon :name="category.icon" size="1.7rem" />
+          <Icon :name="category.icon" size="1rem" />
           <span>{{ category.name }}</span>
         </NuxtLink>
       </div>
