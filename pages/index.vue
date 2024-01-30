@@ -59,7 +59,7 @@ const items = ref([
 <template>
   <div>
     <HeroSection />
-    <div class="items">
+    <div class="grid grid-cols-4 gap-8 py-4 px-52 mb-8">
       <ItemCard v-for="item in items" :key="item.id" :item="item" />
     </div>
   </div>

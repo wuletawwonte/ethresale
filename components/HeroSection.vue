@@ -45,7 +45,7 @@ const categories = ref([
 </script>
 
 <template>
-  <section class="bg-neutral-content px-48 flex min-h-72">
+  <section class="bg-base-200 px-48 flex min-h-72">
     <div class="basis-1/2 flex flex-col items-start gap-4 px-8 py-5 prose">
       <h3 class="text-sky-700">Buy and Sell Second Hand or Used Products</h3>
       <form action="" class="flex w-full p-4 bg-sky-600 rounded-md">
