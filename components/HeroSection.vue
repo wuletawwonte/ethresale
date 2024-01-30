@@ -78,7 +78,6 @@ const categories = ref([
         <NuxtLink
           v-for="category in categories"
           :key="category.id"
-          :to="category.link"
           class="btn btn-block btn-sm btn-outline flex justify-start items-center"
         >
           <Icon :name="category.icon" size="1rem" />
