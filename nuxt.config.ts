@@ -7,6 +7,7 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
     '@pinia/nuxt',
+    '@nuxtjs/supabase',
   ],
   colorMode: {
     classSuffix: '',
