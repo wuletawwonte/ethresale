@@ -1,5 +1,13 @@
+<script setup lang="ts">
+const colorMode = useColorMode();
+
+const toggleTheme = () => {
+  colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark';
+};
+</script>
+
 <template>
-  <header class="navbar bg-base-100 shadow px-48">
+  <header class="navbar bg-base-100 shadow lg:px-48">
     <div class="navbar-start">
       <div class="dropdown">
         <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
@@ -42,8 +50,19 @@
         <li><nuxt-link to="/contact"> Contact </nuxt-link></li>
       </ul>
     </div>
-    <div class="navbar-end">
-      <nuxt-link class="btn"> Sign in </nuxt-link>
+    <div class="navbar-end gap-4">
+      <label class="swap swap-rotate">
+        <input
+          type="checkbox"
+          :checked="colorMode.value === 'dark'"
+          @change="toggleTheme"
+        />
+
+        <icon name="fa-solid:sun" size="1.2rem" class="swap-on" />
+        <icon name="fa-solid:moon" size="1.2rem" class="swap-off" />
+      </label>
+      <nuxt-link class="btn btn-sm"> Sign in </nuxt-link>
+      <nuxt-link class="btn btn-sm btn-ghost"> Register to sell </nuxt-link>
     </div>
   </header>
 </template>
