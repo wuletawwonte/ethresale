@@ -61,8 +61,10 @@ const toggleTheme = () => {
         <icon name="fa-solid:sun" size="1.2rem" class="swap-on" />
         <icon name="fa-solid:moon" size="1.2rem" class="swap-off" />
       </label>
-      <nuxt-link class="btn btn-sm"> Sign in </nuxt-link>
-      <nuxt-link class="btn btn-sm btn-ghost"> Register to sell </nuxt-link>
+      <nuxt-link to="/login" class="btn btn-sm"> Sign in </nuxt-link>
+      <nuxt-link to="/register" class="btn btn-sm btn-ghost">
+        Register to sell
+      </nuxt-link>
     </div>
   </header>
 </template>
