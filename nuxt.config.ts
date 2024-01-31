@@ -2,7 +2,12 @@
 // eslint-disable-next-line no-undef
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ['nuxt-icon', '@nuxtjs/tailwindcss', '@nuxtjs/color-mode'],
+  modules: [
+    'nuxt-icon',
+    '@nuxtjs/tailwindcss',
+    '@nuxtjs/color-mode',
+    '@pinia/nuxt',
+  ],
   colorMode: {
     classSuffix: '',
     preference: 'system',
