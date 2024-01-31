@@ -1,8 +1,4 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import HeroSection from '@/components/HeroSection.vue';
-import ItemCard from '@/components/ItemCard.vue';
-
 const items = ref([
   {
     id: 1,

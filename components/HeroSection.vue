@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-
 const categories = ref([
   {
     id: 1,
@@ -63,11 +61,15 @@ const categories = ref([
           <Icon name="fa-solid:search" size="1rem" />
         </button>
       </form>
-      <button class="btn btn-sm btn-block flex justify-start items-center">
+      <button
+        class="btn btn-sm btn-block flex justify-start items-center bg-base-100"
+      >
         <Icon name="material-symbols:box-edit-outline" size="1.2rem" />
         <span>Post Ad to Sell Used Second Hand Product</span>
       </button>
-      <button class="btn btn-sm btn-block flex justify-start items-center">
+      <button
+        class="btn btn-sm btn-block flex justify-start items-center bg-base-100"
+      >
         <Icon name="material-symbols:list-rounded" size="1.3rem" />
         <span>Find and Buy All Second Hand Products for Sale</span>
       </button>
