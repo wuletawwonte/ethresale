@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const colorMode = useColorMode();
-const myTheme = ref('');
+const myTheme = ref(false);
 
 function toggleTheme() {
   if (myTheme.value) {
