@@ -1,14 +1,9 @@
 <script setup lang="ts">
 const colorMode = useColorMode();
-const myTheme = ref(false);
 
-function toggleTheme() {
-  if (myTheme.value) {
-    colorMode.value = 'dark';
-  } else {
-    colorMode.value = 'light';
-  }
-}
+const toggleTheme = () => {
+  colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark';
+};
 </script>
 
 <template>
@@ -61,7 +56,6 @@ function toggleTheme() {
           type="checkbox"
           :checked="colorMode.value === 'dark'"
           @change="toggleTheme"
-          v-model="myTheme"
         />
 
         <icon name="fa-solid:sun" size="1.2rem" class="swap-on" />
