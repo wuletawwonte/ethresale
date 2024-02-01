@@ -5,10 +5,12 @@ const email = ref('');
 const password = ref('');
 const confirmPassword = ref('');
 
-const errorMessage = ref();
+const errorMessage = ref('');
+const successMessage = ref('');
 
-const register = async () => {
+const registerWithPassword = async () => {
   errorMessage.value = '';
+  successMessage.value = '';
   try {
     const { error } = await client.auth.signUp({
       email: email.value,
@@ -20,10 +22,26 @@ const register = async () => {
     if (error) {
       throw error;
     }
+    successMessage.value =
+      'Registration successful. Check your inbox for a confirmation email.';
   } catch (error: any) {
     errorMessage.value = error.message;
   }
 };
+
+async function registerWithAuth() {
+  errorMessage.value = '';
+  try {
+    const { error } = await client.auth.signInWithOAuth({
+      provider: 'google',
+    });
+    if (error) {
+      throw error;
+    }
+  } catch (error: any) {
+    errorMessage.value = error.message;
+  }
+}
 </script>
 
 <template>
@@ -38,10 +56,15 @@ const register = async () => {
 
       <div v-if="errorMessage" role="alert" class="alert alert-error">
         <icon name="material-symbols:close" class="w-6 h-6" />
-        <span>{{ errorMessage.value }}</span>
+        <span>{{ errorMessage }}</span>
       </div>
 
-      <form class="space-y-4" @submit.prevent="register">
+      <div v-if="successMessage" role="alert" class="alert alert-success">
+        <icon name="fa6-regular:circle-check" class="w-6 h-6" />
+        <span>{{ successMessage }}</span>
+      </div>
+
+      <form class="space-y-4" @submit.prevent="registerWithPassword">
         <label class="form-control w-full">
           <div class="label">
             <span class="label-text text-base">Name</span>
@@ -94,6 +117,18 @@ const register = async () => {
             Sign Up
           </button>
         </div>
+        <div class="flex items-center space-x-2">
+          <span class="h-px bg-gray-400 w-full"></span>
+          <span class="text-sm text-gray-500">or</span>
+          <span class="h-px bg-gray-400 w-full"></span>
+        </div>
+        <div>
+          <button type="button" class="btn btn-block" @click="registerWithAuth">
+            <icon name="logos:google-icon" size="1.2rem" />
+            Login with Google
+          </button>
+        </div>
+
         <span class="text-sm text-center text-gray-600"
           >Already have an account ?
           <nuxt-link

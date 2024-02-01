@@ -1,12 +1,11 @@
 <script setup lang="ts">
 const client = useSupabaseClient();
-const router = useRouter();
 const email = ref('');
 const password = ref('');
 
 const errorMessage = ref('');
 
-async function loginHandler() {
+async function loginWithPassword() {
   errorMessage.value = '';
   try {
     const { error } = await client.auth.signInWithPassword({
@@ -18,6 +17,20 @@ async function loginHandler() {
     }
 
     navigateTo('/');
+  } catch (error: any) {
+    errorMessage.value = error.message;
+  }
+}
+
+async function loginWithAuth() {
+  errorMessage.value = '';
+  try {
+    const { error } = await client.auth.signInWithOAuth({
+      provider: 'google',
+    });
+    if (error) {
+      throw error;
+    }
   } catch (error: any) {
     errorMessage.value = error.message;
   }
@@ -38,7 +51,7 @@ async function loginHandler() {
         <icon name="material-symbols:close" class="w-6 h-6" />
         <span>{{ errorMessage }}</span>
       </div>
-      <form @submit.prevent="loginHandler" class="space-y-4">
+      <form @submit.prevent="loginWithPassword" class="space-y-4">
         <div>
           <label class="label">
             <span class="text-base label-text">Email</span>
@@ -77,7 +90,7 @@ async function loginHandler() {
           <span class="h-px bg-gray-400 w-full"></span>
         </div>
         <div>
-          <button class="btn btn-block">
+          <button class="btn btn-block" @click="loginWithAuth">
             <icon name="logos:google-icon" size="1.2rem" />
             Login with Google
           </button>
