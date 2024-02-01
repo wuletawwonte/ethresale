@@ -1,8 +1,20 @@
 <script setup lang="ts">
+const client = useSupabaseClient();
 const colorMode = useColorMode();
+const user = useSupabaseUser();
 
 const toggleTheme = () => {
   colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark';
+};
+
+const logout = async () => {
+  const { error } = await client.auth.signOut();
+
+  if (error) {
+    console.log(error);
+  }
+
+  navigateTo('/login');
 };
 </script>
 
@@ -61,10 +73,35 @@ const toggleTheme = () => {
         <icon name="fa-solid:sun" size="1.2rem" class="swap-on" />
         <icon name="fa-solid:moon" size="1.2rem" class="swap-off" />
       </label>
-      <nuxt-link to="/login" class="btn btn-sm"> Sign in </nuxt-link>
-      <nuxt-link to="/register" class="btn btn-sm btn-ghost">
+      <nuxt-link v-if="!user" to="/login" class="btn btn-sm">
+        Sign in
+      </nuxt-link>
+      <nuxt-link v-if="!user" to="/register" class="btn btn-sm btn-ghost">
         Register to sell
       </nuxt-link>
+      <div v-else class="dropdown dropdown-end">
+        <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+          <div class="w-10 rounded-full">
+            <img
+              alt="Tailwind CSS Navbar component"
+              src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+            />
+          </div>
+        </div>
+        <ul
+          tabindex="0"
+          class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+        >
+          <li>
+            <a class="justify-between">
+              Profile
+              <span class="badge">New</span>
+            </a>
+          </li>
+          <li><a>Settings</a></li>
+          <li><a @click.prevent="logout">Logout</a></li>
+        </ul>
+      </div>
     </div>
   </header>
 </template>
