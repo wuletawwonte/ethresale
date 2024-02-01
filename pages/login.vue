@@ -1,9 +1,12 @@
 <template>
   <div class="flex flex-col justify-center h-full overflow-hidden">
     <div
-      class="my-8 w-full p-6 m-auto bg-base-200 rounded-md shadow-md lg:max-w-lg"
+      class="my-8 w-full p-6 m-auto bg-base-100 rounded-md shadow-md lg:max-w-lg"
     >
-      <h1 class="text-3xl font-semibold text-center text-gray-700">Login</h1>
+      <h1 class="text-2xl font-semibold text-content-base">
+        Sign in to your account
+      </h1>
+      <hr class="my-4" />
       <form class="space-y-4">
         <div>
           <label class="label">
@@ -22,7 +25,7 @@
           </label>
           <input
             type="password"
-            placeholder="Enter Password"
+            placeholder="••••••••"
             class="w-full input input-bordered"
             required
           />
@@ -35,6 +38,15 @@
         <div>
           <button class="btn btn-block btn-primary">Login</button>
         </div>
+
+        <span class="text-sm text-center text-gray-600"
+          >Don’t have an account yet?
+          <nuxt-link
+            to="/register"
+            class="text-blue-600 hover:text-blue-800 hover:underline"
+            >Register
+          </nuxt-link></span
+        >
       </form>
     </div>
   </div>

@@ -3,10 +3,10 @@
     class="relative flex flex-col justify-center min-h-screen overflow-hidden py-8"
   >
     <div
-      class="w-full p-6 mx-auto bg-base-200 rounded-md shadow-md lg:max-w-xl"
+      class="w-full p-6 mx-auto bg-base-100 rounded-md shadow-md lg:max-w-xl"
     >
       <h1 class="text-2xl font-semibold text-center">Register</h1>
-      <hr class="my-4 border-base-300" />
+      <hr class="my-4" />
       <form class="space-y-4">
         <label class="form-control w-full">
           <div class="label">
@@ -44,7 +44,7 @@
           </div>
           <input
             type="password"
-            placeholder="Password ..."
+            placeholder="••••••••"
             class="input input-bordered w-full"
           />
         </label>
@@ -55,15 +55,15 @@
           </div>
           <input
             type="password"
-            placeholder="Confirm password ..."
+            placeholder="••••••••"
             class="input input-bordered w-full"
           />
         </label>
 
         <div>
-          <button class="btn btn-block btn-accent">Sign Up</button>
+          <button class="btn btn-block btn-primary">Sign Up</button>
         </div>
-        <span
+        <span class="text-sm text-center text-gray-600"
           >Already have an account ?
           <nuxt-link
             to="/login"
