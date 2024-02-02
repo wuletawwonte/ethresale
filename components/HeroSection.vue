@@ -45,16 +45,18 @@ const categories = ref([
 <template>
   <section class="bg-base-200 px-48 flex min-h-72">
     <div class="basis-1/2 flex flex-col items-start gap-4 px-8 py-5 prose">
-      <h3 class="text-sky-700">Buy and Sell Second Hand or Used Products</h3>
+      <h3 class="text-sky-700">
+        {{ $t('Buy and Sell Second Hand or Used Products') }}
+      </h3>
       <form action="" class="flex w-full p-4 bg-sky-600 rounded-md">
         <select class="select select-bordered select-sm w-full max-w-xs mr-2">
-          <option disabled selected>City ...</option>
+          <option disabled selected>{{ $t('City') }} ...</option>
           <option>Arbaminch</option>
           <option>Hawassa</option>
         </select>
         <input
           type="search"
-          placeholder="Search ..."
+          :placeholder="$t('Search') + ' ...'"
           class="input input-bordered input-sm w-full max-w-xs rounded-e-none"
         />
         <button class="btn btn-sm rounded-s-none rounded-e-full">
@@ -65,17 +67,17 @@ const categories = ref([
         class="btn btn-sm btn-block flex justify-start items-center bg-base-100"
       >
         <Icon name="material-symbols:box-edit-outline" size="1.2rem" />
-        <span>Post Ad to Sell Used Second Hand Product</span>
+        <span>{{ $t('Post Ad to Sell Used Second Hand Product') }}</span>
       </button>
       <button
         class="btn btn-sm btn-block flex justify-start items-center bg-base-100"
       >
         <Icon name="material-symbols:list-rounded" size="1.3rem" />
-        <span>Find and Buy All Second Hand Products for Sale</span>
+        <span>{{ $t('Find and Buy All Second Hand Products for Sale') }}</span>
       </button>
     </div>
     <div class="basis-1/2 flex flex-col gap-4 py-5 px-8 prose">
-      <p>Main Second Hand Product Categories</p>
+      <p>{{ $t('Main Second Hand Product Categories') }}</p>
       <div class="grid grid-cols-3 gap-2">
         <NuxtLink
           v-for="category in categories"

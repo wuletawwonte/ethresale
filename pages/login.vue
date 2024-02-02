@@ -43,7 +43,7 @@ async function loginWithAuth() {
       class="my-8 w-11/12 p-6 m-auto bg-base-100 rounded-md shadow-md lg:max-w-lg"
     >
       <h1 class="text-2xl font-semibold text-content-base">
-        Sign in to your account
+        {{ $t('Sign in to your account') }}
       </h1>
       <hr class="my-4" />
 
@@ -54,11 +54,11 @@ async function loginWithAuth() {
       <form @submit.prevent="loginWithPassword" class="space-y-4">
         <div>
           <label class="label">
-            <span class="text-base label-text">Email</span>
+            <span class="text-base label-text">{{ $t('Email') }}</span>
           </label>
           <input
             type="email"
-            placeholder="Email Address"
+            :placeholder="$t('Email Address')"
             class="w-full input input-bordered"
             v-model="email"
             required
@@ -66,7 +66,7 @@ async function loginWithAuth() {
         </div>
         <div>
           <label class="label">
-            <span class="text-base label-text">Password</span>
+            <span class="text-base label-text">{{ $t('Password') }}</span>
           </label>
           <input
             type="password"
@@ -79,29 +79,30 @@ async function loginWithAuth() {
         <a
           href="#"
           class="text-xs text-gray-600 hover:underline hover:text-blue-600"
-          >Forget Password?</a
+          >{{ $t('Forget Password?') }}</a
         >
         <div>
-          <button class="btn btn-block btn-primary">Login</button>
+          <button class="btn btn-block btn-primary">{{ $t('Login') }}</button>
         </div>
         <div class="flex items-center space-x-2">
           <span class="h-px bg-gray-400 w-full"></span>
-          <span class="text-sm text-gray-500">or</span>
+          <span class="text-sm text-gray-500">{{ $t('or') }}</span>
           <span class="h-px bg-gray-400 w-full"></span>
         </div>
         <div>
           <button class="btn btn-block" @click="loginWithAuth">
             <icon name="logos:google-icon" size="1.2rem" />
-            Login with Google
+            {{ $t('Login with Google') }}
           </button>
         </div>
 
         <span class="text-sm text-center text-gray-600"
-          >Don’t have an account yet?
+          >{{ $t("Don't have an account yet?") }}
           <nuxt-link
             to="/register"
             class="text-blue-600 hover:text-blue-800 hover:underline"
-            >Register
+          >
+            {{ $t('Register') }}
           </nuxt-link></span
         >
       </form>

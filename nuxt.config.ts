@@ -42,7 +42,7 @@ export default defineNuxtConfig({
       },
     ],
     defaultLocale: 'en',
-    strategy: 'prefix_except_default',
+    strategy: 'no_prefix',
     lazy: true,
     langDir: 'lang/',
   },

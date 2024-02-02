@@ -38,7 +38,7 @@ const logout = async () => {
       </div>
       <nuxt-link to="/" class="btn btn-ghost text-xl">
         <img src="/logo.svg" alt="Nuxt Logo" class="w-8" />
-        <span class="hidden lg:flex">ethresale</span>
+        <span class="hidden lg:flex">{{ $t('ethresale') }}</span>
       </nuxt-link>
     </div>
     <div class="navbar-center hidden lg:flex">
@@ -96,10 +96,10 @@ const logout = async () => {
         </div>
       </div>
       <nuxt-link v-if="!user" to="/login" class="btn btn-sm">
-        Sign in
+        {{ $t('Sign in') }}
       </nuxt-link>
       <nuxt-link v-if="!user" to="/register" class="btn btn-sm btn-ghost">
-        Register
+        {{ $t('Register') }}
       </nuxt-link>
 
       <div v-else class="dropdown dropdown-end">
@@ -122,7 +122,9 @@ const logout = async () => {
             </a>
           </li>
           <li><a>Settings</a></li>
-          <li><a @click.prevent="logout">Logout</a></li>
+          <li>
+            <a @click.prevent="logout">{{ $t('Logout') }}</a>
+          </li>
         </ul>
       </div>
       <LangSwitcher />

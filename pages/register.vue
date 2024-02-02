@@ -45,13 +45,11 @@ async function registerWithAuth() {
 </script>
 
 <template>
-  <div
-    class="relative flex flex-col justify-center min-h-screen overflow-hidden py-8"
-  >
+  <div class="flex flex-col justify-center min-h-screen overflow-hidden py-8">
     <div
       class="w-11/12 p-6 mx-auto bg-base-100 rounded-md shadow-md lg:max-w-xl"
     >
-      <h1 class="text-2xl font-semibold text-center">Register</h1>
+      <h1 class="text-2xl font-semibold text-center">{{ $t('Register') }}</h1>
       <hr class="my-4" />
 
       <div v-if="errorMessage" role="alert" class="alert alert-error">
@@ -67,7 +65,7 @@ async function registerWithAuth() {
       <form class="space-y-4" @submit.prevent="registerWithPassword">
         <label class="form-control w-full">
           <div class="label">
-            <span class="label-text text-base">Name</span>
+            <span class="label-text text-base">{{ $t('Name') }}</span>
           </div>
           <input
             type="text"
@@ -78,7 +76,7 @@ async function registerWithAuth() {
         </label>
         <label class="form-control w-full">
           <div class="label">
-            <span class="label-text text-base">Email address</span>
+            <span class="label-text text-base">{{ $t('Email address') }}</span>
           </div>
           <input
             type="email"
@@ -90,7 +88,7 @@ async function registerWithAuth() {
         </label>
         <label class="form-control w-full">
           <div class="label">
-            <span class="label-text text-base">Password</span>
+            <span class="label-text text-base">{{ $t('Password') }}</span>
           </div>
           <input
             type="password"
@@ -103,7 +101,9 @@ async function registerWithAuth() {
 
         <label class="form-control w-full">
           <div class="label">
-            <span class="label-text text-base">Confirm password</span>
+            <span class="label-text text-base">{{
+              $t('Confirm password')
+            }}</span>
           </div>
           <input
             type="password"
@@ -114,7 +114,7 @@ async function registerWithAuth() {
 
         <div>
           <button type="submit" class="btn btn-block btn-primary">
-            Sign Up
+            {{ $t('Sign Up') }}
           </button>
         </div>
         <div class="flex items-center space-x-2">
@@ -125,16 +125,16 @@ async function registerWithAuth() {
         <div>
           <button type="button" class="btn btn-block" @click="registerWithAuth">
             <icon name="logos:google-icon" size="1.2rem" />
-            Login with Google
+            {{ $t('Login with Google') }}
           </button>
         </div>
 
         <span class="text-sm text-center text-gray-600"
-          >Already have an account ?
+          >{{ $t('Already have an account?') }}
           <nuxt-link
             to="/login"
             class="text-blue-600 hover:text-blue-800 hover:underline"
-            >Login
+            >{{ $t('Login') }}
           </nuxt-link></span
         >
       </form>
