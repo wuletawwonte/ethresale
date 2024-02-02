@@ -8,6 +8,7 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@pinia/nuxt',
     '@nuxtjs/supabase',
+    '@nuxtjs/i18n',
   ],
   colorMode: {
     classSuffix: '',
@@ -24,5 +25,25 @@ export default defineNuxtConfig({
       callback: '/confirm',
       exclude: ['/', '/register'],
     },
+  },
+  i18n: {
+    locales: [
+      {
+        code: 'en',
+        iso: 'en-US',
+        name: 'English',
+        file: 'en-US.json',
+      },
+      {
+        code: 'am',
+        iso: 'am-ET',
+        name: 'አማርኛ',
+        file: 'am-ET.json',
+      },
+    ],
+    defaultLocale: 'en',
+    strategy: 'prefix_except_default',
+    lazy: true,
+    langDir: 'lang/',
   },
 });
