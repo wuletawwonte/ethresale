@@ -7,11 +7,22 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
     '@pinia/nuxt',
+    '@nuxtjs/supabase',
   ],
   colorMode: {
     classSuffix: '',
     preference: 'light',
     fallback: 'light',
     dataValue: 'theme',
+  },
+  supabase: {
+    url: process.env.SUPABASE_URL,
+    key: process.env.SUPABASE_KEY,
+    redirect: true,
+    redirectOptions: {
+      login: '/login',
+      callback: '/confirm',
+      exclude: ['/', '/register'],
+    },
   },
 });
