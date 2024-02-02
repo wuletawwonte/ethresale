@@ -52,11 +52,15 @@ const logout = async () => {
             </ul>
           </details>
         </li>
-        <li><nuxt-link to="/about"> About </nuxt-link></li>
-        <li><nuxt-link to="/contact"> Contact </nuxt-link></li>
+        <li>
+          <nuxt-link to="/about"> {{ $t('about_title') }} </nuxt-link>
+        </li>
+        <li>
+          <nuxt-link to="/contact"> {{ $t('contact_title') }} </nuxt-link>
+        </li>
       </ul>
     </div>
-    <div class="navbar-end gap-4">
+    <div class="navbar-end gap-2">
       <ThemeSwitcher />
       <div class="dropdown dropdown-end">
         <div tabindex="0" role="button" class="btn btn-sm btn-ghost btn-circle">

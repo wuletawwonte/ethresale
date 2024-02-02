@@ -7,14 +7,14 @@ const toggleTheme = () => {
 </script>
 
 <template>
-  <label class="swap swap-rotate">
+  <label class="btn btn-circle btn-sm btn-ghost swap swap-rotate">
     <input
       type="checkbox"
       :checked="colorMode.value === 'dark'"
       @change="toggleTheme"
     />
 
-    <icon name="fa-solid:sun" size="1.2rem" class="swap-on" />
-    <icon name="fa-solid:moon" size="1.2rem" class="swap-off" />
+    <icon name="fa-solid:sun" size="1.1rem" class="swap-on" />
+    <icon name="fa-solid:moon" size="1.1rem" class="swap-off" />
   </label>
 </template>
