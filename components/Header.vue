@@ -1,11 +1,6 @@
 <script setup lang="ts">
 const client = useSupabaseClient();
-const colorMode = useColorMode();
 const user = useSupabaseUser();
-
-const toggleTheme = () => {
-  colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark';
-};
 
 const logout = async () => {
   const { error } = await client.auth.signOut();
@@ -43,7 +38,7 @@ const logout = async () => {
       </div>
       <nuxt-link to="/" class="btn btn-ghost text-xl">
         <img src="/logo.svg" alt="Nuxt Logo" class="w-8" />
-        <span>ethresale</span>
+        <span class="hidden lg:flex">ethresale</span>
       </nuxt-link>
     </div>
     <div class="navbar-center hidden lg:flex">
@@ -62,18 +57,9 @@ const logout = async () => {
       </ul>
     </div>
     <div class="navbar-end gap-4">
-      <label class="swap swap-rotate">
-        <input
-          type="checkbox"
-          :checked="colorMode.value === 'dark'"
-          @change="toggleTheme"
-        />
-
-        <icon name="fa-solid:sun" size="1.2rem" class="swap-on" />
-        <icon name="fa-solid:moon" size="1.2rem" class="swap-off" />
-      </label>
+      <ThemeSwitcher />
       <div class="dropdown dropdown-end">
-        <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+        <div tabindex="0" role="button" class="btn btn-sm btn-ghost btn-circle">
           <div class="indicator">
             <svg
               xmlns="http://www.w3.org/2000/svg"
