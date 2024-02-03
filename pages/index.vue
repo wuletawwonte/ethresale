@@ -12,7 +12,7 @@ const { data: items } = await useAsyncData(
   <div class="flex-grow flex flex-col">
     <HeroSection />
     <div
-      class="flex-grow grid grid-cols-4 gap-8 py-4 px-4 bg-base-100 lg:px-52"
+      class="flex-grow grid grid-cols-4 gap-4 py-4 px-4 bg-base-100 lg:px-52"
     >
       <ItemCard v-for="item in items" :key="item.id" :item="item" />
     </div>
