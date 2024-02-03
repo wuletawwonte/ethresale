@@ -43,8 +43,8 @@ const categories = ref([
 </script>
 
 <template>
-  <section class="bg-base-200 px-48 flex min-h-72">
-    <div class="basis-1/2 flex flex-col items-start gap-4 px-8 py-5 prose">
+  <section class="bg-base-200 px-4 flex flex-col min-h-72 lg:px-52 md:flex-row">
+    <div class="basis-1/2 flex flex-col items-start gap-4 pl-0 pr-4 py-5 prose">
       <h3 class="text-sky-700">
         {{ $t('Buy and Sell Second Hand or Used Products') }}
       </h3>
@@ -76,7 +76,7 @@ const categories = ref([
         <span>{{ $t('Find and Buy All Second Hand Products for Sale') }}</span>
       </button>
     </div>
-    <div class="basis-1/2 flex flex-col gap-4 py-5 px-8 prose">
+    <div class="basis-1/2 flex flex-col gap-4 py-5 pl-4 pr-0 prose">
       <p>{{ $t('Main Second Hand Product Categories') }}</p>
       <div class="grid grid-cols-3 gap-2">
         <NuxtLink
