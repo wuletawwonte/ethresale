@@ -43,7 +43,9 @@ const categories = ref([
 </script>
 
 <template>
-  <section class="bg-base-200 px-4 flex flex-col min-h-72 lg:px-52 md:flex-row">
+  <section
+    class="bg-base-200 px-4 flex flex-col min-h-72 lg:px-[12%] md:flex-row"
+  >
     <div class="basis-1/2 flex flex-col items-start gap-4 pl-0 pr-4 py-5 prose">
       <h3 class="text-sky-700">
         {{ $t('Buy and Sell Second Hand or Used Products') }}

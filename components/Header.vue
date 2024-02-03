@@ -14,7 +14,7 @@ const logout = async () => {
 </script>
 
 <template>
-  <header class="navbar bg-base-100 shadow lg:px-48">
+  <header class="navbar bg-base-100 shadow lg:px-[12%]">
     <div class="navbar-start">
       <div class="dropdown">
         <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
@@ -95,11 +95,9 @@ const logout = async () => {
           </div>
         </div>
       </div>
+
       <nuxt-link v-if="!user" to="/login" class="btn btn-sm">
         {{ $t('Sign in') }}
-      </nuxt-link>
-      <nuxt-link v-if="!user" to="/register" class="btn btn-sm btn-ghost">
-        {{ $t('Register') }}
       </nuxt-link>
 
       <div v-else class="dropdown dropdown-end">
