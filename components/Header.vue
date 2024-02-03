@@ -61,6 +61,9 @@ const logout = async () => {
       </ul>
     </div>
     <div class="navbar-end gap-2">
+      <button class="btn btn-sm btn-ghost btn-circle">
+        <icon name="ph:magnifying-glass-bold" size="1.3rem" />
+      </button>
       <ThemeSwitcher />
       <div class="dropdown dropdown-end">
         <div tabindex="0" role="button" class="btn btn-sm btn-ghost btn-circle">
