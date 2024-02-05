@@ -2,8 +2,10 @@
   <NuxtLoadingIndicator />
   <NuxtLayout>
     <div class="flex flex-col min-h-screen justify-between bg-base-200">
-      <Header />
-      <NuxtPage />
+      <div>
+        <Header />
+        <NuxtPage />
+      </div>
       <Footer />
     </div>
   </NuxtLayout>

@@ -28,9 +28,9 @@ const logout = async () => {
           <li><nuxt-link to="/about"> About </nuxt-link></li>
           <li><nuxt-link to="/contact"> Contact </nuxt-link></li>
           <li>
-            <a>Parent</a>
+            <a>Manage Items</a>
             <ul class="p-2">
-              <li><a>Submenu 1</a></li>
+              <li><nuxt-link to="myitems">My Items</nuxt-link></li>
               <li><a>Submenu 2</a></li>
             </ul>
           </li>
@@ -49,11 +49,11 @@ const logout = async () => {
         <li>
           <nuxt-link to="/contact"> {{ $t('contact_title') }} </nuxt-link>
         </li>
-        <li>
+        <li v-if="user">
           <details>
-            <summary>Parent</summary>
+            <summary>Manage Items</summary>
             <ul class="p-2">
-              <li><a>Submenu 1</a></li>
+              <li><nuxt-link to="myitems">My Items</nuxt-link></li>
               <li><a>Submenu 2</a></li>
             </ul>
           </details>
