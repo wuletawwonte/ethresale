@@ -25,6 +25,8 @@ const logout = async () => {
           class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
         >
           <li><nuxt-link to="/"> Home </nuxt-link></li>
+          <li><nuxt-link to="/about"> About </nuxt-link></li>
+          <li><nuxt-link to="/contact"> Contact </nuxt-link></li>
           <li>
             <a>Parent</a>
             <ul class="p-2">
@@ -32,8 +34,6 @@ const logout = async () => {
               <li><a>Submenu 2</a></li>
             </ul>
           </li>
-          <li><nuxt-link to="/about"> About </nuxt-link></li>
-          <li><nuxt-link to="/contact"> Contact </nuxt-link></li>
         </ul>
       </div>
       <nuxt-link to="/" class="btn btn-ghost text-xl">
@@ -44,6 +44,12 @@ const logout = async () => {
     <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal px-1">
         <li>
+          <nuxt-link to="/about"> {{ $t('about_title') }} </nuxt-link>
+        </li>
+        <li>
+          <nuxt-link to="/contact"> {{ $t('contact_title') }} </nuxt-link>
+        </li>
+        <li>
           <details>
             <summary>Parent</summary>
             <ul class="p-2">
@@ -51,12 +57,6 @@ const logout = async () => {
               <li><a>Submenu 2</a></li>
             </ul>
           </details>
-        </li>
-        <li>
-          <nuxt-link to="/about"> {{ $t('about_title') }} </nuxt-link>
-        </li>
-        <li>
-          <nuxt-link to="/contact"> {{ $t('contact_title') }} </nuxt-link>
         </li>
       </ul>
     </div>
@@ -102,8 +102,8 @@ const logout = async () => {
       <nuxt-link v-if="!user" to="/login" class="btn btn-sm">
         {{ $t('Sign in') }}
       </nuxt-link>
-
-      <div v-else class="dropdown dropdown-end">
+      <LangSwitcher />
+      <div v-if="user" class="dropdown dropdown-end">
         <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
           <div class="w-10 rounded-full">
             <img
@@ -128,7 +128,6 @@ const logout = async () => {
           </li>
         </ul>
       </div>
-      <LangSwitcher />
     </div>
   </header>
 </template>
