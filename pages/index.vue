@@ -1,5 +1,6 @@
 <script setup lang="ts">
-const client = useSupabaseClient();
+import type { Database } from '~/types/supabase';
+const client = useSupabaseClient<Database>();
 
 const { data: items } = await useAsyncData(
   'items',
