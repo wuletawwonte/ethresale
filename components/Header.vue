@@ -30,7 +30,7 @@ const logout = async () => {
           <li>
             <a>Manage Items</a>
             <ul class="p-2">
-              <li><nuxt-link to="myitems">My Items</nuxt-link></li>
+              <li><nuxt-link to="/my-items">My Items</nuxt-link></li>
               <li><a>Submenu 2</a></li>
             </ul>
           </li>
@@ -53,7 +53,7 @@ const logout = async () => {
           <details>
             <summary>Manage Items</summary>
             <ul class="p-2">
-              <li><nuxt-link to="myitems">My Items</nuxt-link></li>
+              <li><nuxt-link to="/my-items">My Items</nuxt-link></li>
               <li><a>Submenu 2</a></li>
             </ul>
           </details>
