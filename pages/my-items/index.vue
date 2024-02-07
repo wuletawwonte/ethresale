@@ -9,7 +9,8 @@ const { data: myItems } = await useAsyncData(
     return await client
       .from('items')
       .select()
-      .eq('user_id', user.value.id)
+
+      .eq('user_id', user.value!.id)
       .order('created_at');
   },
   { transform: (result) => result.data }
@@ -18,7 +19,7 @@ const { data: myItems } = await useAsyncData(
 
 <template>
   <div class="flex flex-col lg:px-[12%] my-4">
-    <div class="flex justify-between items-center">
+    <div class="flex justify-between items-center px-4">
       <h2 class="text-2xl font-normal">{{ $t('My Items') }}</h2>
       <button class="btn btn-ghost btn-sm btn-outline">
         <icon name="heroicons:plus-16-solid" size="1.3rem" />
@@ -26,15 +27,45 @@ const { data: myItems } = await useAsyncData(
       </button>
     </div>
 
-    <div class="flex h-24 my-4 bg-base-100 shadow-sm">
-      <input
-        type="text"
-        placeholder="Type here"
-        class="input input-bordered input-md w-full max-w-xs"
-      />
+    <div
+      class="flex flex-row-reverse justify-between my-4 shadow-sm p-4 rounded-t-xl bg-base-100"
+    >
+      <div class="join">
+        <div>
+          <div>
+            <input
+              class="input input-bordered join-item rounded-full w-80"
+              placeholder="Search by City, Name or Description..."
+            />
+          </div>
+        </div>
+        <select class="select select-bordered join-item">
+          <option disabled selected>Filter</option>
+          <option>Active</option>
+          <option>Pending</option>
+          <option>Sold</option>
+        </select>
+        <div class="indicator">
+          <button class="btn join-item rounded-full">Search</button>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <div class="select select-bordered">
+          <select>
+            <option>10</option>
+            <option>25</option>
+            <option>50</option>
+            <option>100</option>
+          </select>
+        </div>
+        <div class="text-sm text-opacity-50">
+          {{ $t('Items per page') }}
+        </div>
+      </div>
     </div>
 
-    <div v-if="myItems">
+    <div v-if="myItems" class="bg-base-100 rounded-b-xl">
       <div v-if="myItems.length > 0" class="overflow-x-auto">
         <table class="table">
           <!-- head -->
@@ -95,6 +126,12 @@ const { data: myItems } = await useAsyncData(
             </tr>
           </tfoot>
         </table>
+      </div>
+
+      <div v-else class="flex justify-center items-center h-48">
+        <div class="text-2xl text-opacity-50">
+          {{ $t('No items found') }}
+        </div>
       </div>
     </div>
   </div>
