@@ -21,10 +21,10 @@ const { data: myItems } = await useAsyncData(
   <div class="flex flex-col lg:px-[12%] my-4">
     <div class="flex justify-between items-center px-4">
       <h2 class="text-2xl font-normal">{{ $t('My Items') }}</h2>
-      <button class="btn btn-ghost btn-sm btn-outline">
+      <nuxt-link to="/my-items/add" class="btn btn-ghost btn-sm btn-outline">
         <icon name="heroicons:plus-16-solid" size="1.3rem" />
         <span>{{ $t('Add Item') }}</span>
-      </button>
+      </nuxt-link>
     </div>
 
     <div
