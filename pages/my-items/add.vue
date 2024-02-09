@@ -70,7 +70,7 @@ function loadItemImage(imageItem: File): string {
             <div
               v-for="imageItem in selectedFiles"
               :key="imageItem.name"
-              class="relative h-24 flex flex-col items-center overflow-hidden text-center border border-base-300 rounded cursor-pointer select-none hover:shadow hover:border-base-200"
+              class="relative md:h-24 flex flex-col items-center overflow-hidden text-center border border-base-300 rounded cursor-pointer select-none hover:shadow hover:border-base-200"
             >
               <button
                 class="btn btn-circle btn-xs absolute top-1 right-1 z-50 bg-base-100"
