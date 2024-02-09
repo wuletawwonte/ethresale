@@ -1,16 +1,18 @@
 <script setup lang="ts">
-const selectedFiles = ref(null as FileList | null);
+const selectedFiles = ref(null as FileList | File[] | null);
 
 function onFileChange(event: Event) {
   const target = event.target as HTMLInputElement;
   selectedFiles.value = target.files;
-  if (selectedFiles) {
-    console.log(selectedFiles);
-  }
 }
 
 function removeImage(index: string) {
-  console.log('some logic');
+  if (selectedFiles) {
+    const newFiles = [...selectedFiles.value!].filter(
+      (file: File) => file.name !== index
+    );
+    selectedFiles.value = newFiles;
+  }
 }
 
 function loadItemImage(imageItem: File): string {
@@ -68,7 +70,7 @@ function loadItemImage(imageItem: File): string {
             <div
               v-for="imageItem in selectedFiles"
               :key="imageItem.name"
-              class="relative flex flex-col items-center overflow-hidden text-center bg-base-100 border border-base-300 rounded cursor-pointer select-none"
+              class="relative h-24 flex flex-col items-center overflow-hidden text-center border border-base-300 rounded cursor-pointer select-none hover:shadow hover:border-base-200"
             >
               <button
                 class="btn btn-circle btn-xs absolute top-1 right-1 z-50 bg-base-100"
@@ -81,6 +83,11 @@ function loadItemImage(imageItem: File): string {
                 class="inset-0 z-0 object-cover w-full h-full border-4 border-base-100"
                 :src="loadItemImage(imageItem)"
               />
+              <span
+                class="absolute bg-base-100 p-1 bg-opacity-80 bottom-0 z-50 text-xs text-base-content dark:text-gray-400"
+              >
+                {{ imageItem.name.substring(0, 15) }}
+              </span>
             </div>
           </div>
         </div>
