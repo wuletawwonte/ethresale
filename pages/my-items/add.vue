@@ -1,4 +1,22 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const selectedFiles = ref(null as FileList | null);
+
+function onFileChange(event: Event) {
+  const target = event.target as HTMLInputElement;
+  selectedFiles.value = target.files;
+  if (selectedFiles) {
+    console.log(selectedFiles);
+  }
+}
+
+function removeImage(index: string) {
+  console.log('some logic');
+}
+
+function loadItemImage(imageItem: File): string {
+  return URL.createObjectURL(imageItem);
+}
+</script>
 
 <template>
   <div class="flex flex-col lg:px-[12%] my-4 mx-4 lg:mx-0">
@@ -12,13 +30,13 @@
           <label>Product Photos</label>
         </div>
 
-        <div class="md:w-2/3 md:flex-grow">
+        <div class="md:w-2/3 md:flex-grow flex flex-col gap-4">
           <div class="flex items-center justify-center w-full">
             <label
               for="dropzone-file"
-              class="flex flex-col items-center justify-center w-full h-40 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+              class="flex flex-col items-center justify-center w-full h-34 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
             >
-              <div class="flex flex-col items-center justify-center py-5">
+              <div class="flex flex-col items-center justify-center py-4">
                 <icon
                   name="octicon:cloud-upload"
                   size="3rem"
@@ -29,11 +47,41 @@
                   drop
                 </p>
                 <p class="text-xs text-gray-500 dark:text-gray-400">
-                  SVG, PNG, JPG or GIF (MAX. 800x400px)
+                  JPG or PNG (MAX. 800x400px)
                 </p>
               </div>
-              <input id="dropzone-file" type="file" class="hidden" />
+              <input
+                id="dropzone-file"
+                type="file"
+                accept="image/jpeg, image/png"
+                multiple
+                class="hidden"
+                required
+                @change="onFileChange"
+              />
             </label>
+          </div>
+          <div
+            v-if="selectedFiles"
+            class="grid grid-cols-2 gap-4 mt-4 md:grid-cols-6"
+          >
+            <div
+              v-for="imageItem in selectedFiles"
+              :key="imageItem.name"
+              class="relative flex flex-col items-center overflow-hidden text-center bg-base-100 border border-base-300 rounded cursor-pointer select-none"
+            >
+              <button
+                class="btn btn-circle btn-xs absolute top-1 right-1 z-50 bg-base-100"
+                type="button"
+                @click="removeImage(imageItem.name)"
+              >
+                <icon name="octicon:x" size="1rem" class="text-red-500"></icon>
+              </button>
+              <img
+                class="inset-0 z-0 object-cover w-full h-full border-4 border-base-100"
+                :src="loadItemImage(imageItem)"
+              />
+            </div>
           </div>
         </div>
       </div>
