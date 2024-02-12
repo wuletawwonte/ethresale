@@ -15,7 +15,7 @@
     "@nuxt/devtools": "latest",
     "@nuxtjs/color-mode": "^3.3.2",
     "@nuxtjs/eslint-config": "^12.0.0",
-    "@nuxtjs/i18n": "^8.0.1",
+    "@nuxtjs/i18n": "^8.1.0",
     "@nuxtjs/supabase": "^1.1.6",
     "@nuxtjs/tailwindcss": "^6.11.3",
     "@tailwindcss/typography": "^0.5.10",
