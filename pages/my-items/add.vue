@@ -1,9 +1,11 @@
 <script setup lang="ts">
-const selectedFiles = ref(null as FileList | File[] | null);
+const selectedFiles = ref([] as File[]);
 
 function onFileChange(event: Event) {
   const target = event.target as HTMLInputElement;
-  selectedFiles.value = target.files;
+  if (target.files) {
+    selectedFiles.value = [...selectedFiles.value, ...target.files];
+  }
 }
 
 function removeImage(index: string) {
