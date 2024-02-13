@@ -3,7 +3,8 @@
 > **Ethresale** is a Nuxt.js powered web application that enables individuals to effortlessly buy or sell second hand or used items. This project leverages the Supabase backend for seamless data management.
 
 ## Live link
-[click here](https://ethresale.netlify.app/)
+
+<a href="https://ethresale.netlify.app/" target="_blank">Click here</a>
 
 
 ## Setup
