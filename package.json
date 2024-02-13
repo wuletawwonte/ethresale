@@ -19,7 +19,7 @@
     "@nuxtjs/supabase": "^1.1.6",
     "@nuxtjs/tailwindcss": "^6.11.3",
     "@tailwindcss/typography": "^0.5.10",
-    "daisyui": "^4.6.1",
+    "daisyui": "^4.6.2",
     "eslint": "^8.56.0",
     "nuxt": "^3.10.1",
     "nuxt-icon": "^0.6.8",
