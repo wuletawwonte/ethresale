@@ -2,9 +2,19 @@
 const selectedFiles = ref([] as File[]);
 
 function onFileChange(event: Event) {
-  const target = event.target as HTMLInputElement;
-  if (target.files) {
-    selectedFiles.value = [...selectedFiles.value, ...target.files];
+  const { files } = event.target as HTMLInputElement;
+  if (files !== null && files!.length > 0 && selectedFiles.value.length < 6) {
+    for (let i = 0; i < files.length; i++) {
+      const currFile: File = files.item(i)!;
+
+      const isDuplicate = selectedFiles.value.some(
+        (file: File) => file.name === currFile.name
+      );
+
+      if (!isDuplicate) {
+        selectedFiles.value.push(currFile);
+      }
+    }
   }
 }
 
