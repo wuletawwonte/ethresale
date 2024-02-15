@@ -16,6 +16,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/supabase',
     '@nuxtjs/i18n',
+    '@vee-validate/nuxt',
   ],
   colorMode: {
     classSuffix: '',
@@ -52,5 +53,14 @@ export default defineNuxtConfig({
     strategy: 'no_prefix',
     lazy: true,
     langDir: 'lang/',
+  },
+  veeValidate: {
+    // options
+    autoImports: true,
+    componentNames: {
+      Form: 'VeeForm',
+      Field: 'VeeField',
+      ErrorMessage: 'VeeErrorMessage',
+    },    
   },
 });

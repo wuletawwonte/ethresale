@@ -1,5 +1,13 @@
 <script setup lang="ts">
 const selectedFiles = ref([] as File[]);
+const name = ref('');
+const description = ref('');
+const category = ref('');
+const price = ref('');
+
+function saveItem() {
+  console.log('Save Item');
+}
 
 function onFileChange(event: Event) {
   const { files } = event.target as HTMLInputElement;
@@ -38,167 +46,180 @@ function loadItemImage(imageItem: File): string {
       <h2 class="text-2xl font-normal">{{ $t('Add Item') }}</h2>
     </div>
 
-    <div class="flex flex-col my-4 gap-6 shadow-sm p-4 rounded-xl bg-base-100">
-      <div class="text-gray-700 md:flex">
-        <div class="mb-1 md:mb-0 md:w-1/3 prose">
-          <label>Product Photos</label>
-        </div>
-
-        <div class="md:w-2/3 md:flex-grow flex flex-col gap-4">
-          <div class="flex items-center justify-center w-full">
-            <label
-              for="dropzone-file"
-              class="flex flex-col items-center justify-center w-full h-34 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
-            >
-              <div class="flex flex-col items-center justify-center py-4">
-                <icon
-                  name="octicon:cloud-upload"
-                  size="3rem"
-                  class="text-gray-400 dark:text-gray-500"
-                ></icon>
-                <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                  <span class="font-semibold">Click to upload</span> or drag and
-                  drop
-                </p>
-                <p class="text-xs text-gray-500 dark:text-gray-400">
-                  JPG or PNG (MAX. 800x400px)
-                </p>
-              </div>
-              <input
-                id="dropzone-file"
-                type="file"
-                accept="image/jpeg, image/png"
-                multiple
-                class="hidden"
-                required
-                @change="onFileChange"
-              />
-            </label>
+    <form @submit.prevent="saveItem">
+      <div
+        class="flex flex-col my-4 gap-6 shadow-sm p-4 rounded-xl bg-base-100"
+      >
+        <div class="text-gray-700 md:flex">
+          <div class="mb-1 md:mb-0 md:w-1/3 prose">
+            <label>Product Photos</label>
           </div>
-          <div
-            v-if="selectedFiles"
-            class="grid grid-cols-2 gap-4 mt-4 md:grid-cols-6"
-          >
+
+          <div class="md:w-2/3 md:flex-grow flex flex-col gap-4">
+            <div class="flex items-center justify-center w-full">
+              <label
+                for="dropzone-file"
+                class="flex flex-col items-center justify-center w-full h-34 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+              >
+                <div class="flex flex-col items-center justify-center py-4">
+                  <icon
+                    name="octicon:cloud-upload"
+                    size="3rem"
+                    class="text-gray-400 dark:text-gray-500"
+                  ></icon>
+                  <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                    <span class="font-semibold">Click to upload</span> or drag
+                    and drop
+                  </p>
+                  <p class="text-xs text-gray-500 dark:text-gray-400">
+                    JPG or PNG (MAX. 800x400px)
+                  </p>
+                </div>
+                <input
+                  id="dropzone-file"
+                  type="file"
+                  accept="image/jpeg, image/png"
+                  multiple
+                  class="hidden"
+                  required
+                  @change="onFileChange"
+                />
+              </label>
+            </div>
             <div
-              v-for="imageItem in selectedFiles"
-              :key="imageItem.name"
-              class="relative md:h-24 flex flex-col items-center overflow-hidden text-center border border-base-300 rounded cursor-pointer select-none hover:shadow hover:border-base-200"
+              v-if="selectedFiles"
+              class="grid grid-cols-2 gap-4 mt-4 md:grid-cols-6"
             >
-              <button
-                class="btn btn-circle btn-xs absolute top-1 right-1 z-50 bg-base-100"
-                type="button"
-                @click="removeImage(imageItem.name)"
+              <div
+                v-for="imageItem in selectedFiles"
+                :key="imageItem.name"
+                class="relative md:h-24 flex flex-col items-center overflow-hidden text-center border border-base-300 rounded cursor-pointer select-none hover:shadow hover:border-base-200"
               >
-                <icon name="octicon:x" size="1rem" class="text-red-500"></icon>
-              </button>
-              <img
-                class="inset-0 z-0 object-cover w-full h-full border-4 border-base-100"
-                :src="loadItemImage(imageItem)"
-              />
-              <span
-                class="absolute bg-base-100 p-1 bg-opacity-80 bottom-0 z-50 text-xs text-base-content dark:text-gray-400"
-              >
-                {{ imageItem.name.substring(0, 15) }}
-              </span>
+                <button
+                  class="btn btn-circle btn-xs absolute top-1 right-1 z-50 bg-base-100"
+                  type="button"
+                  @click="removeImage(imageItem.name)"
+                >
+                  <icon
+                    name="octicon:x"
+                    size="1rem"
+                    class="text-red-500"
+                  ></icon>
+                </button>
+                <img
+                  class="inset-0 z-0 object-cover w-full h-full border-4 border-base-100"
+                  :src="loadItemImage(imageItem)"
+                />
+                <span
+                  class="absolute bg-base-100 p-1 bg-opacity-80 bottom-0 z-50 text-xs text-base-content dark:text-gray-400"
+                >
+                  {{ imageItem.name.substring(0, 15) }}
+                </span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <hr class="border-base-200" />
+        <hr class="border-base-200" />
 
-      <div class="text-gray-700 md:flex">
-        <div class="mb-1 md:mb-0 md:w-1/3 prose">
-          <label>Product Name</label>
+        <div class="text-gray-700 md:flex">
+          <div class="mb-1 md:mb-0 md:w-1/3 prose">
+            <label>Product Name</label>
+          </div>
+          <div class="md:w-2/3 md:flex-grow">
+            <input
+              class="input input-bordered w-full text-base"
+              type="text"
+              placeholder="Product name"
+              v-model="name"
+              required
+            />
+          </div>
         </div>
-        <div class="md:w-2/3 md:flex-grow">
-          <input
-            class="input input-bordered w-full text-base"
-            type="text"
-            placeholder="Product name"
-          />
-        </div>
-      </div>
 
-      <div class="text-gray-700 md:flex">
-        <div class="mb-1 md:mb-0 md:w-1/3 prose">
-          <label>Description</label>
+        <div class="text-gray-700 md:flex">
+          <div class="mb-1 md:mb-0 md:w-1/3 prose">
+            <label>Description</label>
+          </div>
+          <div class="md:w-2/3 md:flex-grow">
+            <textarea
+              placeholder="Description ..."
+              class="textarea textarea-bordered w-full"
+              v-model="description"
+            ></textarea>
+          </div>
         </div>
-        <div class="md:w-2/3 md:flex-grow">
-          <textarea
-            placeholder="Description"
-            class="textarea textarea-bordered w-full"
-          ></textarea>
-        </div>
-      </div>
 
-      <div class="text-gray-700 md:flex">
-        <div class="mb-1 md:mb-0 md:w-1/3 prose">
-          <label>Category</label>
+        <div class="text-gray-700 md:flex">
+          <div class="mb-1 md:mb-0 md:w-1/3 prose">
+            <label>Category</label>
+          </div>
+          <div class="md:w-2/3 md:flex-grow">
+            <select class="select select-bordered join-item" v-model="category">
+              <option disabled selected>Category</option>
+              <option>Active</option>
+              <option>Pending</option>
+              <option>Sold</option>
+            </select>
+          </div>
         </div>
-        <div class="md:w-2/3 md:flex-grow">
-          <select class="select select-bordered join-item">
-            <option disabled selected>Category</option>
-            <option>Active</option>
-            <option>Pending</option>
-            <option>Sold</option>
-          </select>
-        </div>
-      </div>
 
-      <div class="text-gray-700 md:flex">
-        <div class="mb-1 md:mb-0 md:w-1/3 prose">
-          <label>Price</label>
-        </div>
-        <div class="md:w-2/3 md:flex-grow">
-          <div class="join">
-            <div>
+        <div class="md:flex">
+          <div class="mb-1 md:mb-0 md:w-1/3 prose">
+            <label>Price</label>
+          </div>
+          <div class="md:w-2/3 md:flex-grow">
+            <div class="join">
               <div>
                 <input
                   type="number"
-                  class="input input-bordered join-item w-80"
+                  class="input input-bordered join-item w-80 focus:outline-none appearance-none"
                   placeholder="Price"
+                  v-model="price"
                 />
               </div>
+              <div
+                class="join-item border border-base-300 flex items-center px-4 bg-base-100"
+              >
+                <span class="text-base-content text-sm">ETB</span>
+              </div>
             </div>
-            <div
-              class="join-item border border-base-300 flex items-center px-4 bg-base-100"
+          </div>
+        </div>
+
+        <div class="text-gray-700 md:flex">
+          <div class="mb-1 md:mb-0 md:w-1/3 flex flex-col prose">
+            <label>City</label>
+            <label class="text-xs opacity-60 hover:opacity-80"
+              >Where is your Product?</label
             >
-              <span class="text-base-content text-sm">ETB</span>
+          </div>
+          <div class="md:w-2/3 md:flex-grow">
+            <div class="join">
+              <div>
+                <select
+                  class="select select-bordered join-item"
+                  placeholder="City"
+                >
+                  <option disabled selected>City</option>
+                  <option>Active</option>
+                  <option>Pending</option>
+                  <option>Sold</option>
+                </select>
+              </div>
+              <button class="btn join-item">Use Geo Location</button>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="text-gray-700 md:flex">
-        <div class="mb-1 md:mb-0 md:w-1/3 flex flex-col prose">
-          <label>City</label>
-          <label class="text-xs opacity-60 hover:opacity-80"
-            >Where is your Product?</label
-          >
-        </div>
-        <div class="md:w-2/3 md:flex-grow">
-          <div class="join">
-            <div>
-              <select class="select select-bordered join-item">
-                <option disabled selected>City</option>
-                <option>Active</option>
-                <option>Pending</option>
-                <option>Sold</option>
-              </select>
-            </div>
-            <button class="btn join-item">Use Geo Location</button>
+        <div class="text-gray-700 md:flex">
+          <div class="mb-1 md:mb-0 md:w-1/3"></div>
+          <div class="md:w-2/3 md:flex-grow flex gap-4">
+            <button type="submit" class="btn btn-primary">Publish now</button>
+            <button class="btn">Save Draft</button>
           </div>
         </div>
       </div>
-
-      <div class="text-gray-700 md:flex">
-        <div class="mb-1 md:mb-0 md:w-1/3"></div>
-        <div class="md:w-2/3 md:flex-grow flex gap-4">
-          <button class="btn btn-primary">Publish now</button>
-          <button class="btn">Save Draft</button>
-        </div>
-      </div>
-    </div>
+    </form>
   </div>
 </template>
