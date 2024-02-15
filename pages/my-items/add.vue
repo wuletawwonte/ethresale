@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { required } from '@vee-validate/rules';
+
 const selectedFiles = ref([] as File[]);
 const name = ref('');
 const description = ref('');
@@ -6,10 +8,12 @@ const category = ref('');
 const price = ref('');
 const city = ref('');
 
+// saves the item to the database
 function saveItem(values: any) {
   console.log('Save Item', values);
 }
 
+// adds the image to the selectedFiles array
 function onFileChange(event: Event) {
   const { files } = event.target as HTMLInputElement;
   if (files !== null && files!.length > 0 && selectedFiles.value.length < 6) {
@@ -27,6 +31,7 @@ function onFileChange(event: Event) {
   }
 }
 
+// removes the image from the selectedFiles array
 function removeImage(index: string) {
   if (selectedFiles) {
     const newFiles = [...selectedFiles.value!].filter(
@@ -36,6 +41,7 @@ function removeImage(index: string) {
   }
 }
 
+// loads the image from the file input and display it in the UI
 function loadItemImage(imageItem: File): string {
   return URL.createObjectURL(imageItem);
 }
@@ -118,6 +124,7 @@ function loadItemImage(imageItem: File): string {
                 </span>
               </div>
             </div>
+            <VeeErrorMessage name="files" />
           </div>
         </div>
 
@@ -133,7 +140,9 @@ function loadItemImage(imageItem: File): string {
               type="text"
               placeholder="Product name"
               name="name"
+              :rules="required"
             />
+            <VeeErrorMessage name="name" class="error" />
           </div>
         </div>
 
@@ -161,7 +170,7 @@ function loadItemImage(imageItem: File): string {
               class="select select-bordered"
               name="category"
             >
-              <option value="" disabled selected>Category</option>
+              <option value="" selected>Category</option>
               <option value="Arbaminch">Arbaminch</option>
               <option value="Hawassa">Hawassa</option>
               <option value="Soddo">Soddo</option>
