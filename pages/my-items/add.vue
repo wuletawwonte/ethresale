@@ -4,9 +4,10 @@ const name = ref('');
 const description = ref('');
 const category = ref('');
 const price = ref('');
+const city = ref('');
 
-function saveItem() {
-  console.log('Save Item');
+function saveItem(values: any) {
+  console.log('Save Item', values);
 }
 
 function onFileChange(event: Event) {
@@ -46,7 +47,7 @@ function loadItemImage(imageItem: File): string {
       <h2 class="text-2xl font-normal">{{ $t('Add Item') }}</h2>
     </div>
 
-    <form @submit.prevent="saveItem">
+    <VeeForm @submit="saveItem">
       <div
         class="flex flex-col my-4 gap-6 shadow-sm p-4 rounded-xl bg-base-100"
       >
@@ -75,13 +76,13 @@ function loadItemImage(imageItem: File): string {
                     JPG or PNG (MAX. 800x400px)
                   </p>
                 </div>
-                <input
+                <VeeField
+                  name="files"
                   id="dropzone-file"
                   type="file"
                   accept="image/jpeg, image/png"
                   multiple
                   class="hidden"
-                  required
                   @change="onFileChange"
                 />
               </label>
@@ -127,12 +128,11 @@ function loadItemImage(imageItem: File): string {
             <label>Product Name</label>
           </div>
           <div class="md:w-2/3 md:flex-grow">
-            <input
+            <VeeField
               class="input input-bordered w-full text-base"
               type="text"
               placeholder="Product name"
-              v-model="name"
-              required
+              name="name"
             />
           </div>
         </div>
@@ -142,25 +142,30 @@ function loadItemImage(imageItem: File): string {
             <label>Description</label>
           </div>
           <div class="md:w-2/3 md:flex-grow">
-            <textarea
+            <VeeField
+              as="textarea"
               placeholder="Description ..."
               class="textarea textarea-bordered w-full"
-              v-model="description"
-            ></textarea>
+              name="description"
+            ></VeeField>
           </div>
         </div>
 
         <div class="text-gray-700 md:flex">
-          <div class="mb-1 md:mb-0 md:w-1/3 prose">
+          <div class="mb-1 md:mb-0 md:w-1/3">
             <label>Category</label>
           </div>
           <div class="md:w-2/3 md:flex-grow">
-            <select class="select select-bordered join-item" v-model="category">
-              <option disabled selected>Category</option>
-              <option>Active</option>
-              <option>Pending</option>
-              <option>Sold</option>
-            </select>
+            <VeeField
+              as="select"
+              class="select select-bordered"
+              name="category"
+            >
+              <option value="" disabled selected>Category</option>
+              <option value="Arbaminch">Arbaminch</option>
+              <option value="Hawassa">Hawassa</option>
+              <option value="Soddo">Soddo</option>
+            </VeeField>
           </div>
         </div>
 
@@ -171,7 +176,8 @@ function loadItemImage(imageItem: File): string {
           <div class="md:w-2/3 md:flex-grow">
             <div class="join">
               <div>
-                <input
+                <VeeField
+                  name="price"
                   type="number"
                   class="input input-bordered join-item w-80 focus:outline-none appearance-none"
                   placeholder="Price"
@@ -191,21 +197,23 @@ function loadItemImage(imageItem: File): string {
           <div class="mb-1 md:mb-0 md:w-1/3 flex flex-col prose">
             <label>City</label>
             <label class="text-xs opacity-60 hover:opacity-80"
-              >Where is your Product?</label
+              >Where are you located?{{ city }}</label
             >
           </div>
           <div class="md:w-2/3 md:flex-grow">
             <div class="join">
               <div>
-                <select
+                <VeeField
+                  as="select"
+                  name="city"
                   class="select select-bordered join-item"
                   placeholder="City"
                 >
-                  <option disabled selected>City</option>
-                  <option>Active</option>
-                  <option>Pending</option>
-                  <option>Sold</option>
-                </select>
+                  <option value="" selected>City</option>
+                  <option value="Arbaminch">Arbaminch</option>
+                  <option value="Hawassa">Hawassa</option>
+                  <option value="Soddo">Soddo</option>
+                </VeeField>
               </div>
               <button class="btn join-item">Use Geo Location</button>
             </div>
@@ -217,9 +225,10 @@ function loadItemImage(imageItem: File): string {
           <div class="md:w-2/3 md:flex-grow flex gap-4">
             <button type="submit" class="btn btn-primary">Publish now</button>
             <button class="btn">Save Draft</button>
+            <button type="reset" class="btn btn-secondary">Reset</button>
           </div>
         </div>
       </div>
-    </form>
+    </VeeForm>
   </div>
 </template>
