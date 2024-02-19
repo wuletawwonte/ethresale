@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { required } from '@vee-validate/rules';
-
 const selectedFiles = ref([] as File[]);
 const name = ref('');
 const description = ref('');
@@ -44,6 +42,24 @@ function removeImage(index: string) {
 // loads the image from the file input and display it in the UI
 function loadItemImage(imageItem: File): string {
   return URL.createObjectURL(imageItem);
+}
+
+// Form validation rules
+
+function isRequired(value: string) {
+  if (!value) {
+    return 'This field is required';
+  }
+
+  return true;
+}
+
+function notEmpty(value: string) {
+  if (value.trim() === '') {
+    return 'This field is required';
+  }
+
+  return true;
 }
 </script>
 
@@ -140,9 +156,9 @@ function loadItemImage(imageItem: File): string {
               type="text"
               placeholder="Product name"
               name="name"
-              :rules="required"
+              :rules="isRequired || notEmpty"
             />
-            <VeeErrorMessage name="name" class="error" />
+            <VeeErrorMessage name="name" class="mt-2 text-sm text-red-500" />
           </div>
         </div>
 
