@@ -24,7 +24,7 @@
     "nuxt": "^3.10.1",
     "nuxt-icon": "^0.6.8",
     "vue": "^3.4.20",
-    "vue-router": "^4.2.5"
+    "vue-router": "^4.3.0"
   },
   "resolutions": {
     "string-width": "4.2.3"
