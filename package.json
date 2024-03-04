@@ -23,7 +23,7 @@
     "eslint": "^8.57.0",
     "nuxt": "^3.10.1",
     "nuxt-icon": "^0.6.8",
-    "vue": "^3.4.20",
+    "vue": "^3.4.21",
     "vue-router": "^4.3.0"
   },
   "resolutions": {
