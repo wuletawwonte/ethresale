@@ -36,7 +36,7 @@ const logout = async () => {
       </nuxt-link>
     </div>
     <div class="navbar-center hidden lg:flex">
-      <ul class="menu menu-horizontal px-1">
+      <ul class="menu menu-horizontal gap-2 px-1">
         <li>
           <nuxt-link to="/about"> {{ $t("about_title") }} </nuxt-link>
         </li>
