@@ -1,6 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 // eslint-disable-next-line no-undef
 export default defineNuxtConfig({
+  app: {
+    head: {
+      charset: 'utf-8',
+      viewport: 'width=device-width, initial-scale=1',
+      title: 'Ethresale',
+    },
+  },
   devtools: { enabled: true },
   modules: [
     'nuxt-icon',
@@ -9,6 +16,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/supabase',
     '@nuxtjs/i18n',
+    '@vee-validate/nuxt',
   ],
   colorMode: {
     classSuffix: '',
@@ -45,5 +53,14 @@ export default defineNuxtConfig({
     strategy: 'no_prefix',
     lazy: true,
     langDir: 'lang/',
+  },
+  veeValidate: {
+    // options
+    autoImports: true,
+    componentNames: {
+      Form: 'VeeForm',
+      Field: 'VeeField',
+      ErrorMessage: 'VeeErrorMessage',
+    },    
   },
 });
