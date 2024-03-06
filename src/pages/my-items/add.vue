@@ -70,10 +70,10 @@ function notEmpty(value: string) {
     </div>
 
     <VeeForm @submit="saveItem">
-      <VueInput />
       <div
         class="my-4 flex flex-col gap-6 rounded-xl bg-base-100 p-4 shadow-sm"
       >
+        <VueInput id="title" placeholder="Item Title" label="Title" />
         <div class="text-gray-700 md:flex">
           <div class="prose mb-1 md:mb-0 md:w-1/3">
             <label>Product Photos</label>
@@ -176,7 +176,7 @@ function notEmpty(value: string) {
           </div>
         </div>
 
-        <div class="text-gray-700 md:flex">
+        <div class="md:flex">
           <div class="mb-1 md:mb-0 md:w-1/3">
             <label>Category</label>
           </div>
@@ -218,7 +218,7 @@ function notEmpty(value: string) {
           </div>
         </div>
 
-        <div class="text-gray-700 md:flex">
+        <div class="md:flex">
           <div class="prose mb-1 flex flex-col md:mb-0 md:w-1/3">
             <label>City</label>
             <label class="text-xs opacity-60 hover:opacity-80"
