@@ -71,9 +71,14 @@ function notEmpty(value: string) {
 
     <VeeForm @submit="saveItem">
       <div
-        class="my-4 flex flex-col gap-6 rounded-xl bg-base-100 p-4 shadow-sm"
+        class="my-4 flex flex-col gap-6 rounded-b-xl bg-base-100 p-4 shadow-sm"
       >
-        <VueInput id="title" placeholder="Item Title" label="Title" />
+        <VueInput
+          type="text"
+          id="title"
+          placeholder="Item Title"
+          label="Title"
+        />
         <div class="text-gray-700 md:flex">
           <div class="prose mb-1 md:mb-0 md:w-1/3">
             <label>Product Photos</label>

@@ -3,13 +3,17 @@ interface InputProps {
   label?: string;
   value?: string;
   placeholder?: string;
+  type?: string;
+  orientation?: "vertical" | "horizontal";
   id: string;
 }
 
 const props = withDefaults(defineProps<InputProps>(), {
+  type: "text",
   label: "",
   value: "",
   placeholder: "",
+  orientation: "horizontal",
 });
 </script>
 
@@ -22,7 +26,7 @@ const props = withDefaults(defineProps<InputProps>(), {
     </div>
     <div class="md:w-2/3 md:flex-grow">
       <input
-        type="text"
+        :type="type"
         :id="id"
         class="input input-bordered w-full"
         :value="props.value"
