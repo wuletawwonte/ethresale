@@ -78,6 +78,7 @@ function notEmpty(value: string) {
           id="title"
           placeholder="Item Title"
           label="Title"
+          orientation="vertical"
         />
         <div class="text-gray-700 md:flex">
           <div class="prose mb-1 md:mb-0 md:w-1/3">
