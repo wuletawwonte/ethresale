@@ -1,11 +1,17 @@
 <script setup lang="ts">
-const emit = defineEmits(["update:modelValue"]);
+interface InputEmits {
+  (event: "update:modelValue", value: string): void;
+  (event: "blur", e: FocusEvent): void;
+}
+
+const emit = defineEmits<InputEmits>();
 
 interface InputProps {
   label?: string;
   value?: string;
   placeholder?: string;
   type?: string;
+  name?: string;
   orientation?: "vertical" | "horizontal";
   id: string;
 }
@@ -16,12 +22,13 @@ const props = withDefaults(defineProps<InputProps>(), {
   value: "",
   placeholder: "",
   orientation: "horizontal",
+  name: "",
 });
 
-function onInput(e: Event) {
-  const target = e.target as HTMLInputElement;
-  emit("update:modelValue", target.value);
-}
+const onInput = (e: Event) => {
+  const inputValue = (e.target as HTMLInputElement).value;
+  emit("update:modelValue", inputValue);
+};
 </script>
 
 <template>
@@ -37,6 +44,8 @@ function onInput(e: Event) {
       <input
         :type="type"
         :id="id"
+        ref="inputRef"
+        :name="name"
         class="input input-bordered w-full"
         :value="props.value"
         :placeholder="props.placeholder"

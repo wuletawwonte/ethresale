@@ -4,7 +4,7 @@
       <h2 class="text-2xl font-normal">{{ $t("Add Item") }}</h2>
     </div>
 
-    <VeeForm @submit="saveItem">
+    <form @submit.prevent="saveItem">
       <div
         class="my-4 flex flex-col gap-6 rounded-b-xl bg-base-100 p-4 shadow-sm"
       >
@@ -13,7 +13,8 @@
           id="title"
           placeholder="Item Title"
           label="Title"
-          v-model="item.title"
+          name="title"
+          v-model="model.title"
         />
         <div class="text-gray-700 md:flex">
           <div class="prose mb-1 md:mb-0 md:w-1/3">
@@ -52,11 +53,11 @@
               </label>
             </div>
             <div
-              v-if="item.selectedFiles"
+              v-if="model.selectedFiles"
               class="mt-4 grid grid-cols-2 gap-4 md:grid-cols-6"
             >
               <div
-                v-for="imageItem in item.selectedFiles"
+                v-for="imageItem in model.selectedFiles"
                 :key="imageItem.name"
                 class="relative flex cursor-pointer select-none flex-col items-center overflow-hidden rounded border border-base-300 text-center hover:border-base-200 hover:shadow md:h-24"
               >
@@ -90,30 +91,16 @@
 
         <div class="text-gray-700 md:flex">
           <div class="prose mb-1 md:mb-0 md:w-1/3">
-            <label>Product Name</label>
-          </div>
-          <div class="md:w-2/3 md:flex-grow">
-            <VeeField
-              class="input input-bordered w-full text-base"
-              type="text"
-              placeholder="Product name"
-              name="name"
-            />
-            <VeeErrorMessage name="name" class="mt-2 text-sm text-red-500" />
-          </div>
-        </div>
-
-        <div class="text-gray-700 md:flex">
-          <div class="prose mb-1 md:mb-0 md:w-1/3">
             <label>Description</label>
           </div>
           <div class="md:w-2/3 md:flex-grow">
-            <VeeField
+            <textarea
               as="textarea"
               placeholder="Description ..."
               class="textarea textarea-bordered w-full"
               name="description"
-            ></VeeField>
+              v-model="model.description"
+            ></textarea>
           </div>
         </div>
 
@@ -147,7 +134,7 @@
                   type="number"
                   class="input join-item input-bordered w-80 appearance-none focus:outline-none"
                   placeholder="Price"
-                  v-model="item.price"
+                  v-model="model.price"
                 />
               </div>
               <div
@@ -163,7 +150,7 @@
           <div class="prose mb-1 flex flex-col md:mb-0 md:w-1/3">
             <label>City</label>
             <label class="text-xs opacity-60 hover:opacity-80"
-              >Where are you located?{{ item.city }}</label
+              >Where are you located?{{ model.city }}</label
             >
           </div>
           <div class="md:w-2/3 md:flex-grow">
@@ -195,7 +182,7 @@
           </div>
         </div>
       </div>
-    </VeeForm>
+    </form>
   </div>
 </template>
 
@@ -209,7 +196,7 @@ interface ItemModel {
   selectedFiles: File[];
 }
 
-const item = ref<ItemModel>({
+const model = ref<ItemModel>({
   title: "",
   description: "",
   category: "",
@@ -217,6 +204,8 @@ const item = ref<ItemModel>({
   city: "",
   selectedFiles: [],
 });
+
+console.log(model.value);
 
 // saves the item to the database
 function saveItem(values: any) {
@@ -229,17 +218,17 @@ function onFileChange(event: Event) {
   if (
     files !== null &&
     files!.length > 0 &&
-    item.value.selectedFiles.length < 6
+    model.value.selectedFiles.length < 6
   ) {
     for (let i = 0; i < files.length; i++) {
       const currFile: File = files.item(i)!;
 
-      const isDuplicate = item.value.selectedFiles.some(
+      const isDuplicate = model.value.selectedFiles.some(
         (file: File) => file.name === currFile.name,
       );
 
       if (!isDuplicate) {
-        item.value.selectedFiles.push(currFile);
+        model.value.selectedFiles.push(currFile);
       }
     }
   }
@@ -247,11 +236,11 @@ function onFileChange(event: Event) {
 
 // removes the image from the selectedFiles array
 function removeImage(index: string) {
-  if (item.value.selectedFiles) {
-    const newFiles = [...item.value.selectedFiles!].filter(
+  if (model.value.selectedFiles) {
+    const newFiles = [...model.value.selectedFiles!].filter(
       (file: File) => file.name !== index,
     );
-    item.value.selectedFiles = newFiles;
+    model.value.selectedFiles = newFiles;
   }
 }
 
