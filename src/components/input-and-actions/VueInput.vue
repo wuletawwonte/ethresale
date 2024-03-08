@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const emit = defineEmits(["update:modelValue"]);
+
 interface InputProps {
   label?: string;
   value?: string;
@@ -15,6 +17,11 @@ const props = withDefaults(defineProps<InputProps>(), {
   placeholder: "",
   orientation: "horizontal",
 });
+
+function onInput(e: Event) {
+  const target = e.target as HTMLInputElement;
+  emit("update:modelValue", target.value);
+}
 </script>
 
 <template>
@@ -33,6 +40,7 @@ const props = withDefaults(defineProps<InputProps>(), {
         class="input input-bordered w-full"
         :value="props.value"
         :placeholder="props.placeholder"
+        @input="onInput"
       />
     </div>
   </div>
