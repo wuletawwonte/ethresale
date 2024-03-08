@@ -8,7 +8,7 @@ const emit = defineEmits<InputEmits>();
 
 interface InputProps {
   label?: string;
-  value?: string;
+  modelValue: string;
   placeholder?: string;
   type?: string;
   name?: string;
@@ -19,7 +19,6 @@ interface InputProps {
 const props = withDefaults(defineProps<InputProps>(), {
   type: "text",
   label: "",
-  value: "",
   placeholder: "",
   orientation: "horizontal",
   name: "",
@@ -47,7 +46,7 @@ const onInput = (e: Event) => {
         ref="inputRef"
         :name="name"
         class="input input-bordered w-full"
-        :value="props.value"
+        :value="props.modelValue"
         :placeholder="props.placeholder"
         @input="onInput"
       />

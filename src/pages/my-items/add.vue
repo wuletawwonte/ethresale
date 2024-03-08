@@ -11,6 +11,7 @@
         <VueInput
           type="text"
           id="title"
+          value=""
           placeholder="Item Title"
           label="Title"
           name="title"
@@ -204,8 +205,6 @@ const model = ref<ItemModel>({
   city: "",
   selectedFiles: [],
 });
-
-console.log(model.value);
 
 // saves the item to the database
 function saveItem(values: any) {
