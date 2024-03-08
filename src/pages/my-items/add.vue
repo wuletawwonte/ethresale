@@ -1,68 +1,3 @@
-<script setup lang="ts">
-const selectedFiles = ref([] as File[]);
-const name = ref("");
-const description = ref("");
-const category = ref("");
-const price = ref("");
-const city = ref("");
-
-// saves the item to the database
-function saveItem(values: any) {
-  console.log("Save Item", values);
-}
-
-// adds the image to the selectedFiles array
-function onFileChange(event: Event) {
-  const { files } = event.target as HTMLInputElement;
-  if (files !== null && files!.length > 0 && selectedFiles.value.length < 6) {
-    for (let i = 0; i < files.length; i++) {
-      const currFile: File = files.item(i)!;
-
-      const isDuplicate = selectedFiles.value.some(
-        (file: File) => file.name === currFile.name,
-      );
-
-      if (!isDuplicate) {
-        selectedFiles.value.push(currFile);
-      }
-    }
-  }
-}
-
-// removes the image from the selectedFiles array
-function removeImage(index: string) {
-  if (selectedFiles) {
-    const newFiles = [...selectedFiles.value!].filter(
-      (file: File) => file.name !== index,
-    );
-    selectedFiles.value = newFiles;
-  }
-}
-
-// loads the image from the file input and display it in the UI
-function loadItemImage(imageItem: File): string {
-  return URL.createObjectURL(imageItem);
-}
-
-// Form validation rules
-
-function isRequired(value: string) {
-  if (!value) {
-    return "This field is required";
-  }
-
-  return true;
-}
-
-function notEmpty(value: string) {
-  if (value.trim() === "") {
-    return "This field is required";
-  }
-
-  return true;
-}
-</script>
-
 <template>
   <div class="mx-4 my-4 flex flex-col lg:mx-0 lg:px-[12%]">
     <div class="flex items-center justify-between px-4">
@@ -78,6 +13,7 @@ function notEmpty(value: string) {
           id="title"
           placeholder="Item Title"
           label="Title"
+          v-model="item.title"
         />
         <div class="text-gray-700 md:flex">
           <div class="prose mb-1 md:mb-0 md:w-1/3">
@@ -116,11 +52,11 @@ function notEmpty(value: string) {
               </label>
             </div>
             <div
-              v-if="selectedFiles"
+              v-if="item.selectedFiles"
               class="mt-4 grid grid-cols-2 gap-4 md:grid-cols-6"
             >
               <div
-                v-for="imageItem in selectedFiles"
+                v-for="imageItem in item.selectedFiles"
                 :key="imageItem.name"
                 class="relative flex cursor-pointer select-none flex-col items-center overflow-hidden rounded border border-base-300 text-center hover:border-base-200 hover:shadow md:h-24"
               >
@@ -211,7 +147,7 @@ function notEmpty(value: string) {
                   type="number"
                   class="input join-item input-bordered w-80 appearance-none focus:outline-none"
                   placeholder="Price"
-                  v-model="price"
+                  v-model="item.price"
                 />
               </div>
               <div
@@ -227,7 +163,7 @@ function notEmpty(value: string) {
           <div class="prose mb-1 flex flex-col md:mb-0 md:w-1/3">
             <label>City</label>
             <label class="text-xs opacity-60 hover:opacity-80"
-              >Where are you located?{{ city }}</label
+              >Where are you located?{{ item.city }}</label
             >
           </div>
           <div class="md:w-2/3 md:flex-grow">
@@ -262,3 +198,83 @@ function notEmpty(value: string) {
     </VeeForm>
   </div>
 </template>
+
+<script setup lang="ts">
+interface ItemModel {
+  title: string;
+  description: string;
+  category: string;
+  price: number;
+  city: string;
+  selectedFiles: File[];
+}
+
+const item = ref<ItemModel>({
+  title: "",
+  description: "",
+  category: "",
+  price: 0,
+  city: "",
+  selectedFiles: [],
+});
+
+// saves the item to the database
+function saveItem(values: any) {
+  console.log("Save Item", values);
+}
+
+// adds the image to the selectedFiles array
+function onFileChange(event: Event) {
+  const { files } = event.target as HTMLInputElement;
+  if (
+    files !== null &&
+    files!.length > 0 &&
+    item.value.selectedFiles.length < 6
+  ) {
+    for (let i = 0; i < files.length; i++) {
+      const currFile: File = files.item(i)!;
+
+      const isDuplicate = item.value.selectedFiles.some(
+        (file: File) => file.name === currFile.name,
+      );
+
+      if (!isDuplicate) {
+        item.value.selectedFiles.push(currFile);
+      }
+    }
+  }
+}
+
+// removes the image from the selectedFiles array
+function removeImage(index: string) {
+  if (item.value.selectedFiles) {
+    const newFiles = [...item.value.selectedFiles!].filter(
+      (file: File) => file.name !== index,
+    );
+    item.value.selectedFiles = newFiles;
+  }
+}
+
+// loads the image from the file input and display it in the UI
+function loadItemImage(imageItem: File): string {
+  return URL.createObjectURL(imageItem);
+}
+
+// Form validation rules
+
+function isRequired(value: string) {
+  if (!value) {
+    return "This field is required";
+  }
+
+  return true;
+}
+
+function notEmpty(value: string) {
+  if (value.trim() === "") {
+    return "This field is required";
+  }
+
+  return true;
+}
+</script>
