@@ -11,13 +11,13 @@ export default {
 
 <template>
   <div
-    class="card card-compact bg-base-100 hover:shadow-md glass max-w-[300px] card-bordered"
+    class="card glass card-bordered card-compact max-w-[600px] bg-base-100 hover:shadow-md"
   >
     <figure class="h-[150px]">
       <img
         :src="item.image"
         :alt="item.name"
-        class="object-cover w-full h-full rounded-t-lg"
+        class="h-full w-full rounded-t-lg object-cover"
       />
     </figure>
     <div class="card-body">
