@@ -88,20 +88,13 @@
 
         <hr class="border-base-200" />
 
-        <div class="text-gray-700 md:flex">
-          <div class="prose mb-1 md:mb-0 md:w-1/3">
-            <label>Description</label>
-          </div>
-          <div class="md:w-2/3 md:flex-grow">
-            <textarea
-              as="textarea"
-              placeholder="Description ..."
-              class="textarea textarea-bordered w-full"
-              name="description"
-              v-model="model.description"
-            ></textarea>
-          </div>
-        </div>
+        <VueTextarea
+          id="description"
+          label="Description"
+          placeholder="Description ..."
+          name="description"
+          v-model="model.description"
+        />
 
         <div class="md:flex">
           <div class="mb-1 md:mb-0 md:w-1/3">

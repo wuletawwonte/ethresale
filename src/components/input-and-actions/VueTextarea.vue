@@ -42,7 +42,7 @@ const onInput = (e: Event) => {
         :id="id"
         ref="inputRef"
         :name="name"
-        class="input input-bordered w-full"
+        class="textarea textarea-bordered w-full"
         :value="props.modelValue"
         :placeholder="props.placeholder"
         @input="onInput"
