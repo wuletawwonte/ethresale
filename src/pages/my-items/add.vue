@@ -205,8 +205,8 @@ const model = ref<ItemModel>({
 });
 
 // saves the item to the database
-function saveItem(values: any) {
-  console.log("Save Item", values);
+function saveItem() {
+  console.log("Save Item", model.value);
 }
 
 // adds the image to the selectedFiles array
