@@ -8,7 +8,7 @@ const emit = defineEmits<InputEmits>();
 
 interface InputProps {
   label?: string;
-  modelValue: string;
+  modelValue: string | number;
   placeholder?: string;
   type?: string;
   name?: string;
