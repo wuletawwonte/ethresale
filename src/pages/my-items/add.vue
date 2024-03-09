@@ -18,9 +18,7 @@
           v-model="model.title"
         />
         <div class="text-gray-700 md:flex">
-          <div class="prose mb-1 md:mb-0 md:w-1/3">
-            <label>Product Photos</label>
-          </div>
+          <Label>Product Photos</Label>
 
           <div class="flex flex-col gap-4 md:w-2/3 md:flex-grow">
             <div class="flex w-full items-center justify-center">
