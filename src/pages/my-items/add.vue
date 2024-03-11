@@ -9,19 +9,21 @@
         class="my-4 flex flex-col gap-6 rounded-b-xl bg-base-100 p-4 shadow-sm"
       >
         <ul class="steps">
-          <li :class="['step', { 'step-primary': steps >= 1 }]">Category</li>
-          <li :class="['step', { 'step-primary': steps >= 2 }]">Choose plan</li>
-          <li :class="['step', { 'step-primary': steps >= 3 }]">Purchase</li>
+          <li :class="['step', { 'step-primary': step >= 1 }]">Category</li>
+          <li :class="['step', { 'step-primary': step >= 2 }]">Choose plan</li>
+          <li :class="['step', { 'step-primary': step >= 3 }]">Purchase</li>
         </ul>
 
-        <section v-if="steps === 1">
-          <h2 class="text-xl font-normal">Item Details</h2>
-          <p class="text-sm text-gray-500 dark:text-gray-400">
-            Fill in the details of the item you want to sell
-          </p>
+        <section v-if="step === 1" class="flex flex-col gap-6">
+          <div>
+            <h2 class="text-xl font-normal">Category</h2>
+            <p class="text-sm text-gray-500 dark:text-gray-400">
+              choose the category that best suits your item
+            </p>
+          </div>
         </section>
 
-        <section v-else-if="steps === 2">
+        <section v-else-if="step === 2" class="flex flex-col gap-6">
           <h2 class="text-xl font-normal">Choose Plan</h2>
           <p class="text-sm text-gray-500 dark:text-gray-400">
             Choose the plan that best suits your needs
@@ -187,9 +189,17 @@
         <div class="text-gray-700 md:flex">
           <div class="mb-1 md:mb-0 md:w-1/3"></div>
           <div class="flex gap-4 md:w-2/3 md:flex-grow">
-            <button type="submit" class="btn btn-primary">Publish now</button>
-            <button class="btn">Save Draft</button>
-            <button type="reset" class="btn btn-secondary">Reset</button>
+            <button
+              type="button"
+              class="btn btn-primary btn-sm"
+              @click="previousStep"
+            >
+              Previous
+            </button>
+            <button type="button" class="btn btn-sm">Save Draft</button>
+            <button type="button" class="btn btn-sm" @click="nextStep">
+              Next
+            </button>
           </div>
         </div>
       </div>
@@ -216,7 +226,15 @@ const model = ref<ItemModel>({
   selectedFiles: [],
 });
 
-const steps = ref<number>(1);
+const step = ref<number>(1);
+
+function nextStep() {
+  step.value += 1;
+}
+
+function previousStep() {
+  step.value -= 1;
+}
 
 // saves the item to the database
 function saveItem() {
