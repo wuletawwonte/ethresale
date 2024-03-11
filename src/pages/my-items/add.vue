@@ -15,7 +15,7 @@
         </ul>
 
         <section v-if="step === 1" class="flex flex-col gap-6">
-          <div>
+          <div class="flex flex-col items-center">
             <h2 class="text-xl font-normal">Category</h2>
             <p class="text-sm text-gray-500 dark:text-gray-400">
               Choose the category that best suits your item
@@ -27,10 +27,12 @@
         </section>
 
         <section v-else-if="step === 2" class="flex flex-col gap-6">
-          <h2 class="text-xl font-normal">Choose Plan</h2>
-          <p class="text-sm text-gray-500 dark:text-gray-400">
-            Choose the plan that best suits your needs
-          </p>
+          <div class="flex flex-col items-center">
+            <h2 class="text-xl font-normal">Choose Plan</h2>
+            <p class="text-sm text-gray-500 dark:text-gray-400">
+              Choose the plan that best suits your needs
+            </p>
+          </div>
           <VueInput
             type="text"
             id="title"
