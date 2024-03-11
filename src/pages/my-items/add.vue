@@ -21,7 +21,9 @@
               Choose the category that best suits your item
             </p>
           </div>
-          <div></div>
+          <div>
+            <CategoryChooser :categories="categories" />
+          </div>
         </section>
 
         <section v-else-if="step === 2" class="flex flex-col gap-6">
@@ -227,7 +229,20 @@ const model = ref<ItemModel>({
   selectedFiles: [],
 });
 
+interface Category {
+  id: number;
+  name: string;
+  icon?: string;
+}
+
 const step = ref<number>(1);
+const categories = ref<Category[]>([
+  { name: "Electronics", id: 1, icon: "map:electronics-store" },
+  { name: "Furniture", id: 2, icon: "map:furniture-store" },
+  { name: "Clothing", id: 3, icon: "map:clothing-store" },
+  { name: "Books", id: 4, icon: "map:book-store" },
+  { name: "Other", id: 6, icon: "map:store" },
+]);
 
 function nextStep() {
   step.value += 1;
