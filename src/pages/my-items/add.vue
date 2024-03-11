@@ -8,169 +8,199 @@
       <div
         class="my-4 flex flex-col gap-6 rounded-b-xl bg-base-100 p-4 shadow-sm"
       >
-        <VueInput
-          type="text"
-          id="title"
-          value=""
-          placeholder="Item Title"
-          label="Title"
-          name="title"
-          v-model="model.title"
-        />
-        <div class="text-gray-700 md:flex">
-          <Label>Product Photos</Label>
+        <ul class="steps">
+          <li :class="['step', { 'step-primary': step >= 1 }]">Category</li>
+          <li :class="['step', { 'step-primary': step >= 2 }]">Choose plan</li>
+          <li :class="['step', { 'step-primary': step >= 3 }]">Purchase</li>
+        </ul>
 
-          <div class="flex flex-col gap-4 md:w-2/3 md:flex-grow">
-            <div class="flex w-full items-center justify-center">
-              <label
-                for="dropzone-file"
-                class="h-34 dark:hover:bg-bray-800 flex w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+        <section v-if="step === 1" class="flex flex-col gap-6">
+          <div>
+            <h2 class="text-xl font-normal">Category</h2>
+            <p class="text-sm text-gray-500 dark:text-gray-400">
+              Choose the category that best suits your item
+            </p>
+          </div>
+          <div></div>
+        </section>
+
+        <section v-else-if="step === 2" class="flex flex-col gap-6">
+          <h2 class="text-xl font-normal">Choose Plan</h2>
+          <p class="text-sm text-gray-500 dark:text-gray-400">
+            Choose the plan that best suits your needs
+          </p>
+          <VueInput
+            type="text"
+            id="title"
+            value=""
+            placeholder="Item Title"
+            label="Title"
+            name="title"
+            v-model="model.title"
+          />
+          <div class="text-gray-700 md:flex">
+            <Label>Product Photos</Label>
+
+            <div class="flex flex-col gap-4 md:w-2/3 md:flex-grow">
+              <div class="flex w-full items-center justify-center">
+                <label
+                  for="dropzone-file"
+                  class="h-34 dark:hover:bg-bray-800 flex w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+                >
+                  <div class="flex flex-col items-center justify-center py-4">
+                    <icon
+                      name="octicon:cloud-upload"
+                      size="3rem"
+                      class="text-gray-400 dark:text-gray-500"
+                    ></icon>
+                    <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                      <span class="font-semibold">Click to upload</span> or drag
+                      and drop
+                    </p>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">
+                      JPG or PNG (MAX. 800x400px)
+                    </p>
+                  </div>
+                  <VeeField
+                    name="files"
+                    id="dropzone-file"
+                    type="file"
+                    accept="image/jpeg, image/png"
+                    multiple
+                    class="hidden"
+                    @change="onFileChange"
+                  />
+                </label>
+              </div>
+              <div
+                v-if="model.selectedFiles"
+                class="mt-4 grid grid-cols-2 gap-4 md:grid-cols-6"
               >
-                <div class="flex flex-col items-center justify-center py-4">
-                  <icon
-                    name="octicon:cloud-upload"
-                    size="3rem"
-                    class="text-gray-400 dark:text-gray-500"
-                  ></icon>
-                  <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                    <span class="font-semibold">Click to upload</span> or drag
-                    and drop
-                  </p>
-                  <p class="text-xs text-gray-500 dark:text-gray-400">
-                    JPG or PNG (MAX. 800x400px)
-                  </p>
+                <div
+                  v-for="imageItem in model.selectedFiles"
+                  :key="imageItem.name"
+                  class="relative flex cursor-pointer select-none flex-col items-center overflow-hidden rounded border border-base-300 text-center hover:border-base-200 hover:shadow md:h-24"
+                >
+                  <button
+                    class="btn btn-circle btn-xs absolute right-1 top-1 z-50 bg-base-100"
+                    type="button"
+                    @click="removeImage(imageItem.name)"
+                  >
+                    <icon
+                      name="octicon:x"
+                      size="1rem"
+                      class="text-red-500"
+                    ></icon>
+                  </button>
+                  <img
+                    class="inset-0 z-0 h-full w-full border-4 border-base-100 object-cover"
+                    :src="loadItemImage(imageItem)"
+                  />
+                  <span
+                    class="absolute bottom-0 z-50 bg-base-100 bg-opacity-80 p-1 text-xs text-base-content dark:text-gray-400"
+                  >
+                    {{ imageItem.name.substring(0, 15) }}
+                  </span>
                 </div>
-                <VeeField
-                  name="files"
-                  id="dropzone-file"
-                  type="file"
-                  accept="image/jpeg, image/png"
-                  multiple
-                  class="hidden"
-                  @change="onFileChange"
-                />
-              </label>
+              </div>
+              <VeeErrorMessage name="files" />
             </div>
-            <div
-              v-if="model.selectedFiles"
-              class="mt-4 grid grid-cols-2 gap-4 md:grid-cols-6"
-            >
-              <div
-                v-for="imageItem in model.selectedFiles"
-                :key="imageItem.name"
-                class="relative flex cursor-pointer select-none flex-col items-center overflow-hidden rounded border border-base-300 text-center hover:border-base-200 hover:shadow md:h-24"
+          </div>
+
+          <hr class="border-base-200" />
+
+          <VueTextarea
+            id="description"
+            label="Description"
+            placeholder="Description ..."
+            name="description"
+            v-model="model.description"
+          />
+
+          <div class="md:flex">
+            <div class="mb-1 md:mb-0 md:w-1/3">
+              <label>Category</label>
+            </div>
+            <div class="md:w-2/3 md:flex-grow">
+              <VeeField
+                as="select"
+                class="select select-bordered"
+                name="category"
               >
-                <button
-                  class="btn btn-circle btn-xs absolute right-1 top-1 z-50 bg-base-100"
-                  type="button"
-                  @click="removeImage(imageItem.name)"
+                <option value="" selected>Category</option>
+                <option value="Arbaminch">Arbaminch</option>
+                <option value="Hawassa">Hawassa</option>
+                <option value="Soddo">Soddo</option>
+              </VeeField>
+            </div>
+          </div>
+
+          <div class="md:flex">
+            <div class="prose mb-1 md:mb-0 md:w-1/3">
+              <label>Price</label>
+            </div>
+            <div class="md:w-2/3 md:flex-grow">
+              <div class="join">
+                <div>
+                  <VeeField
+                    name="price"
+                    type="number"
+                    class="input join-item input-bordered w-80 appearance-none focus:outline-none"
+                    placeholder="Price"
+                    v-model="model.price"
+                  />
+                </div>
+                <div
+                  class="join-item flex items-center border border-base-300 bg-base-100 px-4"
                 >
-                  <icon
-                    name="octicon:x"
-                    size="1rem"
-                    class="text-red-500"
-                  ></icon>
-                </button>
-                <img
-                  class="inset-0 z-0 h-full w-full border-4 border-base-100 object-cover"
-                  :src="loadItemImage(imageItem)"
-                />
-                <span
-                  class="absolute bottom-0 z-50 bg-base-100 bg-opacity-80 p-1 text-xs text-base-content dark:text-gray-400"
-                >
-                  {{ imageItem.name.substring(0, 15) }}
-                </span>
+                  <span class="text-sm text-base-content">ETB</span>
+                </div>
               </div>
             </div>
-            <VeeErrorMessage name="files" />
           </div>
-        </div>
 
-        <hr class="border-base-200" />
-
-        <VueTextarea
-          id="description"
-          label="Description"
-          placeholder="Description ..."
-          name="description"
-          v-model="model.description"
-        />
-
-        <div class="md:flex">
-          <div class="mb-1 md:mb-0 md:w-1/3">
-            <label>Category</label>
-          </div>
-          <div class="md:w-2/3 md:flex-grow">
-            <VeeField
-              as="select"
-              class="select select-bordered"
-              name="category"
-            >
-              <option value="" selected>Category</option>
-              <option value="Arbaminch">Arbaminch</option>
-              <option value="Hawassa">Hawassa</option>
-              <option value="Soddo">Soddo</option>
-            </VeeField>
-          </div>
-        </div>
-
-        <div class="md:flex">
-          <div class="prose mb-1 md:mb-0 md:w-1/3">
-            <label>Price</label>
-          </div>
-          <div class="md:w-2/3 md:flex-grow">
-            <div class="join">
-              <div>
-                <VeeField
-                  name="price"
-                  type="number"
-                  class="input join-item input-bordered w-80 appearance-none focus:outline-none"
-                  placeholder="Price"
-                  v-model="model.price"
-                />
-              </div>
-              <div
-                class="join-item flex items-center border border-base-300 bg-base-100 px-4"
+          <div class="md:flex">
+            <div class="prose mb-1 flex flex-col md:mb-0 md:w-1/3">
+              <label>City</label>
+              <label class="text-xs opacity-60 hover:opacity-80"
+                >Where are you located?{{ model.city }}</label
               >
-                <span class="text-sm text-base-content">ETB</span>
+            </div>
+            <div class="md:w-2/3 md:flex-grow">
+              <div class="join">
+                <div>
+                  <VeeField
+                    as="select"
+                    name="city"
+                    class="join-item select select-bordered"
+                    placeholder="City"
+                  >
+                    <option value="" selected>City</option>
+                    <option value="Arbaminch">Arbaminch</option>
+                    <option value="Hawassa">Hawassa</option>
+                    <option value="Soddo">Soddo</option>
+                  </VeeField>
+                </div>
+                <button class="btn join-item">Use Geo Location</button>
               </div>
             </div>
           </div>
-        </div>
-
-        <div class="md:flex">
-          <div class="prose mb-1 flex flex-col md:mb-0 md:w-1/3">
-            <label>City</label>
-            <label class="text-xs opacity-60 hover:opacity-80"
-              >Where are you located?{{ model.city }}</label
-            >
-          </div>
-          <div class="md:w-2/3 md:flex-grow">
-            <div class="join">
-              <div>
-                <VeeField
-                  as="select"
-                  name="city"
-                  class="join-item select select-bordered"
-                  placeholder="City"
-                >
-                  <option value="" selected>City</option>
-                  <option value="Arbaminch">Arbaminch</option>
-                  <option value="Hawassa">Hawassa</option>
-                  <option value="Soddo">Soddo</option>
-                </VeeField>
-              </div>
-              <button class="btn join-item">Use Geo Location</button>
-            </div>
-          </div>
-        </div>
+        </section>
 
         <div class="text-gray-700 md:flex">
           <div class="mb-1 md:mb-0 md:w-1/3"></div>
           <div class="flex gap-4 md:w-2/3 md:flex-grow">
-            <button type="submit" class="btn btn-primary">Publish now</button>
-            <button class="btn">Save Draft</button>
-            <button type="reset" class="btn btn-secondary">Reset</button>
+            <button
+              type="button"
+              class="btn btn-primary btn-sm"
+              @click="previousStep"
+            >
+              Previous
+            </button>
+            <button type="button" class="btn btn-sm">Save Draft</button>
+            <button type="button" class="btn btn-sm" @click="nextStep">
+              Next
+            </button>
           </div>
         </div>
       </div>
@@ -196,6 +226,16 @@ const model = ref<ItemModel>({
   city: "",
   selectedFiles: [],
 });
+
+const step = ref<number>(1);
+
+function nextStep() {
+  step.value += 1;
+}
+
+function previousStep() {
+  step.value -= 1;
+}
 
 // saves the item to the database
 function saveItem() {
@@ -237,23 +277,5 @@ function removeImage(index: string) {
 // loads the image from the file input and display it in the UI
 function loadItemImage(imageItem: File): string {
   return URL.createObjectURL(imageItem);
-}
-
-// Form validation rules
-
-function isRequired(value: string) {
-  if (!value) {
-    return "This field is required";
-  }
-
-  return true;
-}
-
-function notEmpty(value: string) {
-  if (value.trim() === "") {
-    return "This field is required";
-  }
-
-  return true;
 }
 </script>
