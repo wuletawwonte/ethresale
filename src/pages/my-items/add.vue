@@ -18,9 +18,10 @@
           <div>
             <h2 class="text-xl font-normal">Category</h2>
             <p class="text-sm text-gray-500 dark:text-gray-400">
-              choose the category that best suits your item
+              Choose the category that best suits your item
             </p>
           </div>
+          <div></div>
         </section>
 
         <section v-else-if="step === 2" class="flex flex-col gap-6">
