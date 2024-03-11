@@ -194,13 +194,19 @@
           <div class="flex gap-4 md:w-2/3 md:flex-grow">
             <button
               type="button"
-              class="btn btn-primary btn-sm"
+              class="btn btn-sm"
               @click="previousStep"
+              :disabled="step === 1"
             >
               Previous
             </button>
             <button type="button" class="btn btn-sm">Save Draft</button>
-            <button type="button" class="btn btn-sm" @click="nextStep">
+            <button
+              type="button"
+              class="btn btn-sm"
+              @click="nextStep"
+              :disabled="step === 3"
+            >
               Next
             </button>
           </div>
