@@ -193,7 +193,7 @@
               type="button"
               class="btn btn-sm"
               @click="nextStep"
-              :disabled="step === 3"
+              :disabled="step === 3 || itemModel.category === 0"
             >
               Next
             </button>
@@ -227,12 +227,16 @@ const categories = ref<Category[]>([
 ]);
 
 function nextStep() {
-  console.log(itemModel.value);
+  if (step.value === 1) {
+    if (itemModel.value.category === 0) {
+      return;
+    }
+  }
+
   step.value += 1;
 }
 
 function previousStep() {
-  console.log(itemModel.value);
   step.value -= 1;
 }
 
