@@ -7,7 +7,7 @@ export type Category = {
 export interface ItemModel {
   title: string;
   description: string;
-  category: string;
+  category: number;
   price: number;
   city: string;
   selectedFiles: File[];

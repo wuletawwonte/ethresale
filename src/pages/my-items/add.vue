@@ -22,7 +22,10 @@
             </p>
           </div>
           <div>
-            <CategoryChooser :categories="categories" />
+            <CategoryChooser
+              :categories="categories"
+              @change="onCategoryChange"
+            />
           </div>
         </section>
 
@@ -225,7 +228,7 @@ import type { ItemModel } from "@/types";
 const model = ref<ItemModel>({
   title: "",
   description: "",
-  category: "",
+  category: 0,
   price: 0,
   city: "",
   selectedFiles: [],
@@ -288,5 +291,9 @@ function removeImage(index: string) {
 // loads the image from the file input and display it in the UI
 function loadItemImage(imageItem: File): string {
   return URL.createObjectURL(imageItem);
+}
+
+function onCategoryChange(categoryId: number) {
+  model.value.category = categoryId;
 }
 </script>

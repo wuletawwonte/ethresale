@@ -2,20 +2,25 @@
   <div
     class="grid grid-cols-1 gap-8 p-4 sm:grid-cols-2 md:grid-cols-3 md:p-2 lg:grid-cols-4 xl:p-4"
   >
+    <input type="number" hidden v-model="category" @input="onInput" />
     <div
-      v-for="category in categories"
-      :key="category.id"
+      v-for="categoryItem in categories"
+      :key="categoryItem.id"
       class="group max-w-sm cursor-pointer rounded-lg border-2 bg-base-200 p-6 hover:border-primary hover:shadow-lg"
+      :class="
+        categoryItem.id === category ? 'border-primary' : 'border-base-200'
+      "
+      @click="onCategoryClick(categoryItem.id)"
     >
       <icon
-        :name="category.icon!"
+        :name="categoryItem.icon!"
         class="mb-3 h-7 w-7 text-gray-500 dark:text-gray-400"
       ></icon>
-      <a href="#">
+      <span>
         <h5 class="mb-2 text-2xl font-semibold tracking-tight">
-          {{ category.name }}
+          {{ categoryItem.name }}
         </h5>
-      </a>
+      </span>
       <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">
         Go to this step by step guideline process.
       </p>
@@ -26,10 +31,22 @@
 <script setup lang="ts">
 import type { Category } from "@/types";
 
-const props = defineProps({
+const category = ref(null as number | null);
+const emit = defineEmits(["update:modelValue"]);
+
+defineProps({
   categories: {
     type: Array as PropType<Category[]>,
     required: true,
   },
 });
+
+const onCategoryClick = (categoryId: number) => {
+  category.value = categoryId;
+};
+
+const onInput = (e: Event) => {
+  const inputValue = (e.target as HTMLInputElement).value;
+  emit("update:modelValue", inputValue);
+};
 </script>
