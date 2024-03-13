@@ -24,7 +24,8 @@
           <div>
             <CategoryChooser
               :categories="categories"
-              @change="onCategoryChange"
+              v-model="itemModel.category"
+              :selected="itemModel.category"
             />
           </div>
         </section>
@@ -43,7 +44,7 @@
             placeholder="Item Title"
             label="Title"
             name="title"
-            v-model="model.title"
+            v-model="itemModel.title"
           />
           <div class="text-gray-700 md:flex">
             <Label>Product Photos</Label>
@@ -80,11 +81,11 @@
                 </label>
               </div>
               <div
-                v-if="model.selectedFiles"
+                v-if="itemModel.selectedFiles"
                 class="mt-4 grid grid-cols-2 gap-4 md:grid-cols-6"
               >
                 <div
-                  v-for="imageItem in model.selectedFiles"
+                  v-for="imageItem in itemModel.selectedFiles"
                   :key="imageItem.name"
                   class="relative flex cursor-pointer select-none flex-col items-center overflow-hidden rounded border border-base-300 text-center hover:border-base-200 hover:shadow md:h-24"
                 >
@@ -121,26 +122,8 @@
             label="Description"
             placeholder="Description ..."
             name="description"
-            v-model="model.description"
+            v-model="itemModel.description"
           />
-
-          <div class="md:flex">
-            <div class="mb-1 md:mb-0 md:w-1/3">
-              <label>Category</label>
-            </div>
-            <div class="md:w-2/3 md:flex-grow">
-              <VeeField
-                as="select"
-                class="select select-bordered"
-                name="category"
-              >
-                <option value="" selected>Category</option>
-                <option value="Arbaminch">Arbaminch</option>
-                <option value="Hawassa">Hawassa</option>
-                <option value="Soddo">Soddo</option>
-              </VeeField>
-            </div>
-          </div>
 
           <div class="md:flex">
             <div class="prose mb-1 md:mb-0 md:w-1/3">
@@ -154,7 +137,7 @@
                     type="number"
                     class="input join-item input-bordered w-80 appearance-none focus:outline-none"
                     placeholder="Price"
-                    v-model="model.price"
+                    v-model="itemModel.price"
                   />
                 </div>
                 <div
@@ -170,7 +153,7 @@
             <div class="prose mb-1 flex flex-col md:mb-0 md:w-1/3">
               <label>City</label>
               <label class="text-xs opacity-60 hover:opacity-80"
-                >Where are you located?{{ model.city }}</label
+                >Where are you located?{{ itemModel.city }}</label
               >
             </div>
             <div class="md:w-2/3 md:flex-grow">
@@ -225,7 +208,7 @@
 import type { Category } from "@/types";
 import type { ItemModel } from "@/types";
 
-const model = ref<ItemModel>({
+const itemModel = ref<ItemModel>({
   title: "",
   description: "",
   category: 0,
@@ -244,16 +227,18 @@ const categories = ref<Category[]>([
 ]);
 
 function nextStep() {
+  console.log(itemModel.value);
   step.value += 1;
 }
 
 function previousStep() {
+  console.log(itemModel.value);
   step.value -= 1;
 }
 
 // saves the item to the database
 function saveItem() {
-  console.log("Save Item", model.value);
+  console.log("Save Item", itemModel.value);
 }
 
 // adds the image to the selectedFiles array
@@ -262,17 +247,17 @@ function onFileChange(event: Event) {
   if (
     files !== null &&
     files!.length > 0 &&
-    model.value.selectedFiles.length < 6
+    itemModel.value.selectedFiles.length < 6
   ) {
     for (let i = 0; i < files.length; i++) {
       const currFile: File = files.item(i)!;
 
-      const isDuplicate = model.value.selectedFiles.some(
+      const isDuplicate = itemModel.value.selectedFiles.some(
         (file: File) => file.name === currFile.name,
       );
 
       if (!isDuplicate) {
-        model.value.selectedFiles.push(currFile);
+        itemModel.value.selectedFiles.push(currFile);
       }
     }
   }
@@ -280,20 +265,16 @@ function onFileChange(event: Event) {
 
 // removes the image from the selectedFiles array
 function removeImage(index: string) {
-  if (model.value.selectedFiles) {
-    const newFiles = [...model.value.selectedFiles!].filter(
+  if (itemModel.value.selectedFiles) {
+    const newFiles = [...itemModel.value.selectedFiles!].filter(
       (file: File) => file.name !== index,
     );
-    model.value.selectedFiles = newFiles;
+    itemModel.value.selectedFiles = newFiles;
   }
 }
 
 // loads the image from the file input and display it in the UI
 function loadItemImage(imageItem: File): string {
   return URL.createObjectURL(imageItem);
-}
-
-function onCategoryChange(categoryId: number) {
-  model.value.category = categoryId;
 }
 </script>

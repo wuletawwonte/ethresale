@@ -2,7 +2,7 @@
   <div
     class="grid grid-cols-1 gap-8 p-4 sm:grid-cols-2 md:grid-cols-3 md:p-2 lg:grid-cols-4 xl:p-4"
   >
-    <input type="number" hidden v-model="category" @input="onInput" />
+    <input type="number" hidden v-model="category" />
     <div
       v-for="categoryItem in categories"
       :key="categoryItem.id"
@@ -34,19 +34,24 @@ import type { Category } from "@/types";
 const category = ref(null as number | null);
 const emit = defineEmits(["update:modelValue"]);
 
-defineProps({
+const props = defineProps({
   categories: {
     type: Array as PropType<Category[]>,
     required: true,
+  },
+  selected: {
+    type: Number,
+    required: true,
+    default: null
   },
 });
 
 const onCategoryClick = (categoryId: number) => {
   category.value = categoryId;
+  emit("update:modelValue", categoryId);
 };
 
-const onInput = (e: Event) => {
-  const inputValue = (e.target as HTMLInputElement).value;
-  emit("update:modelValue", inputValue);
-};
+onMounted(() => {
+  category.value = props.selected;
+});
 </script>
