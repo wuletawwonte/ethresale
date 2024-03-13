@@ -14,7 +14,12 @@
     >
       <icon
         :name="categoryItem.icon!"
-        class="mb-3 h-7 w-7 text-gray-500 dark:text-gray-400"
+        class="mb-3 h-7 w-7 text-gray-500"
+        :class="
+          categoryItem.id === category
+            ? 'text-primary'
+            : 'text-gray-500 dark:text-gray-400'
+        "
       ></icon>
       <span>
         <h5 class="mb-2 text-2xl font-semibold tracking-tight">
@@ -42,7 +47,7 @@ const props = defineProps({
   selected: {
     type: Number,
     required: true,
-    default: null
+    default: null,
   },
 });
 

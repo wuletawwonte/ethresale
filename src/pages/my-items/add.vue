@@ -18,7 +18,8 @@
           <div class="flex flex-col items-center">
             <h2 class="text-xl font-normal">Category</h2>
             <p class="text-sm text-gray-500 dark:text-gray-400">
-              Choose the category that best suits your item
+              Choose the category that best suits your item type. This will
+              activate the next step.
             </p>
           </div>
           <div>
@@ -193,7 +194,7 @@
               type="button"
               class="btn btn-sm"
               @click="nextStep"
-              :disabled="step === 3"
+              :disabled="step === 3 || itemModel.category === 0"
             >
               Next
             </button>
@@ -227,12 +228,16 @@ const categories = ref<Category[]>([
 ]);
 
 function nextStep() {
-  console.log(itemModel.value);
+  if (step.value === 1) {
+    if (itemModel.value.category === 0) {
+      return;
+    }
+  }
+
   step.value += 1;
 }
 
 function previousStep() {
-  console.log(itemModel.value);
   step.value -= 1;
 }
 
