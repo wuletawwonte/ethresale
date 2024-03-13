@@ -18,7 +18,8 @@
           <div class="flex flex-col items-center">
             <h2 class="text-xl font-normal">Category</h2>
             <p class="text-sm text-gray-500 dark:text-gray-400">
-              Choose the category that best suits your item
+              Choose the category that best suits your item type. This will
+              activate the next step.
             </p>
           </div>
           <div>
