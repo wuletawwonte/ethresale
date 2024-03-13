@@ -219,14 +219,8 @@
 </template>
 
 <script setup lang="ts">
-interface ItemModel {
-  title: string;
-  description: string;
-  category: string;
-  price: number;
-  city: string;
-  selectedFiles: File[];
-}
+import type { Category } from "@/types";
+import type { ItemModel } from "@/types";
 
 const model = ref<ItemModel>({
   title: "",
@@ -236,12 +230,6 @@ const model = ref<ItemModel>({
   city: "",
   selectedFiles: [],
 });
-
-interface Category {
-  id: number;
-  name: string;
-  icon?: string;
-}
 
 const step = ref<number>(1);
 const categories = ref<Category[]>([
