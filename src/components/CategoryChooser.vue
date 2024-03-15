@@ -6,9 +6,11 @@
     <div
       v-for="categoryItem in categories"
       :key="categoryItem.id"
-      class="group max-w-sm cursor-pointer rounded-lg border-2 bg-base-200 p-6 hover:border-primary hover:shadow-lg"
+      class="group max-w-sm cursor-pointer rounded-lg border-2 bg-base-200 p-6 hover:border-base-200 hover:shadow-lg"
       :class="
-        categoryItem.id === category ? 'border-primary' : 'border-base-200'
+        categoryItem.id === category
+          ? 'border-primary shadow-lg hover:border-primary'
+          : 'border-base-100'
       "
       @click="onCategoryClick(categoryItem.id)"
     >
