@@ -10,8 +10,9 @@
       >
         <ul class="steps">
           <li :class="['step', { 'step-primary': step >= 1 }]">Category</li>
-          <li :class="['step', { 'step-primary': step >= 2 }]">Choose plan</li>
-          <li :class="['step', { 'step-primary': step >= 3 }]">Purchase</li>
+          <li :class="['step', { 'step-primary': step >= 2 }]">Details</li>
+          <li :class="['step', { 'step-primary': step >= 3 }]">Photos</li>
+          <li :class="['step', { 'step-primary': step >= 4 }]">Purchase</li>
         </ul>
 
         <section v-if="step === 1" class="flex flex-col gap-6">
@@ -194,7 +195,7 @@
               type="button"
               class="btn btn-sm"
               @click="nextStep"
-              :disabled="step === 3 || itemModel.category === 0"
+              :disabled="step === 4 || itemModel.category === 0"
             >
               Next
             </button>
