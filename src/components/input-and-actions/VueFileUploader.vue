@@ -38,10 +38,10 @@
         <div
           v-for="imageItem in itemModel.selectedFiles"
           :key="imageItem.name"
-          class="relative flex cursor-pointer select-none flex-col items-center overflow-hidden rounded border border-base-300 text-center hover:border-base-200 hover:shadow md:h-24"
+          class="group relative flex select-none flex-col items-center overflow-hidden rounded border border-base-300 text-center hover:border-base-200 hover:shadow md:h-24"
         >
           <button
-            class="btn btn-circle btn-xs absolute right-1 top-1 z-50 bg-base-100"
+            class="btn btn-circle btn-xs absolute right-2 top-2 z-50 hidden bg-base-100 group-hover:block"
             type="button"
             @click="removeImage(imageItem.name)"
           >
@@ -52,7 +52,7 @@
             :src="loadItemImage(imageItem)"
           />
           <span
-            class="absolute bottom-0 z-50 bg-base-100 bg-opacity-80 p-1 text-xs text-base-content dark:text-gray-400"
+            class="absolute bottom-0 z-50 hidden bg-base-100 bg-opacity-80 p-1 text-xs text-base-content group-hover:block dark:text-gray-400"
           >
             {{ imageItem.name.substring(0, 15) }}
           </span>
