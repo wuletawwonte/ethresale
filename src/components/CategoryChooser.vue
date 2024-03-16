@@ -1,6 +1,6 @@
 <template>
   <div
-    class="grid grid-cols-1 gap-8 p-4 sm:grid-cols-2 md:grid-cols-3 md:p-2 lg:grid-cols-4 xl:p-4"
+    class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 md:p-2 lg:grid-cols-4"
   >
     <input type="number" hidden v-model="category" />
     <div

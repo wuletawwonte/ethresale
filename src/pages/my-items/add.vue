@@ -15,7 +15,7 @@
           <li :class="['step', { 'step-primary': step >= 4 }]">Purchase</li>
         </ul>
 
-        <section v-if="step === 1" class="flex flex-col gap-6">
+        <section v-if="step === 1" class="flex flex-col gap-6 lg:px-4">
           <div class="flex flex-col items-center">
             <h2 class="text-xl font-normal">Category</h2>
             <p class="text-sm text-gray-500 dark:text-gray-400">
@@ -32,7 +32,7 @@
           </div>
         </section>
 
-        <section v-else-if="step === 2" class="flex flex-col gap-6">
+        <section v-else-if="step === 2" class="flex flex-col gap-6 lg:px-4">
           <div class="flex flex-col items-center">
             <h2 class="text-xl font-normal">Details</h2>
             <p class="text-sm text-gray-500 dark:text-gray-400">
@@ -109,17 +109,15 @@
           </div>
         </section>
 
-        <section v-else-if="step === 3" class="flex flex-col gap-6">
+        <section v-else-if="step === 3" class="flex flex-col gap-6 lg:px-4">
           <div class="flex flex-col items-center">
             <h2 class="text-xl font-normal">Photos</h2>
             <p class="text-sm text-gray-500 dark:text-gray-400">
-              Choose the plan that best suits your needs
+              You can add upto 10 photos
             </p>
           </div>
-          <div class="text-gray-700 md:flex">
-            <Label>Product Photos</Label>
-
-            <div class="flex flex-col gap-4 md:w-2/3 md:flex-grow">
+          <div class="text-gray-700">
+            <div class="flex flex-col gap-4 md:flex-grow">
               <div class="flex w-full items-center justify-center">
                 <label
                   for="dropzone-file"
