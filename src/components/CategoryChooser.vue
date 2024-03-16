@@ -1,14 +1,16 @@
 <template>
   <div
-    class="grid grid-cols-1 gap-8 p-4 sm:grid-cols-2 md:grid-cols-3 md:p-2 lg:grid-cols-4 xl:p-4"
+    class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 md:p-2 lg:grid-cols-4"
   >
     <input type="number" hidden v-model="category" />
     <div
       v-for="categoryItem in categories"
       :key="categoryItem.id"
-      class="group max-w-sm cursor-pointer rounded-lg border-2 bg-base-200 p-6 hover:border-primary hover:shadow-lg"
+      class="group max-w-sm cursor-pointer rounded-lg border-2 bg-base-200 p-6 hover:border-base-200 hover:shadow-lg"
       :class="
-        categoryItem.id === category ? 'border-primary' : 'border-base-200'
+        categoryItem.id === category
+          ? 'border-primary shadow-lg hover:border-primary'
+          : 'border-base-100'
       "
       @click="onCategoryClick(categoryItem.id)"
     >

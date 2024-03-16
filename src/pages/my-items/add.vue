@@ -10,11 +10,12 @@
       >
         <ul class="steps">
           <li :class="['step', { 'step-primary': step >= 1 }]">Category</li>
-          <li :class="['step', { 'step-primary': step >= 2 }]">Choose plan</li>
-          <li :class="['step', { 'step-primary': step >= 3 }]">Purchase</li>
+          <li :class="['step', { 'step-primary': step >= 2 }]">Details</li>
+          <li :class="['step', { 'step-primary': step >= 3 }]">Photos</li>
+          <li :class="['step', { 'step-primary': step >= 4 }]">Purchase</li>
         </ul>
 
-        <section v-if="step === 1" class="flex flex-col gap-6">
+        <section v-if="step === 1" class="flex flex-col gap-6 lg:px-4">
           <div class="flex flex-col items-center">
             <h2 class="text-xl font-normal">Category</h2>
             <p class="text-sm text-gray-500 dark:text-gray-400">
@@ -31,9 +32,9 @@
           </div>
         </section>
 
-        <section v-else-if="step === 2" class="flex flex-col gap-6">
+        <section v-else-if="step === 2" class="flex flex-col gap-6 lg:px-4">
           <div class="flex flex-col items-center">
-            <h2 class="text-xl font-normal">Choose Plan</h2>
+            <h2 class="text-xl font-normal">Details</h2>
             <p class="text-sm text-gray-500 dark:text-gray-400">
               Choose the plan that best suits your needs
             </p>
@@ -47,10 +48,76 @@
             name="title"
             v-model="itemModel.title"
           />
-          <div class="text-gray-700 md:flex">
-            <Label>Product Photos</Label>
 
-            <div class="flex flex-col gap-4 md:w-2/3 md:flex-grow">
+          <VueTextarea
+            id="description"
+            label="Description"
+            placeholder="Description ..."
+            name="description"
+            v-model="itemModel.description"
+          />
+
+          <div class="md:flex">
+            <div class="prose mb-1 md:mb-0 md:w-1/3">
+              <label>Price</label>
+            </div>
+            <div class="md:w-2/3 md:flex-grow">
+              <div class="join">
+                <div>
+                  <VeeField
+                    name="price"
+                    type="number"
+                    class="input join-item input-bordered w-80 appearance-none focus:outline-none"
+                    placeholder="Price"
+                    v-model="itemModel.price"
+                  />
+                </div>
+                <div
+                  class="join-item flex items-center border border-base-300 bg-base-100 px-4"
+                >
+                  <span class="text-sm text-base-content">ETB</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="md:flex">
+            <div class="prose mb-1 flex flex-col md:mb-0 md:w-1/3">
+              <label>City</label>
+              <label class="text-xs opacity-60 hover:opacity-80"
+                >Where are you located?{{ itemModel.city }}</label
+              >
+            </div>
+            <div class="md:w-2/3 md:flex-grow">
+              <div class="join">
+                <div>
+                  <VeeField
+                    as="select"
+                    name="city"
+                    class="join-item select select-bordered"
+                    placeholder="City"
+                  >
+                    <option value="" selected>City</option>
+                    <option value="Arbaminch">Arbaminch</option>
+                    <option value="Hawassa">Hawassa</option>
+                    <option value="Soddo">Soddo</option>
+                  </VeeField>
+                </div>
+                <button class="btn join-item">Use Geo Location</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section v-else-if="step === 3" class="flex flex-col gap-6 lg:px-4">
+          <div class="flex flex-col items-center">
+            <h2 class="text-xl font-normal">Photos</h2>
+            <p class="text-sm text-gray-500 dark:text-gray-400">
+              You can add upto 10 photos
+            </p>
+          </div>
+          <div class="text-gray-700">
+            <div class="flex flex-col gap-4 md:flex-grow">
               <div class="flex w-full items-center justify-center">
                 <label
                   for="dropzone-file"
@@ -115,67 +182,6 @@
               <VeeErrorMessage name="files" />
             </div>
           </div>
-
-          <hr class="border-base-200" />
-
-          <VueTextarea
-            id="description"
-            label="Description"
-            placeholder="Description ..."
-            name="description"
-            v-model="itemModel.description"
-          />
-
-          <div class="md:flex">
-            <div class="prose mb-1 md:mb-0 md:w-1/3">
-              <label>Price</label>
-            </div>
-            <div class="md:w-2/3 md:flex-grow">
-              <div class="join">
-                <div>
-                  <VeeField
-                    name="price"
-                    type="number"
-                    class="input join-item input-bordered w-80 appearance-none focus:outline-none"
-                    placeholder="Price"
-                    v-model="itemModel.price"
-                  />
-                </div>
-                <div
-                  class="join-item flex items-center border border-base-300 bg-base-100 px-4"
-                >
-                  <span class="text-sm text-base-content">ETB</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="md:flex">
-            <div class="prose mb-1 flex flex-col md:mb-0 md:w-1/3">
-              <label>City</label>
-              <label class="text-xs opacity-60 hover:opacity-80"
-                >Where are you located?{{ itemModel.city }}</label
-              >
-            </div>
-            <div class="md:w-2/3 md:flex-grow">
-              <div class="join">
-                <div>
-                  <VeeField
-                    as="select"
-                    name="city"
-                    class="join-item select select-bordered"
-                    placeholder="City"
-                  >
-                    <option value="" selected>City</option>
-                    <option value="Arbaminch">Arbaminch</option>
-                    <option value="Hawassa">Hawassa</option>
-                    <option value="Soddo">Soddo</option>
-                  </VeeField>
-                </div>
-                <button class="btn join-item">Use Geo Location</button>
-              </div>
-            </div>
-          </div>
         </section>
 
         <div class="text-gray-700 md:flex">
@@ -194,7 +200,7 @@
               type="button"
               class="btn btn-sm"
               @click="nextStep"
-              :disabled="step === 3 || itemModel.category === 0"
+              :disabled="step === 4 || itemModel.category === 0"
             >
               Next
             </button>
