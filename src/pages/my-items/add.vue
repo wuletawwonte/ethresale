@@ -174,7 +174,7 @@ function nextStep() {
       return;
     }
   }
-
+  console.log(itemModel.value);
   step.value += 1;
 }
 

@@ -67,6 +67,7 @@
 const itemModel = ref({
   selectedFiles: [] as File[],
 });
+const emit = defineEmits(["update:modelValue"]);
 
 // adds the image to the selectedFiles array
 function onFileChange(event: Event) {
@@ -85,6 +86,7 @@ function onFileChange(event: Event) {
 
       if (!isDuplicate) {
         itemModel.value.selectedFiles.push(currFile);
+        emit("update:modelValue", itemModel.value.selectedFiles);
       }
     }
   }
