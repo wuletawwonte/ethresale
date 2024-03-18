@@ -110,7 +110,7 @@ const logout = async () => {
           </li>
           <li><a>Settings</a></li>
           <li>
-            <a @click.prevent="logout">{{ $t("Logout") }}</a>
+            <a @click.prevent="logout">Logout</a>
           </li>
         </ul>
       </div>
