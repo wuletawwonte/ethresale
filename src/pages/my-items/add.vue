@@ -116,7 +116,10 @@
               You can add upto 10 photos
             </p>
           </div>
-          <VueFileUploader v-model="itemModel.selectedFiles" />
+          <VueFileUploader
+            v-model="itemModel.selectedFiles"
+            :value="itemModel.selectedFiles"
+          />
         </section>
 
         <div class="text-gray-700 md:flex">
