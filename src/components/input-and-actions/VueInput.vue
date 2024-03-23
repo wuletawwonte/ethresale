@@ -52,6 +52,13 @@ const onInput = (e: Event) => {
     </Label>
     <div :class="['flex-grow', { 'md:w-2/3': orientation === 'horizontal' }]">
       <div class="join">
+        <div
+          v-if="prefix"
+          class="join-item flex items-center border border-base-300 bg-base-100 px-4"
+        >
+          <span class="text-sm text-base-content"> {{ prefix }} </span>
+        </div>
+
         <div>
           <input
             :type="type"
