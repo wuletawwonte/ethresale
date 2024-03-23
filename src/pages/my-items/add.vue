@@ -81,32 +81,13 @@
             </div>
           </div>
 
-          <div class="md:flex">
-            <div class="prose mb-1 flex flex-col md:mb-0 md:w-1/3">
-              <label>City</label>
-              <label class="text-xs opacity-60 hover:opacity-80"
-                >Where are you located?{{ itemModel.city }}</label
-              >
-            </div>
-            <div class="md:w-2/3 md:flex-grow">
-              <div class="join">
-                <div>
-                  <VeeField
-                    as="select"
-                    name="city"
-                    class="join-item select select-bordered"
-                    placeholder="City"
-                  >
-                    <option value="" selected>City</option>
-                    <option value="Arbaminch">Arbaminch</option>
-                    <option value="Hawassa">Hawassa</option>
-                    <option value="Soddo">Soddo</option>
-                  </VeeField>
-                </div>
-                <button class="btn join-item">Use Geo Location</button>
-              </div>
-            </div>
-          </div>
+          <VueSelect
+            id="city"
+            v-model="itemModel.city"
+            label="City"
+            sublabel="Where are you located?"
+            :options="cities"
+          />
         </section>
 
         <section v-else-if="step === 3" class="flex flex-col gap-6 lg:px-4">
@@ -169,6 +150,19 @@ const categories = ref<Category[]>([
   { name: "Clothing", id: 3, icon: "map:clothing-store" },
   { name: "Books", id: 4, icon: "map:book-store" },
   { name: "Other", id: 6, icon: "map:store" },
+]);
+
+const cities = ref<string[]>([
+  "Addis Ababa",
+  "Dire Dawa",
+  "Mekelle",
+  "Gondar",
+  "Adama",
+  "Jimma",
+  "Bahirdar",
+  "Hawassa",
+  "Dessie",
+  "Shashemene",
 ]);
 
 function nextStep() {
