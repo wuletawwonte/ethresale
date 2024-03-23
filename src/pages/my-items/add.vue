@@ -74,7 +74,7 @@
             v-model="itemModel.city"
             label="City"
             sublabel="Where are you located?"
-            :options="cities"
+            :options="cities!"
             placeholder="Select City"
             :selected="itemModel.city"
           />
@@ -122,7 +122,6 @@
 
 <script setup lang="ts">
 import type { Database } from "~/types/supabase";
-import type { Category } from "@/types";
 import type { ItemModel } from "@/types";
 
 const itemModel = ref<ItemModel>({
@@ -154,19 +153,16 @@ const { data: categories, pending } = await useAsyncData(
   },
 );
 
-const cities = ref<string[]>([
-  "Arbaminch",
-  "Addis Ababa",
-  "Dire Dawa",
-  "Mekelle",
-  "Gondar",
-  "Adama",
-  "Jimma",
-  "Bahirdar",
-  "Hawassa",
-  "Dessie",
-  "Shashemene",
-]);
+const { data: cities } = await useAsyncData(
+  "cities",
+  async () => {
+    return await client.from("cities").select("name");
+  },
+  {
+    transform: (result) => result.data!.map((city: any) => city.name),
+    lazy: true,
+  },
+);
 
 function nextStep() {
   if (step.value === 1) {
