@@ -3,7 +3,9 @@
     class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 md:p-2 lg:grid-cols-4"
   >
     <input type="number" hidden v-model="category" />
+    <div v-if="pending" class="skeleton h-52 max-w-sm rounded-lg"></div>
     <div
+      v-else
       v-for="categoryItem in categories"
       :key="categoryItem.id"
       class="group max-w-sm cursor-pointer rounded-lg border-2 bg-base-200 p-6 hover:border-base-200 hover:shadow-lg"
@@ -50,6 +52,11 @@ const props = defineProps({
     type: Number,
     required: true,
     default: null,
+  },
+  pending: {
+    type: Boolean,
+    required: false,
+    default: true,
   },
 });
 

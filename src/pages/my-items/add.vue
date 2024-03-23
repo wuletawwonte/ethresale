@@ -28,6 +28,7 @@
               :categories="categories!"
               v-model="itemModel.category"
               :selected="itemModel.category"
+              :pending="pending"
             />
           </div>
         </section>
@@ -150,7 +151,7 @@ const step = ref<number>(1);
 
 const client = useSupabaseClient<Database>();
 
-const { data: categories } = await useAsyncData(
+const { data: categories, pending } = await useAsyncData(
   "categories",
   async () => await client.from("categories").select(),
   {
@@ -162,6 +163,7 @@ const { data: categories } = await useAsyncData(
           icon: category.icon,
         };
       }),
+    lazy: true,
   },
 );
 
