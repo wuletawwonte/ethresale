@@ -8,6 +8,7 @@ const emit = defineEmits<TextareaEmits>();
 
 interface TextareaProps {
   label?: string;
+  sublabel?: string;
   modelValue: string | number;
   placeholder?: string;
   name?: string;
@@ -17,8 +18,8 @@ interface TextareaProps {
 }
 
 const props = withDefaults(defineProps<TextareaProps>(), {
-  type: "text",
   label: "",
+  sublabel: "",
   placeholder: "",
   orientation: "horizontal",
   required: false,
@@ -34,7 +35,12 @@ const onInput = (e: Event) => {
   <div
     :class="['prose max-w-none', { 'md:flex': orientation === 'horizontal' }]"
   >
-    <Label v-if="props.label" :for="id" :required="required">
+    <Label
+      v-if="props.label"
+      :for="id"
+      :required="required"
+      :sublabel="sublabel"
+    >
       {{ props.label }}
     </Label>
     <div :class="['flex-grow', { 'md:w-2/3': orientation === 'horizontal' }]">

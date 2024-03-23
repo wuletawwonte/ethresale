@@ -8,6 +8,7 @@ const emit = defineEmits<InputEmits>();
 
 interface InputProps {
   label?: string;
+  sublabel?: string;
   modelValue: string | number;
   placeholder?: string;
   type?: string;
@@ -20,6 +21,7 @@ interface InputProps {
 const props = withDefaults(defineProps<InputProps>(), {
   type: "text",
   label: "",
+  sublabel: "",
   placeholder: "",
   orientation: "horizontal",
   name: "",
@@ -36,7 +38,12 @@ const onInput = (e: Event) => {
   <div
     :class="['prose max-w-none', { 'md:flex': orientation === 'horizontal' }]"
   >
-    <Label v-if="props.label" :for="id" :required="required">
+    <Label
+      v-if="props.label"
+      :for="id"
+      :required="required"
+      :sublabel="sublabel"
+    >
       {{ props.label }}
     </Label>
     <div :class="['flex-grow', { 'md:w-2/3': orientation === 'horizontal' }]">
