@@ -13,6 +13,8 @@ interface InputProps {
   placeholder?: string;
   type?: string;
   name?: string;
+  prefix?: string;
+  suffix?: string;
   orientation?: "vertical" | "horizontal";
   id: string;
   required?: boolean;
@@ -23,6 +25,8 @@ const props = withDefaults(defineProps<InputProps>(), {
   label: "",
   sublabel: "",
   placeholder: "",
+  prefix: "",
+  suffix: "",
   orientation: "horizontal",
   name: "",
   required: false,
