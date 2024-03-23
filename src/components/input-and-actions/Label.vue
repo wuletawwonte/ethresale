@@ -4,8 +4,11 @@
       ><slot />
       <span v-if="props.required" class="text-sm text-red-500">*</span>
     </label>
-    <label v-if="props.sublabel" class="text-xs opacity-60 hover:opacity-80"
-      >Where are you located?{{ sublabel }}</label
+    <label
+      :for="props.for"
+      v-if="props.sublabel"
+      class="text-xs opacity-60 hover:opacity-80"
+      >{{ sublabel }}</label
     >
   </div>
 </template>
