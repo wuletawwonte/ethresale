@@ -32,7 +32,11 @@ const { data: items, pending } = await useAsyncData(
       <div
         class="xs:grid-cols-grid1 grid flex-grow gap-4 py-4 sm:grid-cols-grid2 md:grid-cols-grid3 lg:grid-cols-grid4"
       >
-        <div v-if="pending" class="flex max-w-[600px] flex-col gap-4">
+        <div
+          v-if="pending"
+          v-for="n in 5"
+          class="flex max-w-[600px] flex-col gap-4"
+        >
           <div class="skeleton h-36 w-full"></div>
           <div class="skeleton h-4 w-28"></div>
           <div class="skeleton h-4 w-full"></div>
