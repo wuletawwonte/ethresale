@@ -37,7 +37,7 @@
           <div class="flex flex-col items-center">
             <h2 class="text-xl font-normal">Details</h2>
             <p class="text-sm text-gray-500 dark:text-gray-400">
-              Choose the plan that best suits your needs
+              Fill out the details of your item.
             </p>
           </div>
           <VueInput
@@ -58,29 +58,16 @@
             v-model="itemModel.description"
           />
 
-          <div class="md:flex">
-            <div class="prose mb-1 md:mb-0 md:w-1/3">
-              <label>Price</label>
-            </div>
-            <div class="md:w-2/3 md:flex-grow">
-              <div class="join">
-                <div>
-                  <VeeField
-                    name="price"
-                    type="number"
-                    class="input join-item input-bordered w-80 appearance-none focus:outline-none"
-                    placeholder="Price"
-                    v-model="itemModel.price"
-                  />
-                </div>
-                <div
-                  class="join-item flex items-center border border-base-300 bg-base-100 px-4"
-                >
-                  <span class="text-sm text-base-content">ETB</span>
-                </div>
-              </div>
-            </div>
-          </div>
+          <VueInput
+            type="number"
+            id="price"
+            label="Price"
+            placeholder="Price"
+            name="price"
+            v-model="itemModel.price"
+            suffix="ETB"
+            :value="itemModel.price"
+          />
 
           <VueSelect
             id="city"
