@@ -2,7 +2,7 @@
 import type { Database } from "~/types/supabase";
 const client = useSupabaseClient<Database>();
 
-const { data: items } = await useAsyncData(
+const { data: items, pending } = await useAsyncData(
   "items",
   async () => await client.from("items").select().order("created_at"),
   {
@@ -17,6 +17,7 @@ const { data: items } = await useAsyncData(
           created_at: item.created_at,
         };
       }),
+    lazy: true,
   },
 );
 </script>
@@ -31,7 +32,8 @@ const { data: items } = await useAsyncData(
       <div
         class="xs:grid-cols-grid1 grid flex-grow gap-4 py-4 sm:grid-cols-grid2 md:grid-cols-grid3 lg:grid-cols-grid4"
       >
-        <ItemCard v-for="item in items" :key="item.id" :item="item" />
+        <div v-if="pending" class="skeleton h-32 w-32"></div>
+        <ItemCard v-else v-for="item in items" :key="item.id" :item="item" />
       </div>
     </div>
   </div>
