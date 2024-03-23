@@ -5,7 +5,19 @@ const client = useSupabaseClient<Database>();
 const { data: items } = await useAsyncData(
   "items",
   async () => await client.from("items").select().order("created_at"),
-  { transform: (result) => result.data },
+  {
+    transform: (result) =>
+      result.data?.map((item) => {
+        return {
+          id: item.id,
+          name: item.name,
+          description: item.description,
+          image: item.image,
+          price: item.price,
+          created_at: item.created_at,
+        };
+      }),
+  },
 );
 </script>
 

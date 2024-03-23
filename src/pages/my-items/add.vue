@@ -25,7 +25,7 @@
           </div>
           <div>
             <CategoryChooser
-              :categories="categories"
+              :categories="categories!"
               v-model="itemModel.category"
               :selected="itemModel.category"
             />
@@ -133,6 +133,7 @@
 </template>
 
 <script setup lang="ts">
+import type { Database } from "~/types/supabase";
 import type { Category } from "@/types";
 import type { ItemModel } from "@/types";
 
@@ -146,13 +147,23 @@ const itemModel = ref<ItemModel>({
 });
 
 const step = ref<number>(1);
-const categories = ref<Category[]>([
-  { name: "Electronics", id: 1, icon: "map:electronics-store" },
-  { name: "Furniture", id: 2, icon: "map:furniture-store" },
-  { name: "Clothing", id: 3, icon: "map:clothing-store" },
-  { name: "Books", id: 4, icon: "map:book-store" },
-  { name: "Other", id: 6, icon: "map:store" },
-]);
+
+const client = useSupabaseClient<Database>();
+
+const { data: categories } = await useAsyncData(
+  "categories",
+  async () => await client.from("categories").select(),
+  {
+    transform: (result) =>
+      result.data!.map((category: any) => {
+        return {
+          id: category.id,
+          name: category.name,
+          icon: category.icon,
+        };
+      }),
+  },
+);
 
 const cities = ref<string[]>([
   "Arbaminch",

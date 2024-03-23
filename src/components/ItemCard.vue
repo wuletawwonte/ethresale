@@ -22,7 +22,7 @@ export default {
     </figure>
     <div class="card-body">
       <h2 class="card-title">{{ item.name }}</h2>
-      <p>If a dog chews shoes whose shoes does he choose?</p>
+      <p>{{ item.description }}</p>
       <div class="card-actions justify-end">
         <button class="btn btn-primary btn-sm">Buy Now</button>
       </div>

@@ -43,7 +43,7 @@ const emit = defineEmits(["update:modelValue"]);
 
 const props = defineProps({
   categories: {
-    type: Array as PropType<Category[]>,
+    type: Array as PropType<Category[]> | null,
     required: true,
   },
   selected: {
