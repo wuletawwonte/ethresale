@@ -1,32 +1,35 @@
 <script setup lang="ts">
-interface TextareaEmits {
+interface InputEmits {
   (event: "update:modelValue", value: string): void;
   (event: "blur", e: FocusEvent): void;
 }
 
-const emit = defineEmits<TextareaEmits>();
+const emit = defineEmits<InputEmits>();
 
-interface TextareaProps {
+interface InputProps {
   label?: string;
   sublabel?: string;
-  modelValue: string | number;
   placeholder?: string;
+  selected?: string;
   name?: string;
   orientation?: "vertical" | "horizontal";
   id: string;
   required?: boolean;
+  options: string[];
 }
 
-const props = withDefaults(defineProps<TextareaProps>(), {
+const props = withDefaults(defineProps<InputProps>(), {
   label: "",
   sublabel: "",
   placeholder: "",
+  selected: "",
   orientation: "horizontal",
+  name: "",
   required: false,
 });
 
-const onInput = (e: Event) => {
-  const inputValue = (e.target as HTMLTextAreaElement).value;
+const onChange = (e: Event) => {
+  const inputValue = (e.target as HTMLSelectElement).value;
   emit("update:modelValue", inputValue);
 };
 </script>
@@ -44,15 +47,21 @@ const onInput = (e: Event) => {
       {{ props.label }}
     </Label>
     <div :class="['flex-grow', { 'md:w-2/3': orientation === 'horizontal' }]">
-      <textarea
+      <select
         :id="id"
-        ref="inputRef"
         :name="name"
-        class="textarea textarea-bordered w-full"
-        :value="props.modelValue"
-        :placeholder="props.placeholder"
-        @input="onInput"
-      ></textarea>
+        class="select select-bordered w-full max-w-xs"
+        @change="onChange"
+      >
+        <option disabled :selected="selected === ''">{{ placeholder }}</option>
+        <option
+          v-for="option in options"
+          :key="option"
+          :selected="option === selected"
+        >
+          {{ option }}
+        </option>
+      </select>
     </div>
   </div>
 </template>
