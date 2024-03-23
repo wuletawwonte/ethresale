@@ -87,6 +87,8 @@
             label="City"
             sublabel="Where are you located?"
             :options="cities"
+            placeholder="Select City"
+            :selected="itemModel.city"
           />
         </section>
 
@@ -153,6 +155,7 @@ const categories = ref<Category[]>([
 ]);
 
 const cities = ref<string[]>([
+  "Arbaminch",
   "Addis Ababa",
   "Dire Dawa",
   "Mekelle",

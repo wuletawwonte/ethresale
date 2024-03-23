@@ -10,23 +10,26 @@ interface InputProps {
   label?: string;
   sublabel?: string;
   placeholder?: string;
+  selected?: string;
   name?: string;
   orientation?: "vertical" | "horizontal";
   id: string;
   required?: boolean;
+  options: string[];
 }
 
 const props = withDefaults(defineProps<InputProps>(), {
   label: "",
   sublabel: "",
   placeholder: "",
+  selected: "",
   orientation: "horizontal",
   name: "",
   required: false,
 });
 
-const onInput = (e: Event) => {
-  const inputValue = (e.target as HTMLInputElement).value;
+const onChange = (e: Event) => {
+  const inputValue = (e.target as HTMLSelectElement).value;
   emit("update:modelValue", inputValue);
 };
 </script>
@@ -48,10 +51,16 @@ const onInput = (e: Event) => {
         :id="id"
         :name="name"
         class="select select-bordered w-full max-w-xs"
+        @change="onChange"
       >
-        <option disabled selected>Who shot first?</option>
-        <option>Han Solo</option>
-        <option>Greedo</option>
+        <option disabled :selected="selected === ''">{{ placeholder }}</option>
+        <option
+          v-for="option in options"
+          :key="option"
+          :selected="option === selected"
+        >
+          {{ option }}
+        </option>
       </select>
     </div>
   </div>
