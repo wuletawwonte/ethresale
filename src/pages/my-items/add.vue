@@ -25,9 +25,10 @@
           </div>
           <div>
             <CategoryChooser
-              :categories="categories"
+              :categories="categories!"
               v-model="itemModel.category"
               :selected="itemModel.category"
+              :pending="pending"
             />
           </div>
         </section>
@@ -36,7 +37,7 @@
           <div class="flex flex-col items-center">
             <h2 class="text-xl font-normal">Details</h2>
             <p class="text-sm text-gray-500 dark:text-gray-400">
-              Choose the plan that best suits your needs
+              Fill out the details of your item.
             </p>
           </div>
           <VueInput
@@ -57,36 +58,23 @@
             v-model="itemModel.description"
           />
 
-          <div class="md:flex">
-            <div class="prose mb-1 md:mb-0 md:w-1/3">
-              <label>Price</label>
-            </div>
-            <div class="md:w-2/3 md:flex-grow">
-              <div class="join">
-                <div>
-                  <VeeField
-                    name="price"
-                    type="number"
-                    class="input join-item input-bordered w-80 appearance-none focus:outline-none"
-                    placeholder="Price"
-                    v-model="itemModel.price"
-                  />
-                </div>
-                <div
-                  class="join-item flex items-center border border-base-300 bg-base-100 px-4"
-                >
-                  <span class="text-sm text-base-content">ETB</span>
-                </div>
-              </div>
-            </div>
-          </div>
+          <VueInput
+            type="number"
+            id="price"
+            label="Price"
+            placeholder="Price"
+            name="price"
+            v-model="itemModel.price"
+            suffix="ETB"
+            :value="itemModel.price"
+          />
 
           <VueSelect
             id="city"
             v-model="itemModel.city"
             label="City"
             sublabel="Where are you located?"
-            :options="cities"
+            :options="cities!"
             placeholder="Select City"
             :selected="itemModel.city"
           />
@@ -133,7 +121,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Category } from "@/types";
+import type { Database } from "~/types/supabase";
 import type { ItemModel } from "@/types";
 
 const itemModel = ref<ItemModel>({
@@ -146,27 +134,35 @@ const itemModel = ref<ItemModel>({
 });
 
 const step = ref<number>(1);
-const categories = ref<Category[]>([
-  { name: "Electronics", id: 1, icon: "map:electronics-store" },
-  { name: "Furniture", id: 2, icon: "map:furniture-store" },
-  { name: "Clothing", id: 3, icon: "map:clothing-store" },
-  { name: "Books", id: 4, icon: "map:book-store" },
-  { name: "Other", id: 6, icon: "map:store" },
-]);
 
-const cities = ref<string[]>([
-  "Arbaminch",
-  "Addis Ababa",
-  "Dire Dawa",
-  "Mekelle",
-  "Gondar",
-  "Adama",
-  "Jimma",
-  "Bahirdar",
-  "Hawassa",
-  "Dessie",
-  "Shashemene",
-]);
+const client = useSupabaseClient<Database>();
+
+const { data: categories, pending } = await useAsyncData(
+  "categories",
+  async () => await client.from("categories").select(),
+  {
+    transform: (result) =>
+      result.data!.map((category: any) => {
+        return {
+          id: category.id,
+          name: category.name,
+          icon: category.icon,
+        };
+      }),
+    lazy: true,
+  },
+);
+
+const { data: cities } = await useAsyncData(
+  "cities",
+  async () => {
+    return await client.from("cities").select("name");
+  },
+  {
+    transform: (result) => result.data!.map((city: any) => city.name),
+    lazy: true,
+  },
+);
 
 function nextStep() {
   if (step.value === 1) {
