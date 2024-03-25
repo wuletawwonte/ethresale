@@ -79,6 +79,9 @@ const { data: cities } = await useAsyncData(
         <Icon name="material-symbols:list-rounded" size="1.3rem" />
         <span>{{ $t("Find and Buy All Second Hand Products for Sale") }}</span>
       </button>
+      <label for="my-drawer" class="btn btn-primary drawer-button"
+        >Open drawer</label
+      >
     </div>
     <div class="prose flex basis-1/2 flex-col gap-4 py-5 pl-4 pr-0">
       <p>{{ $t("Main Second Hand Product Categories") }}</p>
