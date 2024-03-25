@@ -4,7 +4,7 @@ import type { Category } from "~/types";
 
 const client = useSupabaseClient<Database>();
 
-const categories = await useAsyncData(
+const { data: categories } = await useAsyncData(
   "categories",
   async () => {
     const { data } = await client
@@ -23,8 +23,6 @@ const categories = await useAsyncData(
     },
   },
 );
-
-console.log(categories.data.value);
 
 const { data: cities } = useAsyncData(
   "cities",
@@ -83,7 +81,7 @@ const { data: cities } = useAsyncData(
       <p>{{ $t("Main Second Hand Product Categories") }}</p>
       <div class="grid grid-cols-3 gap-2">
         <button
-          v-for="category in categories!.data.value"
+          v-for="category in categories!"
           :key="category.id"
           class="btn btn-outline btn-sm btn-block inline-flex items-center justify-start"
         >
