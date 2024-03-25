@@ -74,7 +74,7 @@
             v-model="itemModel.city"
             label="City"
             sublabel="Where are you located?"
-            :options="cities!"
+            :options="cities! as any"
             placeholder="Select City"
             :selected="itemModel.city"
           />
@@ -129,7 +129,7 @@ const itemModel = ref<ItemModel>({
   description: "",
   category: 0,
   price: 0,
-  city: "",
+  city: 0,
   selectedFiles: [],
 });
 
@@ -153,13 +153,26 @@ const { data: categories, pending } = await useAsyncData(
   },
 );
 
-const { data: cities } = await useAsyncData(
+interface City {
+  id: number;
+  name: string;
+}
+
+const cities = await useAsyncData(
   "cities",
   async () => {
-    return await client.from("cities").select("name");
+    const { data } = await client
+      .from("cities")
+      .select("name")
+      .returns<City[]>();
+    return data;
   },
   {
-    transform: (result) => result.data!.map((city: any) => city.name),
+    transform: (result) =>
+      result!.map((city: City) => ({
+        id: city.id,
+        name: city.name,
+      })),
     lazy: true,
   },
 );
