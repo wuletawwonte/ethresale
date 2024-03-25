@@ -92,7 +92,7 @@ const { data: cities } = await useAsyncData(
           v-else
           v-for="category in categories!"
           :key="category.id"
-          class="btn btn-outline btn-sm btn-block inline-flex items-center justify-start"
+          class="btn btn-outline btn-sm btn-block inline-flex flex-nowrap items-center justify-start"
         >
           <Icon :name="category.icon!" size="1rem" />
           <span>{{ category.name }}</span>
