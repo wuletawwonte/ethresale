@@ -53,7 +53,7 @@ const { data: cities } = await useAsyncData(
       <h3 class="text-sky-700">
         {{ $t("Buy and Sell Second Hand or Used Products") }}
       </h3>
-      <form action="" class="flex w-full rounded-md bg-sky-600 p-4">
+      <form action="" class="flex w-full rounded-md bg-base-300 p-4">
         <select class="select select-bordered select-sm mr-2 w-full max-w-xs">
           <option disabled selected>{{ $t("City") }} ...</option>
           <option v-for="city in cities" :key="city.id">{{ city.name }}</option>
