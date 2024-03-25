@@ -40,6 +40,25 @@ const categories = ref([
     icon: "fa-solid:desktop",
   },
 ]);
+
+import type { Database } from "~/types/supabase";
+
+const client = useSupabaseClient<Database>();
+
+const { data: cities } = useAsyncData(
+  "cities",
+  async () => {
+    return await client.from("cities").select("name, id");
+  },
+  {
+    transform: (result) => {
+      return result.data?.map((city) => ({
+        id: city.id,
+        name: city.name,
+      }));
+    },
+  },
+);
 </script>
 
 <template>
@@ -55,8 +74,7 @@ const categories = ref([
       <form action="" class="flex w-full rounded-md bg-sky-600 p-4">
         <select class="select select-bordered select-sm mr-2 w-full max-w-xs">
           <option disabled selected>{{ $t("City") }} ...</option>
-          <option>Arbaminch</option>
-          <option>Hawassa</option>
+          <option v-for="city in cities">{{ city.name }}</option>
         </select>
         <input
           type="search"
