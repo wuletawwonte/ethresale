@@ -4,7 +4,7 @@ import type { Category } from "~/types";
 
 const client = useSupabaseClient<Database>();
 
-const { data: categories } = await useAsyncData(
+const { data: categories, pending } = await useAsyncData(
   "categories",
   async () => {
     const { data } = await client
@@ -50,10 +50,10 @@ const { data: cities } = await useAsyncData(
     <div
       class="prose flex basis-1/2 flex-col items-start gap-4 py-5 pl-0 pr-0 md:pr-4"
     >
-      <h3 class="text-sky-700">
+      <h3 class="text-base-content">
         {{ $t("Buy and Sell Second Hand or Used Products") }}
       </h3>
-      <form action="" class="flex w-full rounded-md bg-sky-600 p-4">
+      <form action="" class="flex w-full rounded-md bg-base-300 p-4">
         <select class="select select-bordered select-sm mr-2 w-full max-w-xs">
           <option disabled selected>{{ $t("City") }} ...</option>
           <option v-for="city in cities" :key="city.id">{{ city.name }}</option>
@@ -83,7 +83,13 @@ const { data: cities } = await useAsyncData(
     <div class="prose flex basis-1/2 flex-col gap-4 py-5 pl-4 pr-0">
       <p>{{ $t("Main Second Hand Product Categories") }}</p>
       <div class="grid grid-cols-3 gap-2">
+        <div
+          v-if="pending"
+          v-for="key in 8"
+          class="skeleton h-8 w-full rounded-lg"
+        ></div>
         <button
+          v-else
           v-for="category in categories!"
           :key="category.id"
           class="btn btn-outline btn-sm btn-block inline-flex items-center justify-start"
