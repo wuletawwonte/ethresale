@@ -21,10 +21,11 @@ const { data: categories } = await useAsyncData(
         icon: category.icon,
       }));
     },
+    lazy: true,
   },
 );
 
-const { data: cities } = useAsyncData(
+const { data: cities } = await useAsyncData(
   "cities",
   async () => {
     return await client.from("cities").select("name, id");
@@ -36,6 +37,7 @@ const { data: cities } = useAsyncData(
         name: city.name,
       }));
     },
+    lazy: true,
   },
 );
 </script>
