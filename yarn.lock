@@ -638,10 +638,10 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-2.0.2.tgz#d9fae00a2d5cb40f92cfe64b47ad749fbc38f917"
   integrity sha512-6EwiSjwWYP7pTckG6I5eyFANjPhmPjUX9JRLUSfNPC7FX7zK9gyZAfUEaECL6ALTpGX5AjnBq3C9XmVWPitNpw==
 
-"@iconify/collections@^1.0.401":
-  version "1.0.402"
-  resolved "https://registry.yarnpkg.com/@iconify/collections/-/collections-1.0.402.tgz#4cd8e10efd6a012a0a027cc743bdc75ee9d8507a"
-  integrity sha512-7GpWRCFOpuzPuFEHM/XzIlL3G25lhgbrnPsBkAdadTV1/m0fOYM5u55FNajATA8L+Bl2gGC5Z7HpBt86gefheQ==
+"@iconify/collections@^1.0.406":
+  version "1.0.407"
+  resolved "https://registry.yarnpkg.com/@iconify/collections/-/collections-1.0.407.tgz#2b6566dc149a938b493b8fb33ffdba1c3275bf0c"
+  integrity sha512-1Wn5xz6tsuXFWLyxc4RUoSMMC/WhOgnTd0uiRsRsIEp3HPPGT69vFmdfDamsZi8q3H4olgpkKGwMcY9W3uQ+3w==
   dependencies:
     "@iconify/types" "*"
 
@@ -958,13 +958,22 @@
   resolved "https://registry.yarnpkg.com/@nuxt/devalue/-/devalue-2.0.2.tgz#5749f04df13bda4c863338d8dabaf370f45ef7c7"
   integrity sha512-GBzP8zOc7CGWyFQS6dv1lQz8VVpz5C2yRszbXufwG/9zhStTIH50EtD87NmWbTMwXDvZLNg8GIpb1UFdH93JCA==
 
-"@nuxt/devtools-kit@1.0.8", "@nuxt/devtools-kit@^1.0.8":
+"@nuxt/devtools-kit@1.0.8":
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/@nuxt/devtools-kit/-/devtools-kit-1.0.8.tgz#ecaa541909293d6b90a7bbab728c1c9891849ae5"
   integrity sha512-j7bNZmoAXQ1a8qv6j6zk4c/aekrxYqYVQM21o/Hy4XHCUq4fajSgpoc8mjyWJSTfpkOmuLyEzMexpDWiIVSr6A==
   dependencies:
     "@nuxt/kit" "^3.9.1"
     "@nuxt/schema" "^3.9.1"
+    execa "^7.2.0"
+
+"@nuxt/devtools-kit@^1.1.1":
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/@nuxt/devtools-kit/-/devtools-kit-1.1.3.tgz#139044b0067ffbc999f9ce61324bcd545fd9c57c"
+  integrity sha512-bVIGng74haYAvJXiV+xtk7xrpHPZOJtcV4Flgl9IM+PYSjqs5pIRFRDnDwCQYAGt99hxGtQkdTBRqPQLxVCmeA==
+  dependencies:
+    "@nuxt/kit" "^3.11.1"
+    "@nuxt/schema" "^3.11.1"
     execa "^7.2.0"
 
 "@nuxt/devtools-wizard@1.0.8":
@@ -1088,7 +1097,7 @@
     unimport "^3.7.1"
     untyped "^1.4.2"
 
-"@nuxt/schema@3.11.1":
+"@nuxt/schema@3.11.1", "@nuxt/schema@^3.11.1":
   version "3.11.1"
   resolved "https://registry.yarnpkg.com/@nuxt/schema/-/schema-3.11.1.tgz#1f9e59be77d8c08904c06a26d9570c9c687bcfd6"
   integrity sha512-XyGlJsf3DtkouBCvBHlvjz+xvN4vza3W7pY3YBNMnktxlMQtfFiF3aB3A2NGLmBnJPqD3oY0j7lljraELb5hkg==
@@ -2933,10 +2942,10 @@ culori@^3:
   resolved "https://registry.yarnpkg.com/culori/-/culori-3.3.0.tgz#e33530adbd124d53bd6550394397e695eaaed739"
   integrity sha512-pHJg+jbuFsCjz9iclQBqyL3B2HLCBF71BwVNujUYEvCeQMvV97R59MNK3R2+jgJ3a1fcZgI9B3vYgz8lzr/BFQ==
 
-daisyui@^4.7.3:
-  version "4.7.3"
-  resolved "https://registry.yarnpkg.com/daisyui/-/daisyui-4.7.3.tgz#2d75b71d1c52f643914dea9b12930acc51ed9f49"
-  integrity sha512-R8jUpBMAUm4rSyxzGa9QqFdJTkzREtb1QahXdDoOfElGiF4VbSuu5bfqQoOro1kkSagPy+aTKu5WtSSXmH3u3g==
+daisyui@^4.8.0:
+  version "4.8.0"
+  resolved "https://registry.yarnpkg.com/daisyui/-/daisyui-4.8.0.tgz#f49ed22d07fe67d92b3f9bd334f8cd4efd3ccb2d"
+  integrity sha512-SXy6MVzhqaa1vPZIdo5K/QAyRaQ4dbRHG+oXy7BFqJnZlwOB6bGkQRqqvClBUY2wCyiiyhk4gY5Ngi1m2JRIEA==
   dependencies:
     css-selector-tokenizer "^0.8"
     culori "^3"
@@ -5586,15 +5595,15 @@ nuxi@^3.10.1:
   optionalDependencies:
     fsevents "~2.3.3"
 
-nuxt-icon@^0.6.9:
-  version "0.6.9"
-  resolved "https://registry.yarnpkg.com/nuxt-icon/-/nuxt-icon-0.6.9.tgz#36145de0a16643f7949f0d9d7e1322b26ecd1bc1"
-  integrity sha512-l80F5sIVdwlQPfw/9RFuhVE1Pi3NM3wbgePxDZkgYZe5XOpg4ZznhgObLRyAFFjCeU7XVbFMBe09uJBRM4tuvg==
+nuxt-icon@^0.6.10:
+  version "0.6.10"
+  resolved "https://registry.yarnpkg.com/nuxt-icon/-/nuxt-icon-0.6.10.tgz#a39afa47286a20dd78a9f9b4235ed143d9b44e1b"
+  integrity sha512-S9zHVA66ox4ZSpMWvCjqKZC4ZogC0s2z3vZs+M4D95YXGPEXwxDZu+insMKvkbe8+k7gvEmtTk0eq3KusKlxiw==
   dependencies:
-    "@iconify/collections" "^1.0.401"
+    "@iconify/collections" "^1.0.406"
     "@iconify/vue" "^4.1.1"
-    "@nuxt/devtools-kit" "^1.0.8"
-    "@nuxt/kit" "^3.10.3"
+    "@nuxt/devtools-kit" "^1.1.1"
+    "@nuxt/kit" "^3.11.1"
 
 nuxt@^3.11.0:
   version "3.11.0"

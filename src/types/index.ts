@@ -9,6 +9,6 @@ export interface ItemModel {
   description: string;
   category: number;
   price: number;
-  city: string;
+  city: number;
   selectedFiles: File[];
 }

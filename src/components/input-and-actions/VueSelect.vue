@@ -10,19 +10,19 @@ interface InputProps {
   label?: string;
   sublabel?: string;
   placeholder?: string;
-  selected?: string;
+  selected?: number;
   name?: string;
   orientation?: "vertical" | "horizontal";
   id: string;
   required?: boolean;
-  options: string[];
+  options: [{ id: number; name: string }];
 }
 
 const props = withDefaults(defineProps<InputProps>(), {
   label: "",
   sublabel: "",
   placeholder: "",
-  selected: "",
+  selected: 0,
   orientation: "horizontal",
   name: "",
   required: false,
@@ -53,13 +53,14 @@ const onChange = (e: Event) => {
         class="select select-bordered w-full max-w-xs"
         @change="onChange"
       >
-        <option disabled :selected="selected === ''">{{ placeholder }}</option>
+        <option disabled :selected="selected === 0">{{ placeholder }}</option>
         <option
           v-for="option in options"
-          :key="option"
-          :selected="option === selected"
+          :key="option.id"
+          :selected="option.id === selected"
+          :value="option.id"
         >
-          {{ option }}
+          {{ option.name }}
         </option>
       </select>
     </div>
