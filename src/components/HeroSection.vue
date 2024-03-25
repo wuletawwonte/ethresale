@@ -10,6 +10,7 @@ const { data: categories } = await useAsyncData(
     const { data } = await client
       .from("categories")
       .select("name, icon, id")
+      .limit(9)
       .returns<Category[]>();
     return data;
   },
