@@ -101,14 +101,14 @@ const { data: cities } = useAsyncData(
     <div class="prose flex basis-1/2 flex-col gap-4 py-5 pl-4 pr-0">
       <p>{{ $t("Main Second Hand Product Categories") }}</p>
       <div class="grid grid-cols-3 gap-2">
-        <NuxtLink
+        <button
           v-for="category in categories"
           :key="category.id"
           class="btn btn-outline btn-sm btn-block inline-flex items-center justify-start"
         >
           <Icon :name="category.icon" size="1rem" />
           <span>{{ category.name }}</span>
-        </NuxtLink>
+        </button>
       </div>
     </div>
   </section>
