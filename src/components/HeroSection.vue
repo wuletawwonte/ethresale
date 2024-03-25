@@ -1,49 +1,30 @@
 <script setup lang="ts">
-const categories = ref([
-  {
-    id: 1,
-    name: "Phones",
-    link: "categories/mobilephones",
-    icon: "fa-solid:mobile",
-  },
-  { id: 2, name: "Cars", link: "categories/cars", icon: "fa-solid:car" },
-  {
-    id: 3,
-    name: "Motorcycles",
-    link: "categories/motorcycles",
-    icon: "fa-solid:motorcycle",
-  },
-  { id: 4, name: "Houses", link: "categories/houses", icon: "fa-solid:home" },
-  { id: 5, name: "Television", link: "categories/tv", icon: "fa-solid:tv" },
-  {
-    id: 6,
-    name: "Tablets",
-    link: "categories/tablets",
-    icon: "fa-solid:tablet",
-  },
-  {
-    id: 7,
-    name: "Land & Plots",
-    link: "categories/landandplots",
-    icon: "fa6-solid:landmark",
-  },
-  {
-    id: 8,
-    name: "Games",
-    link: "categories/videogames",
-    icon: "fa-solid:gamepad",
-  },
-  {
-    id: 18,
-    name: "Computers",
-    link: "categories/computers",
-    icon: "fa-solid:desktop",
-  },
-]);
-
 import type { Database } from "~/types/supabase";
+import type { Category } from "~/types";
 
 const client = useSupabaseClient<Database>();
+
+const categories = await useAsyncData(
+  "categories",
+  async () => {
+    const { data } = await client
+      .from("categories")
+      .select("name, icon, id")
+      .returns<Category[]>();
+    return data;
+  },
+  {
+    transform: (result) => {
+      return result?.map((category) => ({
+        id: category.id,
+        name: category.name,
+        icon: category.icon,
+      }));
+    },
+  },
+);
+
+console.log(categories.data.value);
 
 const { data: cities } = useAsyncData(
   "cities",
@@ -102,11 +83,11 @@ const { data: cities } = useAsyncData(
       <p>{{ $t("Main Second Hand Product Categories") }}</p>
       <div class="grid grid-cols-3 gap-2">
         <button
-          v-for="category in categories"
+          v-for="category in categories!.data.value"
           :key="category.id"
           class="btn btn-outline btn-sm btn-block inline-flex items-center justify-start"
         >
-          <Icon :name="category.icon" size="1rem" />
+          <Icon :name="category.icon!" size="1rem" />
           <span>{{ category.name }}</span>
         </button>
       </div>
