@@ -1,7 +1,7 @@
 <template>
   <NuxtLoadingIndicator />
   <NuxtLayout>
-    <div class="flex flex-col min-h-screen justify-between bg-base-200">
+    <div class="drawer flex min-h-screen flex-col justify-between bg-base-200">
       <div>
         <Header />
         <NuxtPage />
