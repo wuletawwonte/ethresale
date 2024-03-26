@@ -15,7 +15,7 @@
       ></label>
 
       <ul class="menu min-h-full w-80 bg-base-200 p-4 text-base-content">
-        <div class="flex items-center gap-3">
+        <div v-if="user" class="flex items-center gap-3">
           <div class="avatar">
             <div class="mask mask-squircle h-12 w-12">
               <img
@@ -30,11 +30,43 @@
           </div>
         </div>
 
-        <div class="divider"></div>
+        <div v-if="user" class="divider"></div>
 
-        <li><a>Sidebar Item 1</a></li>
-        <li><a>Sidebar Item 2</a></li>
+        <li><nuxt-link to="/"> Home </nuxt-link></li>
+        <li><nuxt-link to="/about"> About </nuxt-link></li>
+        <li><nuxt-link to="/contact"> Contact </nuxt-link></li>
+        <li><nuxt-link to="/my-items">My Items</nuxt-link></li>
+
+        <div v-if="user" class="divider"></div>
+
+        <div v-if="user">
+          <li>
+            <a class="justify-between">
+              Profile
+              <span class="badge">New</span>
+            </a>
+          </li>
+          <li><a>Settings</a></li>
+          <li>
+            <a @click.prevent="logout">Logout</a>
+          </li>
+        </div>
       </ul>
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+const client = useSupabaseClient();
+const user = useSupabaseUser();
+
+const logout = async () => {
+  const { error } = await client.auth.signOut();
+
+  if (error) {
+    console.log(error);
+  }
+
+  navigateTo("/login");
+};
+</script>
