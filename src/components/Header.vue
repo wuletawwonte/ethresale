@@ -16,7 +16,10 @@ const logout = async () => {
 <template>
   <header class="navbar bg-base-100 shadow lg:px-[12%]">
     <div class="navbar-start">
-      <div class="dropdown">
+      <label for="my-drawer" class="btn btn-ghost drawer-button md:hidden">
+        <icon name="heroicons:bars-3-center-left-16-solid" size="1.3rem" />
+      </label>
+      <div class="hidden md:dropdown">
         <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
           <icon name="heroicons:bars-3-center-left-16-solid" size="1.3rem" />
         </div>
