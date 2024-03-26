@@ -80,7 +80,7 @@ const { data: cities } = await useAsyncData(
         <span>{{ $t("Find and Buy All Second Hand Products for Sale") }}</span>
       </button>
     </div>
-    <div class="prose flex flex-col gap-4 py-5 pl-4 pr-0 md:basis-1/2">
+    <div class="prose flex flex-col gap-4 py-5 pr-0 md:basis-1/2 md:pl-4">
       <p>{{ $t("Main Second Hand Product Categories") }}</p>
       <div class="xs:grid-cols-2 grid grid-cols-3 gap-2">
         <div
