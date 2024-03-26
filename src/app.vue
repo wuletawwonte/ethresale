@@ -13,7 +13,7 @@
         <Footer />
       </div>
 
-      <div class="drawer-side z-10">
+      <div class="drawer-side z-10 md:hidden">
         <label
           for="my-drawer"
           aria-label="close sidebar"
