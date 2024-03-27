@@ -53,7 +53,7 @@ const { data: cities } = await useAsyncData(
       <h3 class="hidden text-base-content md:block">
         {{ $t("Buy and Sell Second Hand or Used Products") }}
       </h3>
-      <form action="" class="flex w-full rounded-md bg-base-300 p-4">
+      <form action="" class="flex w-full rounded-md md:bg-base-300 md:p-4">
         <select class="select select-bordered select-sm mr-2 w-full max-w-xs">
           <option disabled selected>{{ $t("City") }} ...</option>
           <option v-for="city in cities" :key="city.id">{{ city.name }}</option>
@@ -61,11 +61,8 @@ const { data: cities } = await useAsyncData(
         <input
           type="search"
           :placeholder="$t('Search') + ' ...'"
-          class="input input-sm input-bordered w-full max-w-xs rounded-e-none"
+          class="input input-sm input-bordered w-full max-w-xs"
         />
-        <button class="btn btn-sm rounded-e-full rounded-s-none">
-          <Icon name="fa-solid:search" size="1rem" />
-        </button>
       </form>
       <button
         class="btn btn-sm btn-block hidden flex-nowrap items-center justify-start bg-base-100 md:flex"
@@ -81,7 +78,9 @@ const { data: cities } = await useAsyncData(
       </button>
     </div>
     <div class="prose flex flex-col gap-4 py-5 pr-0 md:basis-1/2 md:pl-4">
-      <p>{{ $t("Main Second Hand Product Categories") }}</p>
+      <p class="hidden md:block">
+        {{ $t("Main Second Hand Product Categories") }}
+      </p>
       <div class="xs:grid-cols-2 grid grid-cols-3 gap-2">
         <div
           v-if="pending"
