@@ -6,6 +6,12 @@ export default defineNuxtConfig({
       charset: "utf-8",
       viewport: "width=device-width, initial-scale=1",
       title: "Ethresale",
+      meta: [
+        {
+          name: "theme-color",
+          content: "#0047E1",
+        },
+      ],
     },
   },
   devtools: { enabled: true },
@@ -17,6 +23,7 @@ export default defineNuxtConfig({
     "@nuxtjs/supabase",
     "@nuxtjs/i18n",
     "@vee-validate/nuxt",
+    "@vite-pwa/nuxt",
   ],
   colorMode: {
     classSuffix: "",
@@ -61,6 +68,73 @@ export default defineNuxtConfig({
       Form: "VeeForm",
       Field: "VeeField",
       ErrorMessage: "VeeErrorMessage",
+    },
+  },
+  pwa: {
+    manifest: {
+      name: "Ethresale",
+      short_name: "Ethresale",
+      description: "A marketplace for used items",
+      theme_color: "#0047E1",
+      background_color: "#ffffff",
+      screenshots: [
+        {
+          src: "screenshots/screenshot_wide.png",
+          sizes: "2560x1600",
+          type: "image/png",
+          form_factor: "wide",
+        },
+        {
+          src: "screenshots/screenshot_mobile.png",
+          sizes: "1600x2560",
+          type: "image/png",
+        },
+      ],
+      icons: [
+        {
+          src: "icons/icon-48-48.png",
+          sizes: "48x48",
+          type: "image/png",
+        },
+        {
+          src: "icons/icon-72-72.png",
+          sizes: "72x72",
+          type: "image/png",
+        },
+        {
+          src: "icons/icon-96-96.png",
+          sizes: "96x96",
+          type: "image/png",
+        },
+        {
+          src: "icons/icon-144-144.png",
+          sizes: "144x144",
+          type: "image/png",
+        },
+        {
+          src: "icons/icon-192-192.png",
+          sizes: "192x192",
+          type: "image/png",
+        },
+        {
+          src: "icons/icon-512-512.png",
+          sizes: "512x512",
+          type: "image/png",
+        },
+        {
+          purpose: "maskable",
+          src: "icons/icon512_maskable.png",
+          sizes: "512x512",
+          type: "image/png",
+        },
+      ],
+    },
+    workbox: {
+      navigateFallback: "/",
+    },
+    devOptions: {
+      enabled: true,
+      type: "module",
     },
   },
   srcDir: "src/",
