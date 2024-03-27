@@ -64,13 +64,13 @@ const { data: cities } = await useAsyncData(
           <option v-for="city in cities" :key="city.id">{{ city.name }}</option>
         </select>
         <label
-          class="input input-bordered flex w-full items-center gap-2 md:input-sm"
+          class="input input-bordered flex w-full min-w-24 items-center gap-2 md:input-sm"
         >
           <input type="text" class="grow" placeholder="Search" />
           <icon name="ph:magnifying-glass-bold" class="h-4 w-4 opacity-70" />
         </label>
         <button class="btn btn-primary btn-md md:hidden">
-          <icon name="material-symbols:filter-alt" class="h-5 w-5" />
+          <icon name="material-symbols:filter-alt" class="h-4 w-4" />
           Filter
         </button>
       </form>
