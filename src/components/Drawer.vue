@@ -32,10 +32,33 @@
 
         <div v-if="user" class="divider"></div>
 
-        <li><nuxt-link to="/"> Home </nuxt-link></li>
-        <li><nuxt-link to="/about"> About </nuxt-link></li>
-        <li><nuxt-link to="/contact"> Contact </nuxt-link></li>
-        <li><nuxt-link to="/my-items">My Items</nuxt-link></li>
+        <ul class="menu w-full rounded-box bg-base-200">
+          <li>
+            <nuxt-link to="/">
+              <icon name="fa-solid:home" class="h-5 w-5" />
+              Home
+            </nuxt-link>
+          </li>
+          <li>
+            <nuxt-link to="/my-items">
+              <icon name="material-symbols:lists" class="h-5 w-5" />
+              My items
+            </nuxt-link>
+          </li>
+          <li>
+            <nuxt-link to="/my-items/add">
+              <icon name="material-symbols:add-rounded" class="h-5 w-5" />
+              Add item
+            </nuxt-link>
+          </li>
+
+          <li>
+            <nuxt-link to="/about"> About </nuxt-link>
+          </li>
+          <li>
+            <nuxt-link to="/contact"> Contact </nuxt-link>
+          </li>
+        </ul>
 
         <div v-if="user" class="divider"></div>
 

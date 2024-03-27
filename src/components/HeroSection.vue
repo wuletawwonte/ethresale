@@ -50,7 +50,7 @@ const { data: cities } = await useAsyncData(
     <div
       class="prose flex flex-col items-start gap-4 py-5 pl-0 pr-0 md:basis-1/2 md:pr-4"
     >
-      <h3 class="text-base-content">
+      <h3 class="hidden text-base-content md:block">
         {{ $t("Buy and Sell Second Hand or Used Products") }}
       </h3>
       <form action="" class="flex w-full rounded-md bg-base-300 p-4">
