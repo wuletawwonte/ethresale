@@ -48,23 +48,30 @@ const { data: cities } = await useAsyncData(
     class="flex min-h-72 flex-col bg-base-200 px-4 md:flex-row lg:px-[12%]"
   >
     <div
-      class="prose flex flex-col items-start gap-4 py-5 pl-0 pr-0 md:basis-1/2 md:pr-4"
+      class="prose flex flex-col items-start gap-4 px-0 py-5 md:basis-1/2 md:pr-4"
     >
       <h3 class="hidden text-base-content md:block">
         {{ $t("Buy and Sell Second Hand or Used Products") }}
       </h3>
-      <form action="" class="flex w-full rounded-md bg-base-300 p-4">
-        <select class="select select-bordered select-sm mr-2 w-full max-w-xs">
+      <form
+        action=""
+        class="flex w-full gap-4 rounded-md md:bg-base-300 md:p-4"
+      >
+        <select
+          class="select select-bordered select-sm mr-2 hidden w-full max-w-xs md:block"
+        >
           <option disabled selected>{{ $t("City") }} ...</option>
           <option v-for="city in cities" :key="city.id">{{ city.name }}</option>
         </select>
-        <input
-          type="search"
-          :placeholder="$t('Search') + ' ...'"
-          class="input input-sm input-bordered w-full max-w-xs rounded-e-none"
-        />
-        <button class="btn btn-sm rounded-e-full rounded-s-none">
-          <Icon name="fa-solid:search" size="1rem" />
+        <label
+          class="input input-bordered flex w-full items-center gap-2 md:input-sm"
+        >
+          <input type="text" class="grow" placeholder="Search" />
+          <icon name="ph:magnifying-glass-bold" class="h-4 w-4 opacity-70" />
+        </label>
+        <button class="btn btn-primary btn-md md:hidden">
+          <icon name="material-symbols:filter-alt" class="h-5 w-5" />
+          Filter
         </button>
       </form>
       <button
@@ -81,7 +88,9 @@ const { data: cities } = await useAsyncData(
       </button>
     </div>
     <div class="prose flex flex-col gap-4 py-5 pr-0 md:basis-1/2 md:pl-4">
-      <p>{{ $t("Main Second Hand Product Categories") }}</p>
+      <p class="hidden md:block">
+        {{ $t("Main Second Hand Product Categories") }}
+      </p>
       <div class="xs:grid-cols-2 grid grid-cols-3 gap-2">
         <div
           v-if="pending"
