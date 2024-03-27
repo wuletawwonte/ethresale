@@ -17,6 +17,7 @@ export default defineNuxtConfig({
     "@nuxtjs/supabase",
     "@nuxtjs/i18n",
     "@vee-validate/nuxt",
+    "@vite-pwa/nuxt",
   ],
   colorMode: {
     classSuffix: "",
