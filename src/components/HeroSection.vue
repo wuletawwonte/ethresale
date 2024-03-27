@@ -68,13 +68,13 @@ const { data: cities } = await useAsyncData(
         </button>
       </form>
       <button
-        class="btn btn-sm btn-block flex flex-nowrap items-center justify-start bg-base-100"
+        class="btn btn-sm btn-block hidden flex-nowrap items-center justify-start bg-base-100 md:flex"
       >
         <Icon name="material-symbols:box-edit-outline" size="1.2rem" />
         <span>{{ $t("Post Ad to Sell Used Second Hand Product") }}</span>
       </button>
       <button
-        class="btn btn-sm btn-block flex flex-nowrap items-center justify-start bg-base-100"
+        class="btn btn-sm btn-block hidden flex-nowrap items-center justify-start bg-base-100 md:flex"
       >
         <Icon name="material-symbols:list-rounded" size="1.3rem" />
         <span>{{ $t("Find and Buy All Second Hand Products for Sale") }}</span>
