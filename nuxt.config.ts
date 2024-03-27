@@ -64,6 +64,20 @@ export default defineNuxtConfig({
       ErrorMessage: "VeeErrorMessage",
     },
   },
+  pwa: {
+    manifest: {
+      name: "Ethresale",
+      short_name: "Ethresale",
+      description: "A marketplace for used items",
+    },
+    workbox: {
+      navigateFallback: "/",
+    },
+    devOptions: {
+      enabled: true,
+      type: "module",
+    },
+  },
   srcDir: "src/",
   components: [
     {
