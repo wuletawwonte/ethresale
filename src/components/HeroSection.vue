@@ -48,21 +48,31 @@ const { data: cities } = await useAsyncData(
     class="flex min-h-72 flex-col bg-base-200 px-4 md:flex-row lg:px-[12%]"
   >
     <div
-      class="prose flex flex-col items-start gap-4 py-5 pl-0 pr-0 md:basis-1/2 md:pr-4"
+      class="prose flex flex-col items-start gap-4 px-0 py-5 md:basis-1/2 md:pr-4"
     >
       <h3 class="hidden text-base-content md:block">
         {{ $t("Buy and Sell Second Hand or Used Products") }}
       </h3>
-      <form action="" class="flex w-full rounded-md md:bg-base-300 md:p-4">
-        <select class="select select-bordered select-sm mr-2 w-full max-w-xs">
+      <form
+        action=""
+        class="flex w-full gap-4 rounded-md md:bg-base-300 md:p-4"
+      >
+        <select
+          class="select select-bordered select-sm mr-2 hidden w-full max-w-xs md:block"
+        >
           <option disabled selected>{{ $t("City") }} ...</option>
           <option v-for="city in cities" :key="city.id">{{ city.name }}</option>
         </select>
-        <input
-          type="search"
-          :placeholder="$t('Search') + ' ...'"
-          class="input input-sm input-bordered w-full max-w-xs"
-        />
+        <label
+          class="input input-bordered flex w-full items-center gap-2 md:input-sm"
+        >
+          <input type="text" class="grow" placeholder="Search" />
+          <icon name="ph:magnifying-glass-bold" class="h-4 w-4 opacity-70" />
+        </label>
+        <button class="btn btn-primary btn-md md:hidden">
+          <icon name="material-symbols:filter-alt" class="h-5 w-5" />
+          Filter
+        </button>
       </form>
       <button
         class="btn btn-sm btn-block hidden flex-nowrap items-center justify-start bg-base-100 md:flex"
