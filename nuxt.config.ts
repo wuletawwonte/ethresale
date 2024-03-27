@@ -69,6 +69,38 @@ export default defineNuxtConfig({
       name: "Ethresale",
       short_name: "Ethresale",
       description: "A marketplace for used items",
+      icons: [
+        {
+          src: "icons/icon-48-48.png",
+          sizes: "48x48",
+          type: "image/png",
+        },
+        {
+          src: "icons/icon-72-72.png",
+          sizes: "72x72",
+          type: "image/png",
+        },
+        {
+          src: "icons/icon-96-96.png",
+          sizes: "96x96",
+          type: "image/png",
+        },
+        {
+          src: "icons/icon-144-144.png",
+          sizes: "144x144",
+          type: "image/png",
+        },
+        {
+          src: "icons/icon-192-192.png",
+          sizes: "192x192",
+          type: "image/png",
+        },
+        {
+          src: "icons/icon-512-512.png",
+          sizes: "512x512",
+          type: "image/png",
+        },
+      ],
     },
     workbox: {
       navigateFallback: "/",
