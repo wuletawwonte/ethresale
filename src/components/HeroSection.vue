@@ -45,11 +45,9 @@ const { data: cities } = await useAsyncData(
 
 <template>
   <section
-    class="flex flex-col bg-base-200 p-4 pt-0 md:min-h-72 md:flex-row lg:px-[12%]"
+    class="flex flex-col bg-base-200 pt-0 md:min-h-72 md:flex-row lg:px-[12%]"
   >
-    <div
-      class="prose flex flex-col items-start gap-4 px-0 py-5 md:basis-1/2 md:pr-4"
-    >
+    <div class="prose flex flex-col items-start gap-4 p-4 py-5 md:basis-1/2">
       <h3 class="hidden text-base-content md:block">
         {{ $t("Buy and Sell Second Hand or Used Products") }}
       </h3>
@@ -57,22 +55,21 @@ const { data: cities } = await useAsyncData(
         action=""
         class="flex w-full gap-4 rounded-md md:bg-base-300 md:p-4"
       >
-        <select
-          class="select select-bordered select-sm mr-2 hidden w-full max-w-xs md:block"
+        <!-- <select
+          class="select-bordered select-sm mr-2 hidden w-full max-w-xs md:block"
         >
           <option disabled selected>{{ $t("City") }} ...</option>
           <option v-for="city in cities" :key="city.id">{{ city.name }}</option>
-        </select>
-        <label
-          class="input input-bordered flex w-full min-w-24 items-center gap-2 md:input-sm"
-        >
-          <input type="text" class="grow" placeholder="Search" />
-          <icon name="ph:magnifying-glass-bold" class="h-4 w-4 opacity-70" />
-        </label>
-        <button class="btn btn-primary btn-md md:hidden">
-          <icon name="material-symbols:filter-alt" class="h-4 w-4" />
-          Filter
-        </button>
+        </select> -->
+        <div class="join w-full">
+          <input
+            class="input join-item input-bordered shrink grow"
+            placeholder="Search..."
+          />
+          <button class="btn btn-primary join-item">
+            <icon name="mingcute:settings-2-line" class="h-5 w-5" />
+          </button>
+        </div>
       </form>
       <button
         class="btn btn-sm btn-block hidden flex-nowrap items-center justify-start bg-base-100 md:flex"
@@ -87,21 +84,21 @@ const { data: cities } = await useAsyncData(
         <span>{{ $t("Find and Buy All Second Hand Products for Sale") }}</span>
       </button>
     </div>
-    <div class="prose flex flex-col gap-4 pr-0 md:basis-1/2 md:py-5 md:pl-4">
+    <div class="prose flex flex-col gap-4 pb-4 md:basis-1/2 md:px-4">
       <p class="hidden md:block">
         {{ $t("Main Second Hand Product Categories") }}
       </p>
-      <div class="xs:grid-cols-2 grid grid-cols-3 gap-2">
+      <div class="no-scrollbar flex overflow-x-auto md:grid md:grid-cols-3">
         <div
           v-if="pending"
           v-for="key in 8"
-          class="skeleton h-8 w-full rounded-lg"
+          class="skeleton ml-4 h-8 w-full rounded-lg"
         ></div>
         <button
           v-else
           v-for="category in categories!"
           :key="category.id"
-          class="btn btn-outline btn-sm btn-block inline-flex flex-nowrap items-center justify-start pr-0"
+          class="btn btn-outline btn-sm ml-2 inline-flex flex-nowrap items-center justify-start md:btn-block md:pr-0"
         >
           <Icon :name="category.icon!" size="1rem" />
           <span>{{ category.name }}</span>
