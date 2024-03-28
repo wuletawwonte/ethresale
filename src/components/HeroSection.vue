@@ -62,10 +62,13 @@ const { data: cities } = await useAsyncData(
           <option v-for="city in cities" :key="city.id">{{ city.name }}</option>
         </select> -->
         <div class="join w-full">
-          <input
-            class="input join-item input-bordered shrink grow"
-            placeholder="Search..."
-          />
+          <label
+            class="input join-item input-bordered flex shrink grow items-center gap-2"
+          >
+            <icon name="ep:search" class="h-4 w-4 opacity-70" />
+            <input type="text" class="grow" placeholder="Search..." />
+          </label>
+
           <button class="btn btn-primary join-item">
             <icon name="mingcute:settings-2-line" class="h-6 w-6" />
           </button>
