@@ -26,7 +26,7 @@ const { data: items, pending } = await useAsyncData(
   <div class="flex flex-grow flex-col">
     <HeroSection />
     <div class="bg-base-100 px-4 lg:px-[12%]">
-      <h3 class="mt-4 text-xl font-bold">
+      <h3 class="mt-4 hidden text-xl font-bold md:block">
         {{ $t("Latest Used Items Ad & Second Hand Products") }}
       </h3>
       <div

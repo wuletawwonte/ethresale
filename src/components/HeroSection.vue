@@ -67,7 +67,7 @@ const { data: cities } = await useAsyncData(
             placeholder="Search..."
           />
           <button class="btn btn-primary join-item">
-            <icon name="mingcute:settings-2-line" class="h-5 w-5" />
+            <icon name="mingcute:settings-2-line" class="h-6 w-6" />
           </button>
         </div>
       </form>
