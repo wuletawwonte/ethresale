@@ -98,7 +98,7 @@ const { data: cities } = await useAsyncData(
         <div
           v-if="pending"
           v-for="key in 6"
-          class="skeleton ml-4 h-8 min-w-28 overflow-hidden rounded-full"
+          class="skeleton ml-4 h-8 min-w-28 overflow-hidden rounded-full bg-base-200"
         ></div>
         <template v-else>
           <button
