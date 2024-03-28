@@ -47,7 +47,9 @@ const { data: cities } = await useAsyncData(
   <section
     class="flex flex-col bg-base-200 pt-0 md:min-h-72 md:flex-row lg:px-[12%]"
   >
-    <div class="prose flex flex-col items-start gap-4 p-4 py-5 md:basis-1/2">
+    <div
+      class="prose prose-xl flex flex-col items-start gap-4 p-4 py-5 md:basis-1/2"
+    >
       <h3 class="hidden text-base-content md:block">
         {{ $t("Buy and Sell Second Hand or Used Products") }}
       </h3>
@@ -87,7 +89,9 @@ const { data: cities } = await useAsyncData(
         <span>{{ $t("Find and Buy All Second Hand Products for Sale") }}</span>
       </button>
     </div>
-    <div class="prose flex flex-col pb-4 md:basis-1/2 md:self-center md:px-4">
+    <div
+      class="prose prose-xl flex flex-col pb-4 md:basis-1/2 md:self-center md:px-4"
+    >
       <p class="hidden md:block">
         {{ $t("Main Second Hand Product Categories") }}
       </p>
