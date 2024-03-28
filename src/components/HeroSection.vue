@@ -10,7 +10,7 @@ const { data: categories, pending } = await useAsyncData(
     const { data } = await client
       .from("categories")
       .select("name, icon, id")
-      .limit(9)
+      .limit(8)
       .returns<Category[]>();
     return data;
   },
@@ -47,7 +47,9 @@ const { data: cities } = await useAsyncData(
   <section
     class="flex flex-col bg-base-200 pt-0 md:min-h-72 md:flex-row lg:px-[12%]"
   >
-    <div class="prose flex flex-col items-start gap-4 p-4 py-5 md:basis-1/2">
+    <div
+      class="prose flex max-w-none flex-col items-start gap-4 p-4 py-5 md:basis-1/2"
+    >
       <h3 class="hidden text-base-content md:block">
         {{ $t("Buy and Sell Second Hand or Used Products") }}
       </h3>
@@ -62,12 +64,15 @@ const { data: cities } = await useAsyncData(
           <option v-for="city in cities" :key="city.id">{{ city.name }}</option>
         </select> -->
         <div class="join w-full">
-          <input
-            class="input join-item input-bordered shrink grow"
-            placeholder="Search..."
-          />
+          <label
+            class="input join-item input-bordered flex shrink grow items-center gap-2"
+          >
+            <icon name="ep:search" class="h-4 w-4 opacity-70" />
+            <input type="text" class="grow" placeholder="Search..." />
+          </label>
+
           <button class="btn btn-primary join-item">
-            <icon name="mingcute:settings-2-line" class="h-5 w-5" />
+            <icon name="mingcute:settings-2-line" class="h-6 w-6" />
           </button>
         </div>
       </form>
@@ -84,25 +89,35 @@ const { data: cities } = await useAsyncData(
         <span>{{ $t("Find and Buy All Second Hand Products for Sale") }}</span>
       </button>
     </div>
-    <div class="prose flex flex-col gap-4 pb-4 md:basis-1/2 md:px-4">
+    <div
+      class="prose flex max-w-none flex-col pb-4 md:basis-1/2 md:self-center md:px-4"
+    >
       <p class="hidden md:block">
         {{ $t("Main Second Hand Product Categories") }}
       </p>
-      <div class="no-scrollbar flex overflow-x-auto md:grid md:grid-cols-3">
+      <div
+        class="no-scrollbar flex overflow-x-auto md:grid md:grid-cols-3 md:gap-2"
+      >
         <div
           v-if="pending"
-          v-for="key in 8"
-          class="skeleton ml-4 h-8 w-full rounded-lg"
+          v-for="key in 6"
+          class="skeleton ml-4 h-8 min-w-28 overflow-hidden rounded-full"
         ></div>
-        <button
-          v-else
-          v-for="category in categories!"
-          :key="category.id"
-          class="btn btn-outline btn-sm ml-2 inline-flex flex-nowrap items-center justify-start md:btn-block md:pr-0"
-        >
-          <Icon :name="category.icon!" size="1rem" />
-          <span>{{ category.name }}</span>
-        </button>
+        <template v-else>
+          <button
+            class="btn btn-outline btn-active btn-sm ml-2 inline-flex flex-nowrap items-center justify-start rounded-full md:btn-block md:m-0 md:pr-0"
+          >
+            <span>All Items</span>
+          </button>
+          <button
+            v-for="category in categories!"
+            :key="category.id"
+            class="btn btn-outline btn-sm ml-2 inline-flex flex-nowrap items-center justify-start rounded-full md:btn-block md:m-0 md:pr-0"
+          >
+            <Icon :name="category.icon!" size="1rem" />
+            <span>{{ category.name }}</span>
+          </button>
+        </template>
       </div>
     </div>
   </section>
