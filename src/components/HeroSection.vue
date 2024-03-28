@@ -84,7 +84,7 @@ const { data: cities } = await useAsyncData(
         <span>{{ $t("Find and Buy All Second Hand Products for Sale") }}</span>
       </button>
     </div>
-    <div class="prose flex flex-col gap-4 pb-4 md:basis-1/2 md:px-4">
+    <div class="prose flex flex-col gap-4 pb-4 md:basis-1/2 md:px-4 md:py-5">
       <p class="hidden md:block">
         {{ $t("Main Second Hand Product Categories") }}
       </p>
@@ -94,7 +94,7 @@ const { data: cities } = await useAsyncData(
         <div
           v-if="pending"
           v-for="key in 8"
-          class="skeleton ml-4 h-8 w-full rounded-lg"
+          class="skeleton ml-4 h-8 w-52 overflow-hidden rounded-lg"
         ></div>
         <button
           v-else
