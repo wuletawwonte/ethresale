@@ -10,7 +10,7 @@ const { data: categories, pending } = await useAsyncData(
     const { data } = await client
       .from("categories")
       .select("name, icon, id")
-      .limit(9)
+      .limit(8)
       .returns<Category[]>();
     return data;
   },
@@ -101,9 +101,14 @@ const { data: cities } = await useAsyncData(
         ></div>
         <button
           v-else
+          class="btn btn-outline btn-primary btn-sm ml-2 inline-flex flex-nowrap items-center justify-start rounded-full md:btn-block md:m-0 md:pr-0"
+        >
+          <span>All Items</span>
+        </button>
+        <button
           v-for="category in categories!"
           :key="category.id"
-          class="btn btn-outline btn-sm ml-2 inline-flex flex-nowrap items-center justify-start md:btn-block md:m-0 md:pr-0"
+          class="btn btn-outline btn-sm ml-2 inline-flex flex-nowrap items-center justify-start rounded-full md:btn-block md:m-0 md:pr-0"
         >
           <Icon :name="category.icon!" size="1rem" />
           <span>{{ category.name }}</span>
