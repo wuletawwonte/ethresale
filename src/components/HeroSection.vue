@@ -99,20 +99,21 @@ const { data: cities } = await useAsyncData(
           v-for="key in 6"
           class="skeleton ml-4 h-8 min-w-28 overflow-hidden rounded-lg"
         ></div>
-        <button
-          v-else
-          class="btn btn-outline btn-primary btn-sm ml-2 inline-flex flex-nowrap items-center justify-start rounded-full md:btn-block md:m-0 md:pr-0"
-        >
-          <span>All Items</span>
-        </button>
-        <button
-          v-for="category in categories!"
-          :key="category.id"
-          class="btn btn-outline btn-sm ml-2 inline-flex flex-nowrap items-center justify-start rounded-full md:btn-block md:m-0 md:pr-0"
-        >
-          <Icon :name="category.icon!" size="1rem" />
-          <span>{{ category.name }}</span>
-        </button>
+        <template v-else>
+          <button
+            class="btn btn-outline btn-active btn-sm ml-2 inline-flex flex-nowrap items-center justify-start rounded-full md:btn-block md:m-0 md:pr-0"
+          >
+            <span>All Items</span>
+          </button>
+          <button
+            v-for="category in categories!"
+            :key="category.id"
+            class="btn btn-outline btn-sm ml-2 inline-flex flex-nowrap items-center justify-start rounded-full md:btn-block md:m-0 md:pr-0"
+          >
+            <Icon :name="category.icon!" size="1rem" />
+            <span>{{ category.name }}</span>
+          </button>
+        </template>
       </div>
     </div>
   </section>
