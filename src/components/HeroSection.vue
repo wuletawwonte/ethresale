@@ -45,7 +45,7 @@ const { data: cities } = await useAsyncData(
 
 <template>
   <section
-    class="flex flex-col bg-base-200 pt-0 md:min-h-72 md:flex-row lg:px-[12%]"
+    class="flex flex-col bg-base-300 pt-0 md:min-h-64 md:flex-row lg:px-[12%]"
   >
     <div
       class="prose flex max-w-none flex-col items-start gap-4 p-4 py-5 md:basis-1/2"
@@ -53,10 +53,7 @@ const { data: cities } = await useAsyncData(
       <h3 class="hidden text-base-content md:block">
         {{ $t("Buy and Sell Second Hand or Used Products") }}
       </h3>
-      <form
-        action=""
-        class="flex w-full gap-4 rounded-md md:bg-base-300 md:p-4"
-      >
+      <form action="" class="flex w-full rounded-md">
         <!-- <select
           class="select-bordered select-sm mr-2 hidden w-full max-w-xs md:block"
         >
@@ -101,7 +98,7 @@ const { data: cities } = await useAsyncData(
         <div
           v-if="pending"
           v-for="key in 6"
-          class="skeleton ml-4 h-8 min-w-28 overflow-hidden rounded-full"
+          class="skeleton ml-4 h-8 min-w-28 overflow-hidden rounded-full bg-base-200"
         ></div>
         <template v-else>
           <button
