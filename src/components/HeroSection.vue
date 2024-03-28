@@ -88,7 +88,9 @@ const { data: cities } = await useAsyncData(
       <p class="hidden md:block">
         {{ $t("Main Second Hand Product Categories") }}
       </p>
-      <div class="no-scrollbar flex overflow-x-auto md:grid md:grid-cols-3">
+      <div
+        class="no-scrollbar flex overflow-x-auto md:grid md:grid-cols-3 md:gap-2"
+      >
         <div
           v-if="pending"
           v-for="key in 8"
@@ -98,7 +100,7 @@ const { data: cities } = await useAsyncData(
           v-else
           v-for="category in categories!"
           :key="category.id"
-          class="btn btn-outline btn-sm ml-2 inline-flex flex-nowrap items-center justify-start md:btn-block md:pr-0"
+          class="btn btn-outline btn-sm ml-2 inline-flex flex-nowrap items-center justify-start md:btn-block md:m-0 md:pr-0"
         >
           <Icon :name="category.icon!" size="1rem" />
           <span>{{ category.name }}</span>
