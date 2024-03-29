@@ -34,7 +34,7 @@ const logout = async () => {
         </ul>
       </div>
       <nuxt-link to="/" class="btn btn-ghost text-xl">
-        <nuxt-img src="/logo.svg" alt="Nuxt Logo" class="w-8" />
+        <nuxt-img src="/logo.svg" alt="Nuxt Logo" width="32px" class="w-8" />
         <span class="hidden lg:flex">{{ $t("ethresale") }}</span>
       </nuxt-link>
     </div>
