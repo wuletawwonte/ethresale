@@ -11,7 +11,7 @@ export default {
 
 <template>
   <div
-    class="card card-bordered card-compact max-w-[600px] border-base-300 bg-base-100 shadow hover:shadow-md"
+    class="card card-bordered card-compact max-w-[600px] rounded-lg border-base-300 bg-base-100 shadow hover:shadow-md dark:border-gray-700"
   >
     <figure class="h-[150px]">
       <img
