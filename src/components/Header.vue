@@ -14,7 +14,7 @@ const logout = async () => {
 </script>
 
 <template>
-  <header class="navbar bg-base-100 shadow lg:px-[12%]">
+  <header class="navbar bg-base-100 pr-4 shadow lg:px-[12%]">
     <div class="navbar-start">
       <label for="my-drawer" class="btn btn-ghost drawer-button md:hidden">
         <icon name="heroicons:bars-3-center-left-16-solid" size="1.3rem" />
@@ -50,7 +50,7 @@ const logout = async () => {
       </ul>
     </div>
     <div class="navbar-end gap-2">
-      <ThemeSwitcher class="hidden md:block" />
+      <ThemeSwitcher />
       <div class="dropdown dropdown-end h-8">
         <div tabindex="0" role="button" class="btn btn-circle btn-ghost btn-sm">
           <div class="indicator">
@@ -75,7 +75,7 @@ const logout = async () => {
       <nuxt-link v-if="!user" to="/login" class="btn btn-sm">
         {{ $t("Sign in") }}
       </nuxt-link>
-      <LangSwitcher />
+      <LangSwitcher class="hidden md:block" />
       <div v-if="user" class="dropdown-end hidden md:dropdown">
         <div tabindex="0" role="button" class="avatar btn btn-circle btn-ghost">
           <div class="w-10 rounded-full">

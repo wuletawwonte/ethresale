@@ -2,12 +2,12 @@
 const colorMode = useColorMode();
 
 const toggleTheme = () => {
-  colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark';
+  colorMode.preference = colorMode.value === "dark" ? "light" : "dark";
 };
 </script>
 
 <template>
-  <label class="btn btn-circle btn-sm btn-ghost swap swap-rotate">
+  <label class="btn btn-circle btn-ghost swap-rotate btn-sm hidden md:swap">
     <input
       type="checkbox"
       :checked="colorMode.value === 'dark'"
