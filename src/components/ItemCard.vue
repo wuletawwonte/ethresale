@@ -14,7 +14,7 @@ export default {
     class="card card-bordered card-compact max-w-[600px] rounded-lg border-base-300 bg-base-100 shadow hover:shadow-md dark:border-gray-700"
   >
     <figure class="h-[150px]">
-      <img
+      <nuxt-img
         :src="item.image"
         :alt="item.name"
         class="h-full w-full rounded-t-lg object-cover"

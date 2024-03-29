@@ -18,7 +18,7 @@
         <div v-if="user" class="flex items-center gap-3">
           <div class="avatar">
             <div class="mask mask-squircle h-12 w-12">
-              <img
+              <nuxt-img
                 src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
                 alt="Avatar Tailwind CSS Component"
               />
