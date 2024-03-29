@@ -24,6 +24,7 @@ export default defineNuxtConfig({
     "@nuxtjs/i18n",
     "@vee-validate/nuxt",
     "@vite-pwa/nuxt",
+    "@nuxt/image",
   ],
   colorMode: {
     classSuffix: "",
