@@ -21,13 +21,18 @@
                   Dark theme
                 </p>
                 <p class="truncate text-sm text-gray-500 dark:text-gray-400">
-                  turn on dark mode
+                  Turn on dark mode
                 </p>
               </div>
               <div
                 class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white"
               >
-                <input type="checkbox" class="toggle" checked />
+                <input
+                  type="checkbox"
+                  class="toggle"
+                  :checked="colorMode.value === 'dark'"
+                  @change="toggleTheme"
+                />
               </div>
             </div>
           </li>
@@ -36,3 +41,11 @@
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+const colorMode = useColorMode();
+
+const toggleTheme = () => {
+  colorMode.preference = colorMode.value === "dark" ? "light" : "dark";
+};
+</script>

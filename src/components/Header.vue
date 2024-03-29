@@ -50,7 +50,7 @@ const logout = async () => {
       </ul>
     </div>
     <div class="navbar-end gap-2">
-      <ThemeSwitcher />
+      <ThemeSwitcher class="hidden md:block" />
       <div class="dropdown dropdown-end h-8">
         <div tabindex="0" role="button" class="btn btn-circle btn-ghost btn-sm">
           <div class="indicator">
