@@ -87,7 +87,7 @@
             </nuxt-link>
           </li>
           <li>
-            <nuxt-link to="#">
+            <nuxt-link to="/settings">
               <icon
                 name="material-symbols-light:settings-rounded"
                 class="h-5 w-5"
