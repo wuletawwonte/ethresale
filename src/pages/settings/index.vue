@@ -36,6 +36,25 @@
               </div>
             </div>
           </li>
+          <li class="py-3 sm:py-4">
+            <div class="flex items-center">
+              <div class="min-w-0 flex-1">
+                <p
+                  class="truncate text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Interface language
+                </p>
+                <p class="truncate text-sm text-gray-500 dark:text-gray-400">
+                  Select your preferred language
+                </p>
+              </div>
+              <div
+                class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white"
+              >
+                <LangSwitcher />
+              </div>
+            </div>
+          </li>
         </ul>
       </div>
     </div>
