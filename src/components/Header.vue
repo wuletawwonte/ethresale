@@ -95,7 +95,7 @@ const logout = async () => {
               <span class="badge">New</span>
             </a>
           </li>
-          <li><a>Settings</a></li>
+          <li><nuxt-link to="/settings">Settings</nuxt-link></li>
           <li>
             <a @click.prevent="logout">Logout</a>
           </li>
