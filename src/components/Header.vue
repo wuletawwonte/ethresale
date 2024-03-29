@@ -34,7 +34,7 @@ const logout = async () => {
         </ul>
       </div>
       <nuxt-link to="/" class="btn btn-ghost text-xl">
-        <img src="/logo.svg" alt="Nuxt Logo" class="w-8" />
+        <nuxt-img src="/logo.svg" alt="Nuxt Logo" width="32px" class="w-8" />
         <span class="hidden lg:flex">{{ $t("ethresale") }}</span>
       </nuxt-link>
     </div>
@@ -79,7 +79,7 @@ const logout = async () => {
       <div v-if="user" class="dropdown-end hidden md:dropdown">
         <div tabindex="0" role="button" class="avatar btn btn-circle btn-ghost">
           <div class="w-10 rounded-full">
-            <img
+            <nuxt-img
               alt="Tailwind CSS Navbar component"
               src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
             />

@@ -47,7 +47,7 @@
           >
             <icon name="octicon:x" size="1rem" class="text-red-500"></icon>
           </button>
-          <img
+          <nuxt-img
             class="inset-0 z-0 h-full w-full border-4 border-base-100 object-cover"
             :src="loadItemImage(imageItem)"
           />

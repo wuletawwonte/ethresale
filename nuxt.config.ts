@@ -24,6 +24,7 @@ export default defineNuxtConfig({
     "@nuxtjs/i18n",
     "@vee-validate/nuxt",
     "@vite-pwa/nuxt",
+    "@nuxt/image",
   ],
   colorMode: {
     classSuffix: "",
@@ -137,6 +138,17 @@ export default defineNuxtConfig({
       type: "module",
     },
   },
+  image: {
+    screens: {
+      xs: 320,
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1280,
+      xxl: 1536,
+    },
+  },
+
   srcDir: "src/",
   components: [
     {

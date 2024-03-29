@@ -1,45 +1,45 @@
 <script setup lang="ts">
-import type { Database } from '~/types/supabase';
+import type { Database } from "~/types/supabase";
 const user = useSupabaseUser();
 const client = useSupabaseClient<Database>();
 
 const { data: myItems } = await useAsyncData(
-  'myItems',
+  "myItems",
   async () => {
     return await client
-      .from('items')
+      .from("items")
       .select()
 
-      .eq('user_id', user.value!.id)
-      .order('created_at');
+      .eq("user_id", user.value!.id)
+      .order("created_at");
   },
-  { transform: (result) => result.data }
+  { transform: (result) => result.data },
 );
 </script>
 
 <template>
-  <div class="flex flex-col lg:px-[12%] my-4">
-    <div class="flex justify-between items-center px-4">
-      <h2 class="text-2xl font-normal">{{ $t('My Items') }}</h2>
-      <nuxt-link to="/my-items/add" class="btn btn-ghost btn-sm btn-outline">
+  <div class="my-4 flex flex-col lg:px-[12%]">
+    <div class="flex items-center justify-between px-4">
+      <h2 class="text-2xl font-normal">{{ $t("My Items") }}</h2>
+      <nuxt-link to="/my-items/add" class="btn btn-ghost btn-outline btn-sm">
         <icon name="heroicons:plus-16-solid" size="1.3rem" />
-        <span>{{ $t('Add Item') }}</span>
+        <span>{{ $t("Add Item") }}</span>
       </nuxt-link>
     </div>
 
     <div
-      class="flex flex-row-reverse justify-between my-4 shadow-sm p-4 rounded-t-xl bg-base-100"
+      class="my-4 flex flex-row-reverse justify-between rounded-t-xl bg-base-100 p-4 shadow-sm"
     >
       <div class="join">
         <div>
           <div>
             <input
-              class="input input-bordered join-item rounded-full w-80"
+              class="input join-item input-bordered w-80 rounded-full"
               placeholder="Search by City, Name or Description..."
             />
           </div>
         </div>
-        <select class="select select-bordered join-item">
+        <select class="join-item select select-bordered">
           <option disabled selected>Filter</option>
           <option>Active</option>
           <option>Pending</option>
@@ -60,12 +60,12 @@ const { data: myItems } = await useAsyncData(
           </select>
         </div>
         <div class="text-sm text-opacity-50">
-          {{ $t('Items per page') }}
+          {{ $t("Items per page") }}
         </div>
       </div>
     </div>
 
-    <div v-if="myItems" class="bg-base-100 rounded-b-xl">
+    <div v-if="myItems" class="rounded-b-xl bg-base-100">
       <div v-if="myItems.length > 0" class="overflow-x-auto">
         <table class="table">
           <!-- head -->
@@ -92,8 +92,11 @@ const { data: myItems } = await useAsyncData(
               <td>
                 <div class="flex items-center gap-3">
                   <div class="avatar">
-                    <div class="mask w-12 h-12">
-                      <img :src="item.image || ''" :alt="item.name || ''" />
+                    <div class="mask h-12 w-12">
+                      <nuxt-img
+                        :src="item.image || ''"
+                        :alt="item.name || ''"
+                      />
                     </div>
                   </div>
                   <div>
@@ -128,9 +131,9 @@ const { data: myItems } = await useAsyncData(
         </table>
       </div>
 
-      <div v-else class="flex justify-center items-center h-48">
+      <div v-else class="flex h-48 items-center justify-center">
         <div class="text-2xl text-opacity-50">
-          {{ $t('No items found') }}
+          {{ $t("No items found") }}
         </div>
       </div>
     </div>
