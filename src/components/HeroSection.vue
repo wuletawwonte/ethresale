@@ -68,7 +68,11 @@ const { data: cities } = await useAsyncData(
             <input type="text" class="grow" placeholder="Search..." />
           </label>
 
-          <button class="btn btn-primary join-item">
+          <button
+            type="button"
+            class="btn btn-primary join-item"
+            aria-label="filter button"
+          >
             <icon name="mingcute:settings-2-line" class="h-6 w-6" />
           </button>
         </div>

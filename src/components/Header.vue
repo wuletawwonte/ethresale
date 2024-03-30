@@ -19,12 +19,17 @@ const logout = async () => {
       <label
         for="my-drawer"
         class="btn btn-ghost drawer-button md:hidden"
-        role="drawer toggle"
+        aria-label="toggle drawer"
       >
         <icon name="heroicons:bars-3-center-left-16-solid" size="1.3rem" />
       </label>
       <div class="hidden md:dropdown">
-        <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+        <div
+          tabindex="0"
+          role="button"
+          aria-label="toggle menu"
+          class="btn btn-ghost lg:hidden"
+        >
           <icon name="heroicons:bars-3-center-left-16-solid" size="1.3rem" />
         </div>
         <ul
