@@ -12,6 +12,7 @@ const toggleTheme = () => {
       type="checkbox"
       :checked="colorMode.value === 'dark'"
       @change="toggleTheme"
+      role="switch"
     />
 
     <icon name="fa-solid:sun" size="1.1rem" class="swap-on" />

@@ -80,6 +80,7 @@ const { data: cities } = await useAsyncData(
         <span>{{ $t("Post Ad to Sell Used Second Hand Product") }}</span>
       </button>
       <button
+        type="button"
         class="btn btn-sm btn-block hidden flex-nowrap items-center justify-start bg-base-100 md:flex"
       >
         <Icon name="material-symbols:list-rounded" size="1.3rem" />
