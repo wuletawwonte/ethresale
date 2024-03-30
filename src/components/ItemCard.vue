@@ -19,7 +19,7 @@ export default {
         :alt="item.name"
         class="h-full w-full rounded-t-lg object-cover"
         placeholder
-        sizes="sm:300px md:700px lg:1000px"
+        sizes="sm:350px md:300px lg:300px"
       />
     </figure>
     <div class="card-body">
