@@ -68,7 +68,11 @@ const { data: cities } = await useAsyncData(
             <input type="text" class="grow" placeholder="Search..." />
           </label>
 
-          <button class="btn btn-primary join-item">
+          <button
+            type="button"
+            class="btn btn-primary join-item"
+            aria-label="filter button"
+          >
             <icon name="mingcute:settings-2-line" class="h-6 w-6" />
           </button>
         </div>
@@ -80,6 +84,7 @@ const { data: cities } = await useAsyncData(
         <span>{{ $t("Post Ad to Sell Used Second Hand Product") }}</span>
       </button>
       <button
+        type="button"
         class="btn btn-sm btn-block hidden flex-nowrap items-center justify-start bg-base-100 md:flex"
       >
         <Icon name="material-symbols:list-rounded" size="1.3rem" />

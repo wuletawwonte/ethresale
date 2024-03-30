@@ -1,6 +1,11 @@
 <template>
   <div class="drawer">
-    <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+    <input
+      id="my-drawer"
+      type="checkbox"
+      class="drawer-toggle"
+      aria-label="drawer toggle"
+    />
     <div
       class="drawer-content flex min-h-screen flex-col justify-between bg-base-200"
     >
