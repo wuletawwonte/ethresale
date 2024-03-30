@@ -146,6 +146,7 @@ export default defineNuxtConfig({
     },
   },
   image: {
+    provider: "netlify",
     screens: {
       xs: 320,
       sm: 640,
