@@ -18,6 +18,7 @@ export default {
         :src="item.image"
         :alt="item.name"
         class="h-full w-full rounded-t-lg object-cover"
+        placeholder
       />
     </figure>
     <div class="card-body">
