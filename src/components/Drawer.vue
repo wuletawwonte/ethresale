@@ -26,6 +26,8 @@
               <nuxt-img
                 src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
                 alt="Avatar Tailwind CSS Component"
+                placeholder
+                sizes="sm:100px md:200px lg:300px"
               />
             </div>
           </div>
