@@ -1,2 +1,2 @@
 [images]
-  remote_images = ["https://mediacontent3.rebuydeal.com/products/.*", "https://fdn2.gsmarena.com/vv/pics/samsung/.*"]
+  remote_images = ["https://mediacontent3.rebuydeal.com/products/.*", "https://fdn2.gsmarena.com/vv/pics/samsung/.*", "https://fdn2.gsmarena.com/vv/pics/samsung/.*"]
