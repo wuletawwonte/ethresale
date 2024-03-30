@@ -19,7 +19,7 @@
         class="drawer-overlay"
       ></label>
 
-      <ul class="menu min-h-full w-80 bg-base-200 p-4 text-base-content">
+      <div class="menu min-h-full w-80 bg-base-200 p-4 text-base-content">
         <div v-if="user" class="flex items-center gap-3">
           <div class="avatar">
             <div class="mask mask-squircle h-12 w-12">
@@ -83,7 +83,7 @@
 
         <div v-if="user" class="divider"></div>
 
-        <div v-if="user">
+        <ul v-if="user" class="menu w-full rounded-box bg-base-200 p-0">
           <li>
             <nuxt-link to="#">
               <icon name="material-symbols:account-circle" class="h-5 w-5" />
@@ -106,8 +106,8 @@
               Logout
             </nuxt-link>
           </li>
-        </div>
-      </ul>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
