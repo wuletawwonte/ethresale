@@ -92,6 +92,9 @@
             :value="itemModel.selectedFiles"
           />
         </section>
+        <section v-else>
+          <h2>Step 4</h2>
+        </section>
 
         <div class="text-gray-700 md:flex">
           <div class="mb-1 md:mb-0 md:w-1/3"></div>
