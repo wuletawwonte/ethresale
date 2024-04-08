@@ -14,7 +14,7 @@ const logout = async () => {
 </script>
 
 <template>
-  <header class="navbar bg-base-100 pr-4 shadow lg:px-[12%]">
+  <header class="navbar sticky top-0 z-10 bg-base-100 pr-4 shadow lg:px-[12%]">
     <div class="navbar-start">
       <label
         for="my-drawer"
