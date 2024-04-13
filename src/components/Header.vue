@@ -87,10 +87,10 @@ const logout = async () => {
         </div>
       </div>
 
+      <LangSwitcher class="hidden md:block" />
       <nuxt-link v-if="!user" to="/login" class="btn btn-sm">
         {{ $t("Sign in") }}
       </nuxt-link>
-      <LangSwitcher class="hidden md:block" />
       <div v-if="user" class="dropdown-end hidden md:dropdown">
         <div tabindex="0" role="button" class="avatar btn btn-circle btn-ghost">
           <div class="w-10 rounded-full">

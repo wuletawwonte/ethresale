@@ -2,7 +2,11 @@
 export default {
   props: {
     item: {
-      type: Object,
+      type: {
+        name: String,
+        description: String,
+        image: String,
+      },
       required: true,
     },
   },
@@ -19,7 +23,6 @@ export default {
         :alt="item.name"
         class="h-full w-full rounded-t-lg object-cover"
         placeholder
-        sizes="sm:350px md:350px lg:300px"
       />
     </figure>
     <div class="card-body">
