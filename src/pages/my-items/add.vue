@@ -1,3 +1,77 @@
+<script setup lang="ts">
+import type { Database } from "~/types/supabase";
+import type { ItemModel } from "@/types";
+
+const itemModel = ref<ItemModel>({
+  title: "",
+  description: "",
+  category: 0,
+  price: 0,
+  city: 0,
+  selectedFiles: [],
+});
+
+const step = ref<number>(1);
+
+const client = useSupabaseClient<Database>();
+
+const { data: categories, pending } = await useAsyncData(
+  "categories",
+  async () => await client.from("categories").select(),
+  {
+    transform: (result) =>
+      result.data!.map((category: any) => {
+        return {
+          id: category.id,
+          name: category.name,
+          icon: category.icon,
+        };
+      }),
+    lazy: true,
+  },
+);
+
+interface City {
+  id: number;
+  name: string;
+}
+
+const cities = await useAsyncData(
+  "cities",
+  async () => {
+    const { data } = await client
+      .from("cities")
+      .select("name")
+      .returns<City[]>();
+    return data;
+  },
+  {
+    transform: (result) =>
+      result!.map((city: City) => ({
+        id: city.id,
+        name: city.name,
+      })),
+    lazy: true,
+  },
+);
+
+function nextStep() {
+  if (step.value === 1) {
+    if (itemModel.value.category === 0) {
+      return;
+    }
+  }
+  step.value += 1;
+}
+
+function previousStep() {
+  step.value -= 1;
+}
+
+// saves the item to the database
+function saveItem() {}
+</script>
+
 <template>
   <div class="mx-4 my-4 flex flex-col lg:mx-0 lg:px-[12%]">
     <div class="flex items-center justify-between px-4">
@@ -92,6 +166,9 @@
             :value="itemModel.selectedFiles"
           />
         </section>
+        <section v-else>
+          <h2>Step 4</h2>
+        </section>
 
         <div class="text-gray-700 md:flex">
           <div class="mb-1 md:mb-0 md:w-1/3"></div>
@@ -119,80 +196,3 @@
     </form>
   </div>
 </template>
-
-<script setup lang="ts">
-import type { Database } from "~/types/supabase";
-import type { ItemModel } from "@/types";
-
-const itemModel = ref<ItemModel>({
-  title: "",
-  description: "",
-  category: 0,
-  price: 0,
-  city: 0,
-  selectedFiles: [],
-});
-
-const step = ref<number>(1);
-
-const client = useSupabaseClient<Database>();
-
-const { data: categories, pending } = await useAsyncData(
-  "categories",
-  async () => await client.from("categories").select(),
-  {
-    transform: (result) =>
-      result.data!.map((category: any) => {
-        return {
-          id: category.id,
-          name: category.name,
-          icon: category.icon,
-        };
-      }),
-    lazy: true,
-  },
-);
-
-interface City {
-  id: number;
-  name: string;
-}
-
-const cities = await useAsyncData(
-  "cities",
-  async () => {
-    const { data } = await client
-      .from("cities")
-      .select("name")
-      .returns<City[]>();
-    return data;
-  },
-  {
-    transform: (result) =>
-      result!.map((city: City) => ({
-        id: city.id,
-        name: city.name,
-      })),
-    lazy: true,
-  },
-);
-
-function nextStep() {
-  if (step.value === 1) {
-    if (itemModel.value.category === 0) {
-      return;
-    }
-  }
-  console.log(itemModel.value);
-  step.value += 1;
-}
-
-function previousStep() {
-  step.value -= 1;
-}
-
-// saves the item to the database
-function saveItem() {
-  console.log("Save Item", itemModel.value);
-}
-</script>

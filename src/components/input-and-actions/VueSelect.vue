@@ -54,8 +54,9 @@ const onChange = (e: Event) => {
         @change="onChange"
       >
         <option disabled :selected="selected === 0">{{ placeholder }}</option>
+        <option value="0">Test</option>
         <option
-          v-for="option in options"
+          v-for="option in props.options"
           :key="option.id"
           :selected="option.id === selected"
           :value="option.id"

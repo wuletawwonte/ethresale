@@ -57,12 +57,6 @@ export default defineNuxtConfig({
         name: "English",
         file: "en-US.json",
       },
-      {
-        code: "am",
-        iso: "am-ET",
-        name: "አማርኛ",
-        file: "am-ET.json",
-      },
     ],
     defaultLocale: "en",
     strategy: "no_prefix",
@@ -146,7 +140,6 @@ export default defineNuxtConfig({
     },
   },
   image: {
-    provider: "netlify",
     screens: {
       xs: 320,
       sm: 640,

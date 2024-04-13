@@ -11,7 +11,7 @@ export default {
 
 <template>
   <div
-    class="card card-bordered card-compact max-w-[600px] rounded-lg border-base-300 bg-base-100 shadow hover:shadow-md dark:border-gray-700"
+    class="card card-bordered card-compact max-w-[600px] rounded-lg border-base-300 bg-base-100 shadow transition-transform duration-100 ease-in-out hover:-translate-y-0.5 hover:shadow-md dark:border-gray-700"
   >
     <figure class="h-[150px]">
       <nuxt-img
