@@ -17,7 +17,6 @@ export default {
       <nuxt-img
         :src="item.image"
         :alt="item.name"
-        provider="netlify"
         class="h-full w-full rounded-t-lg object-cover"
         placeholder
         sizes="sm:350px md:350px lg:300px"
