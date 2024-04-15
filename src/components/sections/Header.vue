@@ -92,12 +92,22 @@ const logout = async () => {
         {{ $t("Sign in") }}
       </nuxt-link>
       <div v-if="user" class="dropdown-end hidden md:dropdown">
-        <div tabindex="0" role="button" class="avatar btn btn-circle btn-ghost">
+        <div
+          v-if="user.user_metadata"
+          tabindex="0"
+          role="button"
+          class="avatar btn btn-circle btn-ghost"
+        >
           <div class="w-10 rounded-full">
             <nuxt-img
-              alt="Tailwind CSS Navbar component"
-              src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+              :alt="user.user_metadata.name"
+              :src="user.user_metadata.avatar_url"
             />
+          </div>
+        </div>
+        <div v-else tabindex="0" role="button" class="avatar placeholder">
+          <div class="w-10 rounded-full bg-neutral text-neutral-content">
+            <span>D</span>
           </div>
         </div>
         <ul
