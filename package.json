@@ -40,6 +40,6 @@
     "@pinia/nuxt": "^0.5.1",
     "@vee-validate/nuxt": "^4.12.6",
     "pinia": "^2.1.7",
-    "postcss-custom-properties": "^13.3.7"
+    "postcss-custom-properties": "^13.3.8"
   }
 }
