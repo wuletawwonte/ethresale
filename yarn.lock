@@ -3037,10 +3037,10 @@
     node-gyp-build "^4.2.2"
     resolve-from "^5.0.0"
 
-"@vite-pwa/nuxt@^0.7.0":
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/@vite-pwa/nuxt/-/nuxt-0.7.0.tgz#413364e9a4b541173d284a0c0253ef72efa1a9a5"
-  integrity sha512-s4bNChQSlhIIRDZApxWaA4p10UnBDm+DP/mnNgncRaZeWxAg3wpikR8PY/c0ZwJ5H2GBS+k7CVUlKryZZ44DGg==
+"@vite-pwa/nuxt@^0.8.1":
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/@vite-pwa/nuxt/-/nuxt-0.8.1.tgz#c64bed8dfac15f21791e8c55154b3b72da87a683"
+  integrity sha512-XQYBeP1quQXLxPG25qL5igeYw7sSCUVNwekLr+P5WXpdm9o9GhZt2yPoWXkU372CunvqzXxYexzknqHS8zP/BQ==
   dependencies:
     "@nuxt/kit" "^3.9.0"
     pathe "^1.1.1"
