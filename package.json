@@ -30,7 +30,7 @@
     "typescript": "^5.5.3",
     "vue": "^3.4.27",
     "vue-router": "^4.4.3",
-    "vue-tsc": "^2.0.29"
+    "vue-tsc": "^2.1.10"
   },
   "resolutions": {
     "string-width": "4.2.3"
