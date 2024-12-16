@@ -21,7 +21,7 @@
     "@nuxtjs/tailwindcss": "^6.12.1",
     "@tailwindcss/typography": "^0.5.13",
     "@vite-pwa/nuxt": "^0.10.6",
-    "daisyui": "^4.12.10",
+    "daisyui": "^4.12.22",
     "eslint": "^8.57.0",
     "nuxt": "^3.14.159",
     "nuxt-icon": "^0.6.10",
