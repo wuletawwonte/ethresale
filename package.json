@@ -28,7 +28,7 @@
     "prettier": "^3.6.2",
     "prettier-plugin-tailwindcss": "^0.6.5",
     "typescript": "^5.8.2",
-    "vue": "^3.4.27",
+    "vue": "^3.5.22",
     "vue-router": "^4.4.3",
     "vue-tsc": "^3.1.1"
   },
