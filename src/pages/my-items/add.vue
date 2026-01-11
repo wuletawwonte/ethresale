@@ -167,7 +167,15 @@ function saveItem() {}
           />
         </section>
         <section v-else>
-          <h2>Step 4</h2>
+          <div class="flex flex-col items-center">
+            <h2 class="text-xl font-normal">Preview</h2>
+            <p class="text-sm text-gray-500 dark:text-gray-400">
+              Review your item before saving
+            </p>
+          </div>
+          <div>
+            <ItemPreview :item="{ ...itemModel }" />
+          </div>
         </section>
 
         <div class="text-gray-700 md:flex">
@@ -181,14 +189,13 @@ function saveItem() {}
             >
               Previous
             </button>
-            <button type="button" class="btn btn-sm">Save Draft</button>
             <button
               type="button"
-              class="btn btn-sm"
+              class="btn btn-primary btn-sm"
               @click="nextStep"
               :disabled="step === 4 || itemModel.category === 0"
             >
-              Next
+              Save and Continue
             </button>
           </div>
         </div>
